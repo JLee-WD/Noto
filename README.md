@@ -23,14 +23,15 @@ Do you think we need to state the problem separately?
 
 ## Functionality
 
-- **Toggle visibility** - Noto lets you choose whether to keep your notes private or public. Public notes can be viewed by anyone and it makes it easy for you to share a piece of code or snippet with someone else.
-- **Share your notes** - (Don't know how to achieve this...) share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes.
+- **Toggle visibility** - Noto lets you choose whether to keep your notes private or public. Public notes can be viewed by anyone and it makes it easy for you to share a piece of code or snippet of text with someone else.
+- **Share your notes** - (Don't know how to achieve this...    - **Agree, collaborative editing seems like it would be very difficult to implement**  correctly) share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes. 
 - **Concise bite-sized notes** - write notes during on an easy-to-use interface quickly and securely. Noto is specially designed for software engineering students, with custom input fields specifically for code.
 - **Examples** - Noto lets you save coding examples that you have used before. Save quick-reference design patterns that you have used in practice before.
 - **Reference Photos/Images** - Dont have time to write down everything? Or have you found a diagram that explains the concept better than words? Take a photo, or save an image and attach it to the note.
 - **Sort and Filter** - Noto has a suite of convenient sort and filtering functions, allowing quick access to the notes you need. As default, the notes are stored chronologically with the latest notes first.
 - **Search** - The search bar lets you search for key words in the notes.
 - **Group notes** - Notes can be grouped together (?)
+- **Syntax highlighting** - Noto supports syntax highlighting along with customizable styles and a wide range of themes to beautify your code. 
 
 ## Target
 
