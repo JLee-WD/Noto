@@ -32,6 +32,7 @@ Do you think we need to state the problem separately?
 - **Search** - The search bar lets you search for key words in the notes.
 - **Group notes** - Notes can be grouped together (?)
 - **Syntax highlighting** - Noto supports syntax highlighting along with customizable styles and a wide range of themes to beautify your code. 
+- **Export notes** - Notes can be exported and saved locally for offline access.
 
 ## Target
 
