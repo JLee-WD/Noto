@@ -2,11 +2,9 @@
 
 #### Noto is a note-taking app built using JavaScript, React and Ruby on Rails developed by [Justin Lee](https://github.com/JLee-WD) and [Richard Cho](https://github.com/Ryuukishi/).
 
-<!-- My writing is terrible, feel free to rewrite! -J -->
+
 
 ## Problem
-
-<!-- Do you think we need to state the problem separately? -->
 
 - Students sometimes have trouble understanding reference websites online. If it is something they have learnt already they may not have written it down, or their written notes may be an unorganized mess.
 - A class will always have students who dont understand the content the same way others do. Collaboration and note taking solves this.
@@ -26,6 +24,8 @@
 ### MVP
 
 - **Toggle visibility** - Noto lets you choose whether to keep your notes private or public. Public notes can be viewed by anyone and it makes it easy for you to share a piece of code or snippet of text with someone else.
+- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes. 
+
 - **Concise bite-sized notes** - write notes during on an easy-to-use interface quickly and securely. Noto is specially designed for software engineering students, with custom input fields specifically for code.
 - **Examples** - Noto lets you save coding examples that you have used before. Save quick-reference design patterns that you have used in practice before.
 - **Reference Photos/Images** - Dont have time to write down everything? Or have you found a diagram that explains the concept better than words? Take a photo, or save an image and attach it to the note.
@@ -36,7 +36,7 @@
 
 ### Future updates
 
-- **Share your notes** - (Don't know how to achieve this... - **Agree, collaborative editing seems like it would be very difficult to implement correctly**) share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes.
+- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes.
 - **Export notes** - Notes can be exported and saved locally for offline access.
 
 ## Target
@@ -61,14 +61,14 @@
 
 ## Dataflow Diagram
 
+Link: https://lucid.app/documents/view/3ff91798-f434-4dd4-a684-32f0a55bc2a3
+
 ## Application Architecture Diagram
 
 ## User Stories
 
 Note-Taker
 Organizer
-
-<!-- Can't think of a better name for a user -->
 
 ### Student User Stories
 
