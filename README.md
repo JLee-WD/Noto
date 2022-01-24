@@ -2,13 +2,11 @@
 
 #### Noto is a note-taking app built using JavaScript, React and Ruby on Rails developed by [Justin Lee](https://github.com/JLee-WD) and [Richard Cho](https://github.com/Ryuukishi/).
 
-
-
 ## Problem
 
 - Students oftentimes have trouble understanding reference websites or perhaps the official documentation is too verbose and hard to read. Taking good notes is an important skill when studying because it not only helps you to remember the content, but it also reinforces the concepts by writing it down in words that makes sense to you. This could be difficult, however, if it is something that they have learnt but not yet written down, or maybe their written notes are an unorganized mess.
-- It is common for students in the same class to learn at different speeds. Different students will excel in different areas and not all students will understand the content in the same way. Collaboration and note taking solves this by encouraging communication and teamwork between students. Fostering a collaborative environment is a powerful tool that motivates students to share their knowledge and help each other to succeed. 
-- Sometimes there's a tried and true method of doing something that you want to keep a note of, or a line of code that you would like to reuse in the future. If you don't take a note of it, it's highly likely that you'll end up forgettting it and be forced to search for it again in Google which is inefficient and may not give you the best result. 
+- It is common for students in the same class to learn at different speeds. Different students will excel in different areas and not all students will understand the content in the same way. Collaboration and note taking solves this by encouraging communication and teamwork between students. Fostering a collaborative environment is a powerful tool that motivates students to share their knowledge and help each other to succeed.
+- Sometimes there's a tried and true method of doing something that you want to keep a note of, or a line of code that you would like to reuse in the future. If you don't take a note of it, it's highly likely that you'll end up forgettting it and be forced to search for it again in Google which is inefficient and may not give you the best result.
 
 ## Purpose
 
@@ -24,8 +22,7 @@
 ### MVP
 
 - **Toggle visibility** - Noto lets you choose whether to keep your notes private or public. Public notes can be viewed by anyone and it makes it easy for you to share a piece of code or snippet of text with someone else.
-- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes. 
-
+- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes.
 - **Concise bite-sized notes** - write notes during on an easy-to-use interface quickly and securely. Noto is specially designed for software engineering students, with custom input fields specifically for code.
 - **Examples** - Noto lets you save coding examples that you have used before. Save quick-reference design patterns that you have used in practice before.
 - **Reference Photos/Images** - Dont have time to write down everything? Or have you found a diagram that explains the concept better than words? Take a photo, or save an image and attach it to the note.
@@ -47,16 +44,20 @@
 
 ## Tech Stack
 
-- JavaScript
-- React
-- Ruby on Rails
-- Heroku/AWS
-- PostgreSQL
-- Trello
-- Figma
-- Canva
-- Git/GitHub
-- (styling framework)
+- JavaScript - Programming language for Client
+- React - Client front-end framework for JavaScript
+- Ruby - Programming language for Server
+- Ruby on Rails - Server side web application framework
+- Heroku/AWS - Deployment
+- Amazon S3 - Image storage
+- PostgreSQL - SQL Database
+- Trello - Project managment software
+- Figma - Vector graphics editor and prototyping tool, for wireframing/prototyping
+- Canva - Online design and publishing tool, for slide deck
+- Git/GitHub - Source control
+- LucidApp - Collaborative drawing tool for charts and diagrams, for dataflow and application architecture diagrams
+- Diagrams.net - Diagram drawing tool, for entity relationship diagram
+- (styling framework?)
 - (authentication package?)
 
 ## Dataflow Diagram
@@ -65,12 +66,14 @@ Link: https://lucid.app/documents/view/3ff91798-f434-4dd4-a684-32f0a55bc2a3
 
 ## Application Architecture Diagram
 
+Link: https://lucid.app/lucidchart/d30ad452-8ff5-460d-9bb3-cc0da4fdfadd/edit?invitationId=inv_97834abe-af5f-4288-af0e-7217bad3aa78
+
 ## User Stories
+
+### Users
 
 Note-Taker
 Organizer
-
-### Student User Stories
 
 ### MVP - user stories
 
