@@ -6,9 +6,9 @@
 
 ## Problem
 
-- Students sometimes have trouble understanding reference websites online. If it is something they have learnt already they may not have written it down, or their written notes may be an unorganized mess.
-- A class will always have students who dont understand the content the same way others do. Collaboration and note taking solves this.
-- Googling something you once knew a long time ago may not provide the best result. Especially if it is a piece of code you used previously.
+- Students oftentimes have trouble understanding reference websites or perhaps the official documentation is too verbose and hard to read. Taking good notes is an important skill when studying because it not only helps you to remember the content, but it also reinforces the concepts by writing it down in words that makes sense to you. This could be difficult, however, if it is something that they have learnt but not yet written down, or maybe their written notes are an unorganized mess.
+- It is common for students in the same class to learn at different speeds. Different students will excel in different areas and not all students will understand the content in the same way. Collaboration and note taking solves this by encouraging communication and teamwork between students. Fostering a collaborative environment is a powerful tool that motivates students to share their knowledge and help each other to succeed. 
+- Sometimes there's a tried and true method of doing something that you want to keep a note of, or a line of code that you would like to reuse in the future. If you don't take a note of it, it's highly likely that you'll end up forgettting it and be forced to search for it again in Google which is inefficient and may not give you the best result. 
 
 ## Purpose
 
