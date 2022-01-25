@@ -21,16 +21,8 @@
 ### MVP
 
 - **Toggle visibility** - Noto lets you choose whether to keep your notes private or public. Public notes can be viewed by anyone and it makes it easy for you to share a piece of code or snippet of text with someone else.
-
 - **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless Google doc or text file, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes. 
-
 - **Concise bite-sized notes** - Write notes quickly and securely with the easy-to-use interface . Noto is specially designed for software engineering students, with custom input fields specifically for code.
-=======
-- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes.
-- **Concise bite-sized notes** - write notes during on an easy-to-use interface quickly and securely. Noto is specially designed for software engineering students, with custom input fields specifically for code.
-=======
-- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless Google doc or text file, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes. 
-- **Concise bite-sized notes** - Write notes quickly and securely with the easy-to-use interface. Noto is specially designed for software engineering students, with custom input fields specifically for code.
 - **Examples** - Noto lets you save coding examples that you have used before. Save quick-reference design patterns that you have used in practice before.
 - **Reference Photos/Images** - Dont have time to write down everything? Or have you found a diagram that explains the concept better than words? Take a photo, or save an image and attach it to the note.
 - **Sort and Filter** - Noto has a suite of convenient sort and filtering functions, allowing quick access to the notes you need. As default, the notes are stored chronologically with the latest notes first.
