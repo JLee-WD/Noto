@@ -12,20 +12,19 @@ Sometimes there's a tried and true method of doing something that you want to ke
 
 ## Purpose
 
-- Noto aims to make it easier for you to write notes and organise all your ideas in one place.
-- No need for cheatsheets or long, unsorted google docs.
-- Organize your notes in more ways than one.
-- Designed for programming students and professionals.
-- Share and collaborate with your peers during class.
-- Somewhere inbetween a reference website like MDN, and google docs.
+- Noto aims to make it easier for you to write notes and organise all your ideas in one place meaning there's no longer a need for cheatsheets or long, unsorted Google docs. 
+- Noto lets users flexibly organize their notes in multiple ways. Organise your notes the way you want and declutter your documents.
+- Designed for software engineering students, teachers and professionals. It aims to be an app that fits all their note-taking needs and wants. 
+- Noto aims to provide a platform that allow users to easily share and collaborate with their peers or colleagues. 
+- Aims to be somewhere inbetween a reference website like MDN, and a document editor like Google docs.
 
 ## Functionality
 
 ### MVP
 
 - **Toggle visibility** - Noto lets you choose whether to keep your notes private or public. Public notes can be viewed by anyone and it makes it easy for you to share a piece of code or snippet of text with someone else.
-- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes.
-- **Concise bite-sized notes** - write notes during on an easy-to-use interface quickly and securely. Noto is specially designed for software engineering students, with custom input fields specifically for code.
+- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless Google doc or text file, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes. 
+- **Concise bite-sized notes** - Write notes quickly and securely with the easy-to-use interface . Noto is specially designed for software engineering students, with custom input fields specifically for code.
 - **Examples** - Noto lets you save coding examples that you have used before. Save quick-reference design patterns that you have used in practice before.
 - **Reference Photos/Images** - Dont have time to write down everything? Or have you found a diagram that explains the concept better than words? Take a photo, or save an image and attach it to the note.
 - **Sort and Filter** - Noto has a suite of convenient sort and filtering functions, allowing quick access to the notes you need. As default, the notes are stored chronologically with the latest notes first.
@@ -35,14 +34,13 @@ Sometimes there's a tried and true method of doing something that you want to ke
 
 ### Future updates
 
-- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes.
+- **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless Google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes.
 - **Export notes** - Notes can be exported and saved locally for offline access.
 
 ## Target
 
-- Software engineering students/teachers
+- Students with a specific focus on software engineering students and teachers
 - Professional developers
-- General students?
 
 ## Tech Stack
 
@@ -80,15 +78,15 @@ Organizer
 ### MVP - user stories
 
 - As a **Note-Taker**, I want to create a new note, so that I can add a new note to my collection
-- As a **Note-Taker**, I want to create a edit a note, so that I can update or modify my notes at any time
-- As a **Note-Taker**, I want to create a delete a note, so that I can remove notes I no longer need
+- As a **Note-Taker**, I want to edit a note, so that I can update or modify my notes at any time
+- As a **Note-Taker**, I want to delete a note, so that I can remove notes I no longer need
 - As a **Note-Taker**, I want to add and display code to the note, so that I can provide examples from code that I have used
 - As a **Note-Taker**, I want to change the visibility of a note to private or public, so that I can control who sees the note
 - As a **Note-Taker**, I want to sort my notes chronologically, so that I can view my notes by newest or oldest
-- As a **Note-Taker**, I want to filter my notes by programming language, so that I can view notes specific from that language
-- As a **Note-Taker**, I want to create a group of notes, so that I can view organize my notes by groups
+- As a **Note-Taker**, I want to filter my notes by programming language, so that I can view notes specific to that language
+- As a **Note-Taker**, I want to create a group of notes, so that I can view and organize my notes by groups
 - As a **Note-Taker**, I want to search my notes, so that I can quickly find the right note using keywords
-- As a **Note-Taker**, I want to add images to my note, so that I add reference images or photos to accompany the note
+- As a **Note-Taker**, I want to add images to my note, so that I can add reference images or photos to accompany the note
 - As a **Note-Taker**, I want to highlight syntax in my note, so that I place emphasis on particular words in the note
 - As a **Note-Taker**, I want to style and format my note, so that I can make the text in my note look the way I want to
 
@@ -102,6 +100,17 @@ Organizer
 - As an **Organizer**, I want to create a group for other users, so that they can add notes collaboratively to the group for others to see
 - As an **Organizer**, I want to add users to my created group, so that I can control who has access to the group
 - As an **Organizer**, I want to remove users from my created group, so that I can control who has access to the group
+
+## Dataflow Diagram
+
+Link: https://lucid.app/documents/view/3ff91798-f434-4dd4-a684-32f0a55bc2a3
+
+![DFD](docs/diagram_screenshots/DFD.png)
+
+
+## Application Architecture Diagram
+
+Link: https://lucid.app/lucidchart/d30ad452-8ff5-460d-9bb3-cc0da4fdfadd/edit?invitationId=inv_97834abe-af5f-4288-af0e-7217bad3aa78
 
 ## Wireframes
 
