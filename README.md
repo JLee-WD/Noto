@@ -50,25 +50,32 @@ Sometimes there's a tried and true method of doing something that you want to ke
 - React - Client front-end framework for JavaScript
 - Ruby - Programming language for Server
 - Ruby on Rails - Server side web application framework
-- Heroku/AWS - Deployment
+- Heroku - Deployment
 - Amazon S3 - Image storage
 - PostgreSQL - SQL Database
 - Trello - Project managment software
+- Git/GitHub - Source control
+- Emotion React - CSS library for styling
+- Devise - Authentication Gem for Ruby on Rails
+
+### Auxiliary Tools
+
 - Figma - Vector graphics editor and prototyping tool, for wireframing/prototyping
 - Canva - Online design and publishing tool, for slide deck
-- Git/GitHub - Source control
 - LucidApp - Collaborative drawing tool for charts and diagrams, for dataflow and application architecture diagrams
 - Diagrams.net - Diagram drawing tool, for entity relationship diagram
-- (styling framework?)
-- (authentication package?)
 
 ## Dataflow Diagram
 
 Link: https://lucid.app/documents/view/3ff91798-f434-4dd4-a684-32f0a55bc2a3
 
+![DFD](docs/diagram_screenshots/Noto_DFD.png)
+
 ## Application Architecture Diagram
 
 Link: https://lucid.app/lucidchart/d30ad452-8ff5-460d-9bb3-cc0da4fdfadd/edit?invitationId=inv_97834abe-af5f-4288-af0e-7217bad3aa78
+
+![AAD](docs/diagram_screenshots/Noto_AAD.png)
 
 ## User Stories
 
@@ -104,17 +111,31 @@ Link: https://lucid.app/lucidchart/d30ad452-8ff5-460d-9bb3-cc0da4fdfadd/edit?inv
 - As **Wallace**, I want to add users to my created group, so that I can control who has access to the group
 - As **Wallace**, I want to remove users from my created group, so that I can control who has access to the group
 
-## Dataflow Diagram
-
-Link: https://lucid.app/documents/view/3ff91798-f434-4dd4-a684-32f0a55bc2a3
-
-![DFD](docs/diagram_screenshots/DFD.png)
-
-## Application Architecture Diagram
-
-Link: https://lucid.app/lucidchart/d30ad452-8ff5-460d-9bb3-cc0da4fdfadd/edit?invitationId=inv_97834abe-af5f-4288-af0e-7217bad3aa78
-
 ## Wireframes
+
+Homepage
+![Homepage](docs/wireframes/Noto_Homepage.jpg)
+
+Log in Page
+![Log In Page](docs/wireframes/Noto_LogIn.jpg)
+
+Register Page
+![Register Page](docs/wireframes/Noto_Register.jpg)
+
+Forgot Password Page
+![Forgot Password Page](docs/wireframes/Noto_ForgotPass.jpg)
+
+Index Page
+![Index Page](docs/wireframes/Noto_Index.jpg)
+
+Expanded Note Page
+![Expanded Note](docs/wireframes/Noto_ExpandedNote.jpg)
+
+Nav
+![Nav](docs/wireframes/Noto_Nav.jpg)
+
+New Note Page
+![New Note](docs/wireframes/Noto_NewNote.jpg)
 
 LInk: https://www.figma.com/file/dXzI59LuJz7YL4fzqnZwnJ/Noto?node-id=0%3A1
 
