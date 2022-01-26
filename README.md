@@ -14,11 +14,11 @@ Sometimes there's a tried and true method of doing something that you want to ke
 
 ### Solution
 
-- Noto aims to make it easier for you to write notes and organise all your ideas in one place meaning there's no longer a need for cheatsheets or long, unsorted Google docs.
-- Noto lets users flexibly organize their notes in multiple ways. Organise your notes the way you want and declutter your documents.
-- Designed for software engineering students, teachers and professionals. It aims to be an app that fits all their note-taking needs and wants.
-- Noto aims to provide a platform that allow users to easily share and collaborate with their peers or colleagues.
-- Aims to be somewhere inbetween a reference website like MDN, and a document editor like Google docs.
+Designed for software engineering students, teachers and professionals. It aims to be an app that fits all their note-taking needs and wants. Noto lets users flexibly organize their notes in multiple ways. Organise your notes the way you want and declutter your documents. Want to find that piece of code you write that one time for a React app that you built 6 months ago? Instead of sifting though hundreds of files, make a quick note on Noto, save the code snippet, describe the context, tag the note and save!
+
+Noto aims to make it easier for you to write notes and organise all your ideas in one place meaning there's no longer a need for cheatsheets or long, unsorted Google docs. Specially catered for programmers, Noto lets you save code snippets or design patterns that you have used before. Rather than googling code and finding examples that you don't understand, save and utilize code that you have written yourself.
+
+Noto aims to provide a platform that allow users to easily share and collaborate with their peers or colleagues. Take notes with your peers during class, and ensure everyone is on the same level of understanding by grouping notes together.
 
 ## Functionality
 
