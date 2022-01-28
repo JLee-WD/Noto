@@ -39,10 +39,12 @@ Noto aims to provide a platform that allow users to easily share and collaborate
 - **Share your notes** - Share your notes in a list with a friend in the same class. Instead of writing your notes in an endless Google doc, Noto lets you collaborate with your cohort by inviting your peers to a group to write and share notes.
 - **Export notes** - Notes can be exported and saved locally for offline access.
 
-## Target
+## Target Audience
 
-- Students with a specific focus on software engineering students and teachers
-- Professional developers
+The target audience for Noto is:
+
+- Software engineering students & teachers
+- Professional or aspiring developers
 
 ## Tech Stack
 
@@ -88,24 +90,24 @@ Link: https://lucid.app/lucidchart/d30ad452-8ff5-460d-9bb3-cc0da4fdfadd/edit?inv
 ### MVP - user stories
 
 - As **Johnny**, I want to create a new note, so that I can add a new note to my collection of notes
+- As **Johnny**, I want to change the visibility of a note to private or public, so that I can control who sees the note in collaborative groups
+- As **Johnny**, I want to filter my notes by programming language, so that I can view notes specific to that language
+- As **Johnny**, I want to add images to my note, so that I can add reference images or photos from class to accompany the note
+- As **Johnny**, I want to highlight syntax in my note, so that I place emphasis on particular words in the note
 - As **Stacy**, I want to edit a note, so that I can update or modify my notes at any time as I receive new or updated information
 - As **Stacy**, I want to delete a note, so that I can remove notes I no longer need
 - As **Stacy**, I want to add and display code to the note, so that I can save examples from code that I have written before
-- As **Johnny**, I want to change the visibility of a note to private or public, so that I can control who sees the note in collaborative groups
 - As **Stacy**, I want to sort my notes chronologically, so that I can view my notes by newest or oldest
-- As **Johnny**, I want to filter my notes by programming language, so that I can view notes specific to that language
-- As **Wallace**, I want to create a group, so that I add the students from a class to share and collaborate notes
 - As **Stacy**, I want to search my notes, so that I can quickly find the right note using keywords
-- As **Johnny**, I want to add images to my note, so that I can add reference images or photos from class to accompany the note
-- As **Johnny**, I want to highlight syntax in my note, so that I place emphasis on particular words in the note
 - As **Stacy**, I want to style and format my note, so that I can make the text in my note look the way I want to
+- As **Wallace**, I want to create a group, so that I add the students from a class to share and collaborate notes
 
 ### Future updates - user stories
 
-- As **Stacy**, I want to view a summarized version of a note, so that I can view multiple notes at a time
-- As **Stacy**, I want to expand a summarized version of a note, so that I can see the note in its entirety
 - As **Johnny**, I want to select which programming language the example code is, so that I can display the code in the correct format
 - As **Johnny**, I want to share my note with another user, so that I can share my notes with my classmates or coworkers
+- As **Stacy**, I want to view a summarized version of a note, so that I can view multiple notes at a time
+- As **Stacy**, I want to expand a summarized version of a note, so that I can see the note in its entirety
 - As **Stacy**, I want to download a note to my computer, so that I can save local copies and refer to them without access to the internet
 - As **Wallace**, I want to create a group for other users, so that they can add notes collaboratively to the group for others to see
 - As **Wallace**, I want to add users to my created group, so that I can control who has access to the group
