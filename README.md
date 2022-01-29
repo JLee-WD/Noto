@@ -115,29 +115,43 @@ Link: https://lucid.app/lucidchart/d30ad452-8ff5-460d-9bb3-cc0da4fdfadd/edit?inv
 
 ## Wireframes
 
-Homepage
-![Homepage](docs/wireframes/Noto_Homepage.jpg)
-
-Log in Page
-![Log In Page](docs/wireframes/Noto_LogIn.jpg)
-
 Register Page
-![Register Page](docs/wireframes/Noto_Register.jpg)
-
-Forgot Password Page
-![Forgot Password Page](docs/wireframes/Noto_ForgotPass.jpg)
+![Register Page](docs/wireframes/Noto_Register.png)
 
 Index Page
-![Index Page](docs/wireframes/Noto_Index.jpg)
+![Index Page](docs/wireframes/Noto_Index.png)
 
 Expanded Note Page
-![Expanded Note](docs/wireframes/Noto_ExpandedNote.jpg)
-
-Nav
-![Nav](docs/wireframes/Noto_Nav.jpg)
+![Expanded Note](docs/wireframes/Noto_ExpandedNote.png)
 
 New Note Page
-![New Note](docs/wireframes/Noto_NewNote.jpg)
+![New Note](docs/wireframes/Noto_NewNote.png)
+
+## Prototypes
+
+Homepage
+![Homepage](docs/prototypes/Noto_Homepage.jpg)
+
+Log in Page
+![Log In Page](docs/prototypes/Noto_LogIn.jpg)
+
+Register Page
+![Register Page](docs/prototypes/Noto_Register.jpg)
+
+Forgot Password Page
+![Forgot Password Page](docs/prototypes/Noto_ForgotPass.jpg)
+
+Index Page
+![Index Page](docs/prototypes/Noto_Index.jpg)
+
+Expanded Note Page
+![Expanded Note](docs/prototypes/Noto_ExpandedNote.jpg)
+
+Nav
+![Nav](docs/prototypes/Noto_Nav.jpg)
+
+New Note Page
+![New Note](docs/prototypes/Noto_NewNote.jpg)
 
 LInk: https://www.figma.com/file/dXzI59LuJz7YL4fzqnZwnJ/Noto?node-id=0%3A1
 
