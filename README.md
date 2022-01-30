@@ -155,6 +155,24 @@ New Note Page
 
 LInk: https://www.figma.com/file/dXzI59LuJz7YL4fzqnZwnJ/Noto?node-id=0%3A1
 
-## Trello
+## Trello Screenshots
+
+Trello screenshot 20/1/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-01-20_103056.png)
+
+Trello screenshot 21/1/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-01-21_222228.png)
+
+Trello screenshot 24/1/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-01-24_203145_1.png)
+
+Trello screenshot 25/1/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-01-25_095058.png)
+
+Trello screenshot 27/1/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-01-27_001131.png)
+
+Trello screenshot 30/1/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-01-30_192506.png)
 
 Link: https://trello.com/b/dS7iufSD/noto
