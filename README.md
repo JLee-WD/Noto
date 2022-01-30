@@ -2,6 +2,9 @@
 
 #### Noto is a note-taking app built using JavaScript, React and Ruby on Rails developed by [Justin Lee](https://github.com/JLee-WD) and [Richard Cho](https://github.com/Ryuukishi/).
 
+Github Link:
+[https://github.com/Noto-App/Noto](https://github.com/Noto-App/Noto)
+
 ## Purpose
 
 ### Problem
