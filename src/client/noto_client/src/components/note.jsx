@@ -1,6 +1,6 @@
 import React from "react";
 
-function Notes(props) {
+function Note(props) {
   const { title, description, code, visibility } = props;
   return (
     <div>
@@ -13,4 +13,4 @@ function Notes(props) {
   );
 }
 
-export default Notes;
+export default Note;

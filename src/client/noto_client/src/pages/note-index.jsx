@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import NotesList from "../components/note-list";
+import { Link } from "react-router-dom";
+
+import NotesList from "../components/notes-list";
 
 const NotesIndex = () => {
   const initialNotes = [];
@@ -26,6 +28,7 @@ const NotesIndex = () => {
   return (
     <div>
       <NotesList notes={notes} />
+      <Link to="/new">New Note</Link>
     </div>
   );
 };
