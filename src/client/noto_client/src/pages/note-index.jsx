@@ -8,9 +8,9 @@ const NotesIndex = () => {
 
   const [notes, setNotes] = useState(initialNotes);
 
-  const addNotes = (note) => {
-    setNotes([note, ...notes]);
-  };
+  // const addNotes = (note) => {
+  //   setNotes([note, ...notes]);
+  // };
 
   console.log("notes", notes);
 

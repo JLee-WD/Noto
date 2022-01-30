@@ -4,10 +4,10 @@ function Note(props) {
   const { title, description, code, visibility } = props;
   return (
     <div>
-      <li>{title}</li>
-      <li>{description}</li>
+      <li>Title: {title}</li>
+      <li>Description: {description}</li>
       <li>
-        <code>{code}</code>
+        Example: <code>{code}</code>
       </li>
     </div>
   );
