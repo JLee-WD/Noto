@@ -1,24 +1,34 @@
-import { useState, useEffect } from "react";
-
+import React, {useState, useEffect} from "react";
+import NotesList from "./NotesList"
 function App() {
-  const [notes, setNotes] = useState([]);
 
-  console.log("notes", notes);
+  const initialNotes = []
+
+  const [notes, setNotes] = useState(initialNotes);
+
+  const addNotes = note => {
+    setNotes([note,...notes])
+  }
+
+  // console.log("notes", notes);
 
   useEffect(() => {
-    fetch("/api/notes", {
+    fetch("api/notes", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     })
       .then((response) => response.json())
-      .then((data) => setNotes(data))
-      .then((data) => console.log(data))
+      .then((notes) => setNotes(notes))
       .catch((err) => console.log(err));
-  }, []);
+  },[]);
 
-  return <p>{notes[1].title}</p>;
+  return (
+    <div>
+      <NotesList notes={notes} />
+    </div>
+  )
 }
 
 export default App;
