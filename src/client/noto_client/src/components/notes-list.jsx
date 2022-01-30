@@ -18,13 +18,15 @@ function NotesList(props) {
     <ul>
       {notes.map((note, index) => (
         // <p key={index}>{note.title}</p>)
-        <Note
-          key={index}
-          title={note.title}
-          description={note.description}
-          code={note.code}
-          visibility={note.public}
-        />
+        <li key={index}>
+          <Note
+            title={note.title}
+            description={note.description}
+            code={note.code}
+            visibility={note.public}
+            noteId={note.id}
+          />
+        </li>
       ))}
     </ul>
   );
