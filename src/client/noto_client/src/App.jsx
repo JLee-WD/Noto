@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import NotesList from "./pages/NotesList";
+import NotesList from "./pages/note-list";
 function App() {
   const initialNotes = [];
 

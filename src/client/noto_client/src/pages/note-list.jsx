@@ -1,5 +1,5 @@
 import React from "react";
-import Notes from "../components/Notes";
+import Notes from "../components/note";
 
 function NotesList(props) {
   const { notes } = props;
