@@ -1,5 +1,5 @@
 import React from "react";
-import Notes from "../components/note";
+import Note from "./note";
 
 function NotesList(props) {
   const { notes } = props;
@@ -18,13 +18,15 @@ function NotesList(props) {
     <ul>
       {notes.map((note, index) => (
         // <p key={index}>{note.title}</p>)
-        <Notes
-          key={index}
-          title={note.title}
-          description={note.description}
-          code={note.code}
-          visibility={note.public}
-        />
+        <li key={index}>
+          <Note
+            title={note.title}
+            description={note.description}
+            code={note.code}
+            visibility={note.public}
+            noteId={note.id}
+          />
+        </li>
       ))}
     </ul>
   );
