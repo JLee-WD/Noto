@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import NotesList from "./NotesList";
+import NotesList from "./pages/note-list";
 function App() {
   const initialNotes = [];
 
@@ -9,7 +9,7 @@ function App() {
     setNotes([note, ...notes]);
   };
 
-  // console.log("notes", notes);
+  console.log("notes", notes);
 
   useEffect(() => {
     fetch("api/notes", {

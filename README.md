@@ -103,14 +103,14 @@ Link: https://lucid.app/lucidchart/d30ad452-8ff5-460d-9bb3-cc0da4fdfadd/edit?inv
 - As **Stacy**, I want to sort my notes chronologically, so that I can view my notes by newest or oldest
 - As **Stacy**, I want to search my notes, so that I can quickly find the right note using keywords
 - As **Stacy**, I want to style and format my note, so that I can make the text in my note look the way I want to
+- As **Stacy**, I want to view a summarized version of a note, so that I can view multiple notes at a time
+- As **Stacy**, I want to expand a summarized version of a note, so that I can see the note in its entirety
 - As **Wallace**, I want to create a group, so that I add the students from a class to share and collaborate notes
 
 ### Future updates - user stories
 
 - As **Johnny**, I want to select which programming language the example code is, so that I can display the code in the correct format
 - As **Johnny**, I want to share my note with another user, so that I can share my notes with my classmates or coworkers
-- As **Stacy**, I want to view a summarized version of a note, so that I can view multiple notes at a time
-- As **Stacy**, I want to expand a summarized version of a note, so that I can see the note in its entirety
 - As **Stacy**, I want to download a note to my computer, so that I can save local copies and refer to them without access to the internet
 - As **Wallace**, I want to create a group for other users, so that they can add notes collaboratively to the group for others to see
 - As **Wallace**, I want to add users to my created group, so that I can control who has access to the group
