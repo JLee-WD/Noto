@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import NotesIndex from "./pages/note-index";
-import NewNoteForm from "./pages/new-note-form";
+import NotesIndex from "./pages/NotesIndex";
+import NewNoteForm from "./pages/NewNoteForm";
 
 function App() {
   return (
