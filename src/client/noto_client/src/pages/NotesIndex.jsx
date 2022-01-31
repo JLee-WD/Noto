@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import NotesList from "../components/notes-list";
+import NotesList from "../components/NotesList";
 
 const NotesIndex = () => {
   const initialNotes = [];
