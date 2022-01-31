@@ -8,9 +8,9 @@ const NotesIndex = () => {
 
   const [notes, setNotes] = useState(initialNotes);
 
-  // const addNotes = (note) => {
-  //   setNotes([note, ...notes]);
-  // };
+  const addNotes = (note) => {
+    setNotes([note, ...notes]);
+  };
 
   console.log("notes", notes);
 
@@ -28,7 +28,7 @@ const NotesIndex = () => {
   return (
     <div>
       <NotesList notes={notes} />
-      <Link to="/new">New Note</Link>
+      <Link to="/new" addNotes={addNotes}>New Note</Link>
     </div>
   );
 };
