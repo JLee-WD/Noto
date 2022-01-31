@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import NotesList from "../components/NotesList";
+import ResponsiveNav from "../components/ResponsiveNav";
 
 const NotesIndex = () => {
   const initialNotes = [];
@@ -29,6 +30,10 @@ const NotesIndex = () => {
     <div>
       <NotesList notes={notes} />
       <Link to="/new" addNotes={addNotes}>New Note</Link>
+      <ResponsiveNav>
+        <NotesList notes={notes} />
+        <Link to="/new">New Note</Link>
+      </ResponsiveNav>
     </div>
   );
 };
