@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import Context from "../context/context";
 
 import NotesList from "../components/NotesList";
 import ResponsiveNav from "../components/ResponsiveNav";
 
 const NotesIndex = () => {
   const initialNotes = [];
+  const { setContext } = useContext(Context);
 
   const [notes, setNotes] = useState(initialNotes);
-
-  const addNotes = (note) => {
-    setNotes([note, ...notes]);
-  };
 
   console.log("notes", notes);
 
@@ -24,6 +23,7 @@ const NotesIndex = () => {
     })
       .then((response) => response.json())
       .then((notes) => setNotes(notes))
+      .then((notes) => setContext(notes))
       .catch((err) => console.log(err));
   }, []);
   return (
