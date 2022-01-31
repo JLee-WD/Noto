@@ -194,6 +194,7 @@ function ResponsiveNav(props) {
         }}
       >
         <Toolbar />
+        {props.children}
       </Box>
     </Box>
   );
