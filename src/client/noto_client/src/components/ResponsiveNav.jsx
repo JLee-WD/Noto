@@ -6,21 +6,38 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+// import Typography from "@mui/material/Typography";
+
+import AddIcon from "@mui/icons-material/Add";
+import TagIcon from "@mui/icons-material/Tag";
+import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
 
 const drawerWidth = 240;
 
 function ResponsiveNav(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const [selectedTagIndex, setSelectedTagIndex] = React.useState(0);
+  const [selectedGroupIndex, setSelectedGroupIndex] = React.useState(0);
+
+  const handleTagItemClick = (event, index) => {
+    const newIndex = index + 1;
+    setSelectedTagIndex(newIndex);
+  };
+
+  const handleGroupItemClick = (event, index) => {
+    const newIndex = index + 1;
+    setSelectedGroupIndex(newIndex);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -29,27 +46,78 @@ function ResponsiveNav(props) {
   const drawer = (
     <div>
       <Toolbar />
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        <ListItem button>
+          <ListItemIcon>
+            <AddIcon />
+          </ListItemIcon>
+          <ListItemText primary="Add Note" />
+        </ListItem>
       </List>
       <Divider />
+
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
+        {/* TAG */}
+        <ListItem>
+          <ListItemIcon>
+            <TagIcon color="primary" fontSize="large" />
+          </ListItemIcon>
+          <ListItemText primary="Tag" />
+        </ListItem>
+        <ListItemButton
+          selected={selectedTagIndex === 0}
+          onClick={(event) => handleTagItemClick(event, -1)}
+        >
+          {/* <ListItemIcon>
+            <TagIcon fontSize="small" />
+          </ListItemIcon> */}
+          <ListItemText primary="All" />
+        </ListItemButton>
+        {["React", "JS", "CSS", "Ruby", "Rails", "State"].map((text, index) => (
+          <ListItemButton
+            key={index}
+            selected={selectedTagIndex === index + 1}
+            onClick={(event) => handleTagItemClick(event, index)}
+          >
+            {/* <ListItemIcon>
+              <TagIcon fontSize="small" />
+            </ListItemIcon> */}
             <ListItemText primary={text} />
-          </ListItem>
+          </ListItemButton>
         ))}
+
+        {/* GROUP */}
+        <ListItem>
+          <ListItemIcon>
+            <PeopleAltIconOutlined color="primary" fontSize="large" />
+          </ListItemIcon>
+          <ListItemText primary="Group" />
+        </ListItem>
+        <ListItemButton
+          selected={selectedGroupIndex === 0}
+          onClick={(event) => handleGroupItemClick(event, -1)}
+        >
+          {/* <ListItemIcon>
+            <PeopleAltIcon fontSize="small" />
+          </ListItemIcon> */}
+          <ListItemText primary="All" />
+        </ListItemButton>
+        {["Group1", "Group2", "Group3", "Group4", "Group5", "Group6"].map(
+          (text, index) => (
+            <ListItemButton
+              key={index}
+              selected={selectedGroupIndex === index + 1}
+              onClick={(event) => handleGroupItemClick(event, index)}
+            >
+              {/* <ListItemIcon>
+                <PeopleAltIcon fontSize="small" />
+              </ListItemIcon> */}
+              <ListItemText primary={text} />
+            </ListItemButton>
+          )
+        )}
       </List>
     </div>
   );
@@ -77,9 +145,6 @@ function ResponsiveNav(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
-          </Typography>
         </Toolbar>
       </AppBar>
       <Box
@@ -129,35 +194,6 @@ function ResponsiveNav(props) {
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
       </Box>
     </Box>
   );
