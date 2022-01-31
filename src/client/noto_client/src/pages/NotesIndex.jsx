@@ -11,8 +11,10 @@ const NotesIndex = () => {
   const { setContext } = useContext(Context);
 
   const [notes, setNotes] = useState([]);
+  const [tags, setTags] = useState([]);
 
   console.log("notes", notes);
+  console.log("tags", tags);
 
   useEffect(() => {
     fetch("api/notes", {
@@ -26,6 +28,20 @@ const NotesIndex = () => {
       .then((notes) => setContext(notes))
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    fetch("api/tags", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((tags) => setTags(tags))
+      .then((tags) => setContext(tags))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div>
       <ResponsiveNav>
