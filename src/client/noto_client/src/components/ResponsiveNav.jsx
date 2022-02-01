@@ -19,13 +19,10 @@ import TagIcon from "@mui/icons-material/Tag";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
 import { Link } from "react-router-dom";
 
-import { useContext } from "react";
-import Context from "../context/context";
-
 const drawerWidth = 240;
 
 function ResponsiveNav(props) {
-  const { context } = useContext(Context);
+  const { tags } = props;
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -81,7 +78,7 @@ function ResponsiveNav(props) {
           </ListItemIcon> */}
           <ListItemText primary="All" />
         </ListItemButton>
-        {["React", "JS", "CSS", "Ruby", "Rails", "State"].map((text, index) => (
+        {tags.map((tag, index) => (
           <ListItemButton
             key={index}
             selected={selectedTagIndex === index + 1}
@@ -90,7 +87,7 @@ function ResponsiveNav(props) {
             {/* <ListItemIcon>
               <TagIcon fontSize="small" />
             </ListItemIcon> */}
-            <ListItemText primary={text} />
+            <ListItemText primary={tag.title} />
           </ListItemButton>
         ))}
 
