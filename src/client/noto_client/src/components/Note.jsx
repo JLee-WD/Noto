@@ -1,6 +1,9 @@
 import React from "react";
+import { useContext } from "react";
+import Context from "../context/context";
 
 function Note(props) {
+  const { setContext } = useContext(Context);
   const { title, description, code, visibility, noteId } = props;
 
   const onDeleteNote = async (event) => {
@@ -13,8 +16,9 @@ function Note(props) {
       },
     };
     const newNoteResponse = await fetch(`/api/notes/${noteId}`, options);
-    const newNotesJson = await newNoteResponse.json();
-    console.log("Deleted Note", newNotesJson);
+    const notes = await newNoteResponse.json();
+    setContext({ notes });
+    console.log("Deleted Note", notes);
   };
 
   return (

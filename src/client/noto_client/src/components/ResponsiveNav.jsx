@@ -14,15 +14,18 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import TextField from "@mui/material/TextField";
-// import Typography from "@mui/material/Typography";
-
 import AddIcon from "@mui/icons-material/Add";
 import TagIcon from "@mui/icons-material/Tag";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
 
+import { useContext } from "react";
+import Context from "../context/context";
+
 const drawerWidth = 240;
 
 function ResponsiveNav(props) {
+  const { context } = useContext(Context);
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
