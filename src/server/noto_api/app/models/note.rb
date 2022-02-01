@@ -1,3 +1,4 @@
 class Note < ApplicationRecord
-  has_and_belongs_to_many :tags
+  has_many :note_tags
+  has_many :tags, through: :note_tags
 end
