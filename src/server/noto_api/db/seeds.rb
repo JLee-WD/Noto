@@ -13,7 +13,8 @@ note3 = Note.create(title: "useReducer()", description: "Use reducer is used for
 note1.tags.create(title: "React")
 note1.tags.create(title: "State")
 
-note2.tags.create(title: "React")
 note2.tags.create(title: "Hook")
+reacttag = Tag.find_by(title: "React")
+note2.tags << reacttag
 
-note3.tags.create(title: "React")
+note3.tags << reacttag
