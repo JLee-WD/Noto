@@ -46,9 +46,8 @@ const NotesIndex = () => {
 
   return (
     <div>
-      {/* <NotesList notes={notes} /> */}
-      {/* <Link to="/new" addNotes={addNotes}> */}
-      {/* <Link to="/new">New Note</Link> */}
+      <NotesList notes={notes} />
+      <Link to="/new">New Note</Link>
       <ResponsiveNav>
         <NotesList notes={notes} />
         <Link to="/new">New Note</Link>
