@@ -41,27 +41,22 @@ const NotesIndex = () => {
       .catch((err) => console.log(err));
   }, []);
 
-    useEffect(() => {
-      setNotes(notes)
-    },[notes])
+    // useEffect(() => {
+    //   setNotes(notes)
+    //   console.log(notes)
+    // },[notes])
   // console.log("Context tags", context.tags);
-
+  
   const deleteNote = (noteId) => {
     let index = notes.findIndex((note) => {
       return note.id === noteId
     })
-    if (notes.length > 1) {
-      notes.splice(index, 1)
-      // console.log("Updated notes", notes)
-      // setNotes(notes)
-    } else {
-      setNotes([])
-    }
+    notes.splice(index, 1)
+    setNotes(notes)
   }
 
   return (
     <div>
-      <Link to="/new">New Note</Link>
       <ResponsiveNav>
         <NotesList deleteNote={deleteNote} notes={notes} />
         <Link to="/new">New Note</Link>
