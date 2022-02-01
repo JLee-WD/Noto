@@ -36,7 +36,7 @@ const NewNoteForm = () => {
 				title: event.target.title.value,
 				description: event.target.description.value,
 				code: event.target.code.value,
-				public: event.target.public.isPublic,
+				public: formData.public
 			}),
 		};
 		if (
@@ -77,8 +77,6 @@ const NewNoteForm = () => {
 					sx={{ my: "1rem", mx: "1rem" }}
 				/>
 				<VisibilityButton
-					name="public"
-					value={formData.public}
 					isPublic={formData.public}
 					toggleVisibility={toggleVisibility}
 					sx={{ my: "1.5rem" }}
