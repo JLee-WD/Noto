@@ -8,6 +8,7 @@ function Note(props) {
 
   const onDeleteNote = async (event) => {
     event.preventDefault();
+    deleteNote(noteId)
     const options = {
       method: "DELETE",
       headers: {
@@ -18,8 +19,6 @@ function Note(props) {
     const newNoteResponse = await fetch(`/api/notes/${noteId}`, options);
     const notes = await newNoteResponse.json();
     setContext({ notes });
-    deleteNote(noteId)
-    console.log("Deleted Note", notes);
   };
 
   return (
