@@ -17,6 +17,7 @@ import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import TagIcon from "@mui/icons-material/Tag";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
+import { Link } from "react-router-dom";
 
 import { useContext } from "react";
 import Context from "../context/context";
@@ -52,12 +53,14 @@ function ResponsiveNav(props) {
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
       <Divider />
       <List>
-        <ListItem button>
-          <ListItemIcon>
-            <AddIcon />
-          </ListItemIcon>
-          <ListItemText primary="Add Note" />
-        </ListItem>
+        <Link to="/new">
+          <ListItem button>
+            <ListItemIcon>
+              <AddIcon />
+            </ListItemIcon>
+            <ListItemText primary="Add Note"></ListItemText>
+          </ListItem>
+        </Link>
       </List>
       <Divider />
 

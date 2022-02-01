@@ -11,7 +11,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.create(title: params[:title])
+    @tag = Tag.find_or_create_by(title: params[:title])
     render json: @tag
   end
 
