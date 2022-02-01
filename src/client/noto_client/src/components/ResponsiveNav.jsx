@@ -24,6 +24,8 @@ const drawerWidth = 240;
 function ResponsiveNav(props) {
   const { tags } = props;
 
+  console.log("tags", tags);
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 

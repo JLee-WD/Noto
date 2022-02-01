@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
-  before_action :set_note_by_id, only: [:show, :update, :destroy]
+  before_action :set_note_by_id, only: [:show, :update]
+  before_action :set_note_tags_and_join, only: [:destroy]
   before_action :read_notes, only: [:index, :destroy]
 
   def index
@@ -21,7 +22,15 @@ class NotesController < ApplicationController
   end
 
   def destroy
+    @noteTagJoin.destroy
     @note.destroy
+
+    @noteTags.each do |tag|
+      if tag.notes.length === 0
+        tag.destroy
+      end
+    end
+
     render json: @notes
   end
 
@@ -29,6 +38,11 @@ class NotesController < ApplicationController
   
   def set_note_by_id
     @note = Note.find(params[:id])
+  end
+  def set_note_tags_and_join
+    @note = Note.find(params[:id])
+    @noteTagJoin = NoteTag.find_by(note_id: @note.id)
+    @noteTags = @note.tags
   end
   def read_notes
     @notes = Note.all

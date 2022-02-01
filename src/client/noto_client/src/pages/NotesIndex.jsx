@@ -12,9 +12,6 @@ const NotesIndex = () => {
   const [notes, setNotes] = useState(initialNotes);
   const [tags, setTags] = useState([]);
 
-  console.log("notes", notes);
-  console.log("tags", tags);
-
   useEffect(() => {
     fetch("api/notes", {
       headers: {
@@ -24,6 +21,7 @@ const NotesIndex = () => {
     })
       .then((response) => response.json())
       .then((notes) => setNotes(notes))
+      .then((notes) => console.log(notes))
       // .then((notes) => setContext({ notes }))
       .catch((err) => console.log(err));
   }, []);
@@ -44,7 +42,9 @@ const NotesIndex = () => {
   // useEffect(() => {
   //   setNotes(notes);
   // }, [notes]);
-  // // console.log("Context tags", context.tags);
+
+  console.log("notes", notes);
+  console.log("tags", tags);
 
   const deleteNote = (noteId) => {
     let index = notes.findIndex((note) => {
@@ -52,8 +52,8 @@ const NotesIndex = () => {
     });
     if (notes.length > 1) {
       notes.splice(index, 1);
-      // console.log("Updated notes", notes)
-      // setNotes(notes)
+      console.log("Updated notes", notes);
+      setNotes(notes);
     } else {
       setNotes([]);
     }
@@ -61,7 +61,7 @@ const NotesIndex = () => {
 
   return (
     <div>
-      <ResponsiveNav>
+      <ResponsiveNav tags={tags}>
         <NotesList deleteNote={deleteNote} notes={notes} />
         <Link to="/new">New Note</Link>
       </ResponsiveNav>
