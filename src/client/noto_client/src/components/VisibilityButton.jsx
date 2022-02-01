@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -10,13 +10,15 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const VisibilityButton = (props) => {
 
-  const [visible, setVisible] = useState(props.visible);
+  const toggleVisibility = () => {
+    props.setVisible({public: !props.isPublic})
+  }
 
   return (
     <>
     <Tooltip title="Toggle visibility">
-      <IconButton sx={props.sx} onClick={() => setVisible(!visible)}>
-        { visible ? <VisibilityIcon /> : <VisibilityOffIcon /> }
+      <IconButton name="public" onClick={toggleVisibility} sx={props.sx}>
+        { props.isPublic ? <VisibilityIcon /> : <VisibilityOffIcon /> }
       </IconButton>
     </Tooltip>
     </>
