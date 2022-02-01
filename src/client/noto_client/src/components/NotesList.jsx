@@ -2,7 +2,7 @@ import React from "react";
 import Note from "./Note";
 
 function NotesList(props) {
-  const { notes } = props;
+  const { notes, deleteNote } = props;
 
   return (
     <ul>
@@ -14,6 +14,7 @@ function NotesList(props) {
             code={note.code}
             visibility={note.public}
             noteId={note.id}
+            deleteNote={deleteNote}
           />
         </li>
       ))}

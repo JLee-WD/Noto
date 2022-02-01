@@ -49,6 +49,7 @@ const NewNoteForm = () => {
 			const newNoteResponse = await fetch("/api/notes", options);
 			const newNotesJson = await newNoteResponse.json();
 			setFormData(initialFormState);
+			<NewNoteSuccess />
 		}
 	};
 
