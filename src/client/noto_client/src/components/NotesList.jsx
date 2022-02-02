@@ -14,7 +14,7 @@ function NotesList(props) {
             title={note.title}
             description={note.description}
             code={note.code}
-            visibility={note.public}
+            isPublic={note.public}
             noteId={note.id}
             deleteNote={deleteNote}
           />
