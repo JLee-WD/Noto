@@ -3,23 +3,66 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
 import Context from "./context/context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import NotesIndex from "./pages/NotesIndex";
 import NewNoteForm from "./pages/NewNoteForm";
 import EditNote from "./pages/EditNote";
 
 function App() {
-  const [context, setContext] = useState([]);
+  // const [context, setContext] = useState({});
 
-  console.log(context);
+  const [notes, setNotes] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [note, setNote] = useState({});
+
+  useEffect(() => {
+    fetch("api/notes", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((notes) => setNotes(notes))
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    fetch("api/tags", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((tags) => setTags(tags))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const noteId = 14;
+
+  useEffect(() => {
+    fetch(`api/notes/${noteId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((note) => setNote(note))
+      .catch((err) => console.log(err));
+  }, []);
+
+  console.log(notes);
+  console.log(note);
 
   return (
-    <Context.Provider value={{ context, setContext }}>
+    <Context.Provider value={{ tags, setTags, notes, setNotes }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<NotesIndex />} />
-          <Route path="/new" element={<NewNoteForm />} />
+          <Route path="/" element={<NotesIndex notes={notes} tags={tags} />} />
+          <Route path="/new" element={<NewNoteForm tags={tags} />} />
           <Route path="/edit/:noteId" element={<EditNote />} />
         </Routes>
       </BrowserRouter>

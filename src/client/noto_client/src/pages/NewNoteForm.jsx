@@ -24,9 +24,9 @@ const NewNoteForm = () => {
   };
 
   const [formData, setFormData] = useState(initialFormState);
-  const { context } = useContext(Context);
+  const { tags } = useContext(Context);
 
-  console.log("Form tags", context.tags);
+  console.log("New Note Form", context);
 
   const handleChange = (event) => {
     setFormData({
@@ -73,7 +73,6 @@ const NewNoteForm = () => {
   const handleTagCheckbox = (event, newTags) => {
     event.preventDefault();
     console.log(event.target.value);
-    setTags(newTags);
   };
 
   return (
