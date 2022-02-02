@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import Context from "../context/context";
 import VisibilityButton from "./VisibilityButton";
@@ -8,7 +8,7 @@ import EditButton from "./EditButton";
 
 function Note(props) {
   const { setContext } = useContext(Context);
-  const { title, description, code, visibility, noteId, deleteNote } = props;
+  const { title, description, code, isPublic, noteId, deleteNote } = props;
 
   const onDeleteNote = async (event) => {
     event.preventDefault();
@@ -28,20 +28,30 @@ function Note(props) {
   const onEditNote = async (event) => {
     event.prevent.preventDefault()
   }
-  // const updateVisibility = async (noteId) => {
-  //   const options = {
-  //     method: "PATCH",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       public: formData.public
-  //     }),
-  //   };
-  //   const updateVisibilityResponse = await fetch("/api/notes", options);
-  //   const updateVisibilityJson = await updateVisibilityResponse.json();
-  // }
+
+  const [visibility, setVisibility] = useState(isPublic)
+
+  const toggleVisibility = async (event) => {
+    setVisibility(!visibility);
+    const options = {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: noteId,
+        title: title,
+        description: description,
+        code: code,
+        public: visibility
+      }),
+    };
+    const updateVisibilityResponse = await fetch(`/api/notes/${noteId}`, options);
+    const notes = await updateVisibilityResponse.json();
+    setContext({ notes });
+    console.log(notes)
+  }
 
   return (
     <div>
@@ -56,7 +66,8 @@ function Note(props) {
         {/* toggleVisibility={}
 					sx={{}} */}
         <VisibilityButton
-					isPublic={visibility} 
+					isPublic={visibility}
+          toggleVisibility={toggleVisibility}
 				/>
       </ul>
     </div>
