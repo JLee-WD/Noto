@@ -22,15 +22,15 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    @noteTagJoin.destroy
+    @noteTagJoins.each do |join|
+        join.destroy
+    end
     @note.destroy
-
     @noteTags.each do |tag|
       if tag.notes.length === 0
         tag.destroy
       end
     end
-
     render json: @notes
   end
 
@@ -41,8 +41,8 @@ class NotesController < ApplicationController
   end
   def set_note_tags_and_join
     @note = Note.find(params[:id])
-    @noteTagJoin = NoteTag.find_by(note_id: @note.id)
     @noteTags = @note.tags
+    @noteTagJoins = @note.note_tags
   end
   def read_notes
     @notes = Note.all
