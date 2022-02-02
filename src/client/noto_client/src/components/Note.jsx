@@ -5,14 +5,14 @@ import VisibilityButton from "./VisibilityButton";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
-
 function Note(props) {
-  const { setContext } = useContext(Context);
+  const { setNotes } = useContext(Context);
   const { title, description, code, isPublic, noteId, deleteNote } = props;
+  const [visibility, setVisibility] = useState(isPublic);
 
   const onDeleteNote = async (event) => {
     event.preventDefault();
-    deleteNote(noteId)
+    deleteNote(noteId);
     const options = {
       method: "DELETE",
       headers: {
@@ -20,16 +20,29 @@ function Note(props) {
         "Content-Type": "application/json",
       },
     };
-    const newNoteResponse = await fetch(`/api/notes/${noteId}`, options);
-    const notes = await newNoteResponse.json();
-    setContext({ notes });
+
+    await fetch(`/api/notes/${noteId}`, options);
+    const newNotes = await resetNotes();
+    setNotes(newNotes);
   };
 
   const onEditNote = async (event) => {
-    event.prevent.preventDefault()
-  }
+    event.prevent.preventDefault();
+  };
 
-  const [visibility, setVisibility] = useState(isPublic)
+  const resetNotes = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+
+    const notesFetch = await fetch("/api/notes", options);
+    const newNotes = notesFetch.json();
+    return newNotes;
+  };
 
   const toggleVisibility = async (event) => {
     setVisibility(!visibility);
@@ -44,14 +57,14 @@ function Note(props) {
         title: title,
         description: description,
         code: code,
-        public: visibility
+        public: visibility,
       }),
     };
-    const updateVisibilityResponse = await fetch(`/api/notes/${noteId}`, options);
-    const notes = await updateVisibilityResponse.json();
-    setContext({ notes });
-    console.log(notes)
-  }
+
+    await fetch(`/api/notes/${noteId}`, options);
+    const newNotes = await resetNotes();
+    setNotes(newNotes);
+  };
 
   return (
     <div>
@@ -66,9 +79,9 @@ function Note(props) {
         {/* toggleVisibility={}
 					sx={{}} */}
         <VisibilityButton
-					isPublic={visibility}
+          isPublic={visibility}
           toggleVisibility={toggleVisibility}
-				/>
+        />
       </ul>
     </div>
   );

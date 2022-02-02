@@ -26,8 +26,6 @@ const NewNoteForm = () => {
   const [formData, setFormData] = useState(initialFormState);
   const { tags } = useContext(Context);
 
-  console.log("New Note Form", context);
-
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -87,26 +85,13 @@ const NewNoteForm = () => {
           sx={{ my: "1rem", mx: "1rem" }}
         />
         <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox
-                defaultChecked
-                onChange={handleTagCheckbox}
-                value="React"
-              />
-            }
-            label="React"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                defaultChecked
-                onChange={handleTagCheckbox}
-                value="JS"
-              />
-            }
-            label="JS"
-          />
+          {tags.map((tag, index) => (
+            <FormControlLabel
+              key={index}
+              control={<Checkbox onChange={handleTagCheckbox} value={tag.id} />}
+              label={tag.title}
+            />
+          ))}
         </FormGroup>
         <TextField
           name="description"
