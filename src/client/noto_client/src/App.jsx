@@ -11,6 +11,7 @@ function App() {
 
   const [notes, setNotes] = useState([]);
   const [tags, setTags] = useState([]);
+  const [note, setNote] = useState({});
 
   useEffect(() => {
     fetch("api/notes", {
@@ -35,6 +36,23 @@ function App() {
       .then((tags) => setTags(tags))
       .catch((err) => console.log(err));
   }, []);
+
+  const noteId = 14;
+
+  useEffect(() => {
+    fetch(`api/notes/${noteId}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((note) => setNote(note))
+      .catch((err) => console.log(err));
+  }, []);
+
+  console.log(notes);
+  console.log(note);
 
   return (
     <Context.Provider value={{ tags, setTags, notes, setNotes }}>

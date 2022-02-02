@@ -77,7 +77,7 @@ function ResponsiveNav(props) {
         >
           <ListItemText primary="All" />
         </ListItemButton>
-        {tags?.map((tag, index) => (
+        {tags.map((tag, index) => (
           <ListItemButton
             key={index}
             selected={selectedTagIndex === index + 1}
