@@ -6,7 +6,7 @@ import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
 function Note(props) {
-  const { setNotes } = useContext(Context);
+  const { setNotes, resetNotes } = useContext(Context);
   const { title, description, code, isPublic, noteId, deleteNote } = props;
   const [visibility, setVisibility] = useState(isPublic);
 
@@ -28,20 +28,6 @@ function Note(props) {
 
   const onEditNote = async (event) => {
     event.prevent.preventDefault();
-  };
-
-  const resetNotes = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    };
-
-    const notesFetch = await fetch("/api/notes", options);
-    const newNotes = notesFetch.json();
-    return newNotes;
   };
 
   const toggleVisibility = async (event) => {

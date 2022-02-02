@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import VisibilityButton from "../components/VisibilityButton";
 import Context from "../context/context";
+import { useNavigate } from "react-router-dom";
 // import CustomizedSnackbars from "../components/NewNoteSuccess";
 
 const NewNoteForm = () => {
@@ -24,7 +25,8 @@ const NewNoteForm = () => {
   };
 
   const [formData, setFormData] = useState(initialFormState);
-  const { tags } = useContext(Context);
+  const { tags, setNotes, resetNotes } = useContext(Context);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setFormData({
@@ -60,6 +62,9 @@ const NewNoteForm = () => {
       const newNotesJson = await newNoteResponse.json();
       setFormData(initialFormState);
       // <CustomizedSnackbars />
+      const newNotes = await resetNotes();
+      setNotes(newNotes);
+      navigate("/");
     }
   };
 
@@ -68,9 +73,16 @@ const NewNoteForm = () => {
     console.log(formData);
   };
 
-  const handleTagCheckbox = (event, newTags) => {
+  const handleTag = (event) => {
     event.preventDefault();
-    console.log(event.target.value);
+    if (formData.tags.includes(event.target.value)) {
+      return;
+    } else {
+      setFormData({
+        ...formData,
+        tags: [...formData.tags, event.target.value],
+      });
+    }
   };
 
   return (
@@ -88,7 +100,7 @@ const NewNoteForm = () => {
           {tags.map((tag, index) => (
             <FormControlLabel
               key={index}
-              control={<Checkbox onChange={handleTagCheckbox} value={tag.id} />}
+              control={<Checkbox onChange={handleTag} value={tag.id} />}
               label={tag.title}
             />
           ))}
