@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -19,10 +19,12 @@ import TagIcon from "@mui/icons-material/Tag";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
 import { Link } from "react-router-dom";
 
+import Context from "../context/context";
+
 const drawerWidth = 240;
 
 function ResponsiveNav(props) {
-  const { tags } = props;
+  const { tags } = useContext(Context);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -75,7 +77,7 @@ function ResponsiveNav(props) {
         >
           <ListItemText primary="All" />
         </ListItemButton>
-        {tags.map((tag, index) => (
+        {tags?.map((tag, index) => (
           <ListItemButton
             key={index}
             selected={selectedTagIndex === index + 1}

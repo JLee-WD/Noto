@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Note from "./Note";
+import Context from "../context/context";
 
 function NotesList(props) {
-  const { notes, deleteNote } = props;
+  const { deleteNote } = props;
+  const { notes } = useContext(Context);
 
   return (
     <ul>
