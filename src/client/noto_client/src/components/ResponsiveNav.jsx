@@ -19,13 +19,10 @@ import TagIcon from "@mui/icons-material/Tag";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
 import { Link } from "react-router-dom";
 
-import { useContext } from "react";
-import Context from "../context/context";
-
 const drawerWidth = 240;
 
 function ResponsiveNav(props) {
-  const { context } = useContext(Context);
+  const { tags } = props;
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -76,21 +73,15 @@ function ResponsiveNav(props) {
           selected={selectedTagIndex === 0}
           onClick={(event) => handleTagItemClick(event, -1)}
         >
-          {/* <ListItemIcon>
-            <TagIcon fontSize="small" />
-          </ListItemIcon> */}
           <ListItemText primary="All" />
         </ListItemButton>
-        {["React", "JS", "CSS", "Ruby", "Rails", "State"].map((text, index) => (
+        {tags.map((tag, index) => (
           <ListItemButton
             key={index}
             selected={selectedTagIndex === index + 1}
             onClick={(event) => handleTagItemClick(event, index)}
           >
-            {/* <ListItemIcon>
-              <TagIcon fontSize="small" />
-            </ListItemIcon> */}
-            <ListItemText primary={text} />
+            <ListItemText primary={tag.title} />
           </ListItemButton>
         ))}
 
@@ -105,9 +96,6 @@ function ResponsiveNav(props) {
           selected={selectedGroupIndex === 0}
           onClick={(event) => handleGroupItemClick(event, -1)}
         >
-          {/* <ListItemIcon>
-            <PeopleAltIcon fontSize="small" />
-          </ListItemIcon> */}
           <ListItemText primary="All" />
         </ListItemButton>
         {["Group1", "Group2", "Group3", "Group4", "Group5", "Group6"].map(
@@ -117,9 +105,6 @@ function ResponsiveNav(props) {
               selected={selectedGroupIndex === index + 1}
               onClick={(event) => handleGroupItemClick(event, index)}
             >
-              {/* <ListItemIcon>
-                <PeopleAltIcon fontSize="small" />
-              </ListItemIcon> */}
               <ListItemText primary={text} />
             </ListItemButton>
           )
