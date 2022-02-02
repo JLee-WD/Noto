@@ -24,8 +24,6 @@ const drawerWidth = 240;
 function ResponsiveNav(props) {
   const { tags } = props;
 
-  console.log("tags", tags);
-
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -75,9 +73,6 @@ function ResponsiveNav(props) {
           selected={selectedTagIndex === 0}
           onClick={(event) => handleTagItemClick(event, -1)}
         >
-          {/* <ListItemIcon>
-            <TagIcon fontSize="small" />
-          </ListItemIcon> */}
           <ListItemText primary="All" />
         </ListItemButton>
         {tags.map((tag, index) => (
@@ -86,9 +81,6 @@ function ResponsiveNav(props) {
             selected={selectedTagIndex === index + 1}
             onClick={(event) => handleTagItemClick(event, index)}
           >
-            {/* <ListItemIcon>
-              <TagIcon fontSize="small" />
-            </ListItemIcon> */}
             <ListItemText primary={tag.title} />
           </ListItemButton>
         ))}
@@ -104,9 +96,6 @@ function ResponsiveNav(props) {
           selected={selectedGroupIndex === 0}
           onClick={(event) => handleGroupItemClick(event, -1)}
         >
-          {/* <ListItemIcon>
-            <PeopleAltIcon fontSize="small" />
-          </ListItemIcon> */}
           <ListItemText primary="All" />
         </ListItemButton>
         {["Group1", "Group2", "Group3", "Group4", "Group5", "Group6"].map(
@@ -116,9 +105,6 @@ function ResponsiveNav(props) {
               selected={selectedGroupIndex === index + 1}
               onClick={(event) => handleGroupItemClick(event, index)}
             >
-              {/* <ListItemIcon>
-                <PeopleAltIcon fontSize="small" />
-              </ListItemIcon> */}
               <ListItemText primary={text} />
             </ListItemButton>
           )

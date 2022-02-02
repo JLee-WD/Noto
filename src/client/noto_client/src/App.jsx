@@ -9,6 +9,8 @@ import NewNoteForm from "./pages/NewNoteForm";
 function App() {
   const [context, setContext] = useState([]);
 
+  console.log(context);
+
   return (
     <Context.Provider value={{ context, setContext }}>
       <BrowserRouter>
