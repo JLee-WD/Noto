@@ -1,6 +1,10 @@
 import React from "react";
 import { useContext } from "react";
 import Context from "../context/context";
+import VisibilityButton from "./VisibilityButton";
+import DeleteButton from "./DeleteButton";
+import EditButton from "./EditButton";
+
 
 function Note(props) {
   const { setContext } = useContext(Context);
@@ -21,6 +25,24 @@ function Note(props) {
     setContext({ notes });
   };
 
+  const onEditNote = async (event) => {
+    event.prevent.preventDefault()
+  }
+  // const updateVisibility = async (noteId) => {
+  //   const options = {
+  //     method: "PATCH",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       public: formData.public
+  //     }),
+  //   };
+  //   const updateVisibilityResponse = await fetch("/api/notes", options);
+  //   const updateVisibilityJson = await updateVisibilityResponse.json();
+  // }
+
   return (
     <div>
       <ul>
@@ -29,7 +51,13 @@ function Note(props) {
         <li>
           Example: <code>{code}</code>
         </li>
-        <button onClick={onDeleteNote}>Delete Note</button>
+        <EditButton onEditNote={onEditNote} />
+        <DeleteButton onDeleteNote={onDeleteNote} />
+        {/* toggleVisibility={}
+					sx={{}} */}
+        <VisibilityButton
+					isPublic={visibility} 
+				/>
       </ul>
     </div>
   );

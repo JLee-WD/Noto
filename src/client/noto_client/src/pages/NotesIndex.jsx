@@ -40,12 +40,6 @@ const NotesIndex = () => {
       .then((tags) => setContext(tags))
       .catch((err) => console.log(err));
   }, []);
-
-    // useEffect(() => {
-    //   setNotes(notes)
-    //   console.log(notes)
-    // },[notes])
-  // console.log("Context tags", context.tags);
   
   const deleteNote = (noteId) => {
     let index = notes.findIndex((note) => {
@@ -59,7 +53,6 @@ const NotesIndex = () => {
     <div>
       <ResponsiveNav>
         <NotesList deleteNote={deleteNote} notes={notes} />
-        <Link to="/new">New Note</Link>
       </ResponsiveNav>
     </div>
   );

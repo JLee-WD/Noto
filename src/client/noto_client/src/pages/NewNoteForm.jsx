@@ -5,6 +5,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { TextField, Button } from "@mui/material";
 import VisibilityButton from "../components/VisibilityButton";
+// import CustomizedSnackbars from "../components/NewNoteSuccess";
 
 const NewNoteForm = () => {
 	const initialFormState = {
@@ -49,7 +50,7 @@ const NewNoteForm = () => {
 			const newNoteResponse = await fetch("/api/notes", options);
 			const newNotesJson = await newNoteResponse.json();
 			setFormData(initialFormState);
-			<NewNoteSuccess />
+			// <CustomizedSnackbars />
 		}
 	};
 

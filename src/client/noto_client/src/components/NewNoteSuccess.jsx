@@ -32,4 +32,3 @@ export default function CustomizedSnackbars() {
   )
 }
 
-export default NewNoteSuccess;
