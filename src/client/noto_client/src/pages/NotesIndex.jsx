@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Context from "../context/context";
-
-import NotesList from "../components/NotesList";
+import Note from "../components/Note";
 import ResponsiveNav from "../components/ResponsiveNav";
 
 const NotesIndex = () => {
-  const { notes, setNotes } = useContext(Context);
+  const { notes, setNotes, filteredNotes } = useContext(Context);
 
   const deleteNote = (noteId) => {
     let index = notes.findIndex((note) => {
@@ -17,11 +16,22 @@ const NotesIndex = () => {
   };
 
   return (
-    <div>
-      <ResponsiveNav>
-        <NotesList deleteNote={deleteNote} />
-      </ResponsiveNav>
-    </div>
+    <ResponsiveNav>
+      <ul>
+        {filteredNotes.map((note, index) => (
+          <li key={index}>
+            <Note
+              title={note.title}
+              description={note.description}
+              code={note.code}
+              isPublic={note.public}
+              noteId={note.id}
+              deleteNote={deleteNote}
+            />
+          </li>
+        ))}
+      </ul>
+    </ResponsiveNav>
   );
 };
 

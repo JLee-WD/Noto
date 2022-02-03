@@ -64,8 +64,8 @@ function Note(props) {
     };
 
     await fetch(`/api/notes/${noteId}`, options);
-    const newNotes = await resetNotes();
-    setNotes(newNotes);
+    // const newNotes = await resetNotes();
+    // setNotes(newNotes);
   };
 
   return (

@@ -13,6 +13,8 @@ import {
 import VisibilityButton from "../components/VisibilityButton";
 import Context from "../context/context";
 import { useNavigate } from "react-router-dom";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 // import CustomizedSnackbars from "../components/NewNoteSuccess";
 
 const NewNoteForm = () => {
@@ -96,15 +98,13 @@ const NewNoteForm = () => {
           variant="outlined"
           sx={{ my: "1rem", mx: "1rem" }}
         />
-        <FormGroup>
+        <ToggleButtonGroup>
           {tags.map((tag, index) => (
-            <FormControlLabel
-              key={index}
-              control={<Checkbox onChange={handleTag} value={tag.id} />}
-              label={tag.title}
-            />
+            <ToggleButton key={index} value={tag} aria-label={tag.title}>
+              {tag.title}
+            </ToggleButton>
           ))}
-        </FormGroup>
+        </ToggleButtonGroup>
         <TextField
           name="description"
           label="Description"
