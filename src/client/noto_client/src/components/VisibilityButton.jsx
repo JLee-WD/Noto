@@ -8,15 +8,15 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const VisibilityButton = ({ isPublic, toggleVisibility, sx }) => {
-	return (
-		<>
-			<Tooltip title="Toggle visibility">
-				<IconButton name="public" onClick={toggleVisibility} sx={sx}>
-					{isPublic ? <VisibilityIcon /> : <VisibilityOffIcon />}
-				</IconButton>
-			</Tooltip>
-		</>
-	);
+  return (
+    <>
+      <Tooltip title="Toggle visibility">
+        <IconButton onClick={toggleVisibility} sx={{...sx,"&:hover": { color: "dodgerblue" }}}>
+          {isPublic ? <VisibilityIcon /> : <VisibilityOffIcon />}
+        </IconButton>
+      </Tooltip>
+    </>
+  );
 };
 
 export default VisibilityButton;

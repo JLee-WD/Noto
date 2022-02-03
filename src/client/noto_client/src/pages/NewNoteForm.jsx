@@ -135,7 +135,7 @@ const NewNoteForm = () => {
         type="button"
         variant="outlined"
         href="/"
-        sx={{ mx: "1rem", my: "1rem" }}
+        sx={{ my: "1rem"}}
       >
         Back
       </Button>
