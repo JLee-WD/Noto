@@ -9,9 +9,8 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
 function Note(props) {
-  const { setNotes, resetNotes, joins } = useContext(Context);
-  const { title, description, code, isPublic, noteId, tags, deleteNote } =
-    props;
+  const { setNotes, resetNotes, joins, tags } = useContext(Context);
+  const { title, description, code, isPublic, noteId, deleteNote } = props;
   const [visibility, setVisibility] = useState(isPublic);
 
   const noteJoins = [];
@@ -20,7 +19,14 @@ function Note(props) {
       noteJoins.push(join);
     }
   });
-  console.log("notejoins", noteJoins);
+
+  const noteTags = [];
+  noteJoins.forEach((join) => {
+    const newTag = tags.find((tag) => join.tag_id === tag.id);
+    noteTags.push(newTag);
+  });
+  // console.log("notejoins", noteJoins);
+  console.log("noteTags", noteTags);
 
   const onDeleteNote = async (event) => {
     event.preventDefault();
@@ -72,6 +78,14 @@ function Note(props) {
         <li>
           Example: <code>{code}</code>
         </li>
+        <ButtonGroup
+          variant="contained"
+          aria-label="outlined primary button group"
+        >
+          {noteTags.map((tag, index) => (
+            <Button key={index}>{tag.title}</Button>
+          ))}
+        </ButtonGroup>
         <EditButton onEditNote={onEditNote} />
         <DeleteButton onDeleteNote={onDeleteNote} />
         {/* toggleVisibility={}
@@ -80,14 +94,6 @@ function Note(props) {
           isPublic={visibility}
           toggleVisibility={toggleVisibility}
         />
-        {/* <ButtonGroup
-          variant="contained"
-          aria-label="outlined primary button group"
-        >
-          {tags.map((tag, index) => (
-            <Button key={index}>{tag.title}</Button>
-          ))}
-        </ButtonGroup> */}
       </ul>
     </div>
   );

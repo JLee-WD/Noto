@@ -5,7 +5,7 @@ import Context from "../context/context";
 function NotesList(props) {
   const { deleteNote } = props;
   const { notes } = useContext(Context);
-
+  console.log(notes);
   return (
     <ul>
       {notes.map((note, index) => (
@@ -16,7 +16,6 @@ function NotesList(props) {
             code={note.code}
             isPublic={note.public}
             noteId={note.id}
-            tags={note.tags}
             deleteNote={deleteNote}
           />
         </li>
