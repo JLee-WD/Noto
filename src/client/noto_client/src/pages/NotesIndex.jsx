@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import Context from "../context/context";
-
-import NotesList from "../components/NotesList";
+import Note from "../components/Note";
 import ResponsiveNav from "../components/ResponsiveNav";
+import NotesList from "../components/NotesList";
+import Box from "@mui/material/Box";
 
 const NotesIndex = () => {
-  const { notes, setNotes } = useContext(Context);
+  const { notes, setNotes, filteredNotes } = useContext(Context);
 
   const deleteNote = (noteId) => {
     let index = notes.findIndex((note) => {
@@ -16,11 +17,9 @@ const NotesIndex = () => {
   };
 
   return (
-    <div>
-      <ResponsiveNav>
-        <NotesList deleteNote={deleteNote} />
-      </ResponsiveNav>
-    </div>
+    <ResponsiveNav>
+      <NotesList deleteNote={deleteNote} />
+    </ResponsiveNav>
   );
 };
 
