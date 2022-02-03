@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
 function Note(props) {
+  
   const { setNotes, resetNotes, joins, tags } = useContext(Context);
   const { title, description, code, isPublic, noteId, deleteNote } = props;
   const [visibility, setVisibility] = useState(isPublic);
@@ -27,8 +28,8 @@ function Note(props) {
   });
 
   const onDeleteNote = async (event) => {
-    event.preventDefault();
     deleteNote(noteId);
+    
     const options = {
       method: "DELETE",
       headers: {
@@ -42,12 +43,12 @@ function Note(props) {
     setNotes(newNotes);
   };
 
-  const onEditNote = async (event) => {
-    event.prevent.preventDefault();
-  };
+  // const onEditNote = async (event) => {
+  //   event.preventDefault()  
+  // }
 
-  const toggleVisibility = async (event) => {
-    setVisibility(!visibility);
+  const toggleVisibility = async () => {
+    setVisibility(!isPublic);
     const options = {
       method: "PATCH",
       headers: {
@@ -59,7 +60,7 @@ function Note(props) {
         title: title,
         description: description,
         code: code,
-        public: visibility,
+        public: !isPublic,
       }),
     };
 
@@ -86,8 +87,6 @@ function Note(props) {
         </ButtonGroup>
         <EditButton onEditNote={onEditNote} />
         <DeleteButton onDeleteNote={onDeleteNote} />
-        {/* toggleVisibility={}
-					sx={{}} */}
         <VisibilityButton
           isPublic={visibility}
           toggleVisibility={toggleVisibility}
