@@ -54,11 +54,22 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(notes);
-  console.log(note);
+  const resetNotes = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+
+    const notesFetch = await fetch("/api/notes", options);
+    const newNotes = notesFetch.json();
+    return newNotes;
+  };
 
   return (
-    <Context.Provider value={{ tags, setTags, notes, setNotes }}>
+    <Context.Provider value={{ tags, setTags, notes, setNotes, resetNotes }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NotesIndex notes={notes} tags={tags} />} />
