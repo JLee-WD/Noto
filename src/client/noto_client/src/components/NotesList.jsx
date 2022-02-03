@@ -16,6 +16,7 @@ function NotesList(props) {
             code={note.code}
             isPublic={note.public}
             noteId={note.id}
+            tags={note.tags}
             deleteNote={deleteNote}
           />
         </li>

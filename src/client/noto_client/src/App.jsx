@@ -11,7 +11,7 @@ function App() {
 
   const [notes, setNotes] = useState([]);
   const [tags, setTags] = useState([]);
-  const [note, setNote] = useState({});
+  const [joins, setJoins] = useState([]);
 
   useEffect(() => {
     fetch("api/notes", {
@@ -37,17 +37,15 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  const noteId = 14;
-
   useEffect(() => {
-    fetch(`api/notes/${noteId}`, {
+    fetch("api/note_tags", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     })
       .then((response) => response.json())
-      .then((note) => setNote(note))
+      .then((joins) => setJoins(joins))
       .catch((err) => console.log(err));
   }, []);
 
@@ -66,11 +64,21 @@ function App() {
   };
 
   return (
-    <Context.Provider value={{ tags, setTags, notes, setNotes, resetNotes }}>
+    <Context.Provider
+      value={{
+        tags,
+        setTags,
+        notes,
+        setNotes,
+        joins,
+        setJoins,
+        resetNotes,
+      }}
+    >
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<NotesIndex notes={notes} tags={tags} />} />
-          <Route path="/new" element={<NewNoteForm tags={tags} />} />
+          <Route path="/" element={<NotesIndex />} />
+          <Route path="/new" element={<NewNoteForm />} />
         </Routes>
       </BrowserRouter>
     </Context.Provider>
