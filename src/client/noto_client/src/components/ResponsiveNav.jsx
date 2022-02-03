@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -24,17 +24,49 @@ import Context from "../context/context";
 const drawerWidth = 240;
 
 function ResponsiveNav(props) {
-  const { tags } = useContext(Context);
+  const { tags, joins, notes, setNotes, filteredNotes, setFilteredNotes } =
+    useContext(Context);
 
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const [selectedTagIndex, setSelectedTagIndex] = React.useState(0);
-  const [selectedGroupIndex, setSelectedGroupIndex] = React.useState(0);
+  const [selectedTagIndex, setSelectedTagIndex] = useState(0);
+  const [selectedGroupIndex, setSelectedGroupIndex] = useState(0);
+  const [selectedTag, setSelectedTag] = useState({});
 
-  const handleTagItemClick = (event, index) => {
+  const handleTagItemClick = (event, index, tag) => {
+    event.preventDefault();
     const newIndex = index + 1;
     setSelectedTagIndex(newIndex);
+    setSelectedTag(tag);
+  };
+
+  useEffect(() => {
+    setFilteredNotes(filterNotes());
+  }, [selectedTag]);
+
+  const filterNotes = () => {
+    const filteredNoteIds = [];
+    const foundNotes = [];
+    if (selectedTag === null) {
+      return notes;
+    } else {
+      joins.forEach((join) => {
+        if (join.tag_id === selectedTag.id) {
+          if (filteredNoteIds.includes(join.note_id)) {
+            return;
+          } else {
+            filteredNoteIds.push(join.note_id);
+          }
+        }
+      });
+      notes.forEach((note) => {
+        if (filteredNoteIds.includes(note.id)) {
+          foundNotes.push(note);
+        }
+      });
+    }
+    return foundNotes;
   };
 
   const handleGroupItemClick = (event, index) => {
@@ -73,7 +105,7 @@ function ResponsiveNav(props) {
         </ListItem>
         <ListItemButton
           selected={selectedTagIndex === 0}
-          onClick={(event) => handleTagItemClick(event, -1)}
+          onClick={(event) => handleTagItemClick(event, -1, null)}
         >
           <ListItemText primary="All" />
         </ListItemButton>
@@ -81,7 +113,7 @@ function ResponsiveNav(props) {
           <ListItemButton
             key={index}
             selected={selectedTagIndex === index + 1}
-            onClick={(event) => handleTagItemClick(event, index)}
+            onClick={(event) => handleTagItemClick(event, index, tag)}
           >
             <ListItemText primary={tag.title} />
           </ListItemButton>

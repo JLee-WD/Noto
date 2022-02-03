@@ -5,13 +5,31 @@ import VisibilityButton from "./VisibilityButton";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
 
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+
 function Note(props) {
-  const { setNotes, resetNotes } = useContext(Context);
-  const { note, title, description, code, isPublic, noteId, deleteNote } = props;
+  
+  const { setNotes, resetNotes, joins, tags } = useContext(Context);
+  const { title, description, code, isPublic, noteId, deleteNote } = props;
   const [visibility, setVisibility] = useState(isPublic);
 
-  const onDeleteNote = async () => {
-    // deleteNote(noteId);
+  const noteJoins = [];
+  joins.forEach((join) => {
+    if (join.note_id === noteId) {
+      noteJoins.push(join);
+    }
+  });
+
+  const noteTags = [];
+  noteJoins.forEach((join) => {
+    const newTag = tags.find((tag) => join.tag_id === tag.id);
+    noteTags.push(newTag);
+  });
+
+  const onDeleteNote = async (event) => {
+    deleteNote(noteId);
+    
     const options = {
       method: "DELETE",
       headers: {
@@ -59,7 +77,15 @@ function Note(props) {
         <li>
           Example: <code>{code}</code>
         </li>
-        <EditButton noteId={noteId} note={note}/>
+        <ButtonGroup
+          variant="contained"
+          aria-label="outlined primary button group"
+        >
+          {noteTags.map((tag, index) => (
+            <Button key={index}>{tag.title}</Button>
+          ))}
+        </ButtonGroup>
+        <EditButton onEditNote={onEditNote} />
         <DeleteButton onDeleteNote={onDeleteNote} />
         <VisibilityButton
           isPublic={visibility}
