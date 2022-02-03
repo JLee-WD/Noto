@@ -27,8 +27,10 @@ function Note(props) {
   };
 
   const onEditNote = async (event) => {
-    event.prevent.preventDefault();
-  };
+    event.preventDefault()
+  }
+  
+  const [visibility, setVisibility] = useState(isPublic)
 
   const toggleVisibility = async (event) => {
     setVisibility(!visibility);
@@ -60,10 +62,8 @@ function Note(props) {
         <li>
           Example: <code>{code}</code>
         </li>
-        <EditButton onEditNote={onEditNote} />
+        <EditButton noteId={noteId} onEditNote={onEditNote} />
         <DeleteButton onDeleteNote={onDeleteNote} />
-        {/* toggleVisibility={}
-					sx={{}} */}
         <VisibilityButton
           isPublic={visibility}
           toggleVisibility={toggleVisibility}
