@@ -4,11 +4,10 @@ import Context from "../context/context";
 
 function NotesList(props) {
   const { deleteNote } = props;
-  const { notes } = useContext(Context);
-  console.log(notes);
+  const { filteredNotes } = useContext(Context);
   return (
     <ul>
-      {notes.map((note, index) => (
+      {filteredNotes.map((note, index) => (
         <li key={index}>
           <Note
             title={note.title}

@@ -25,8 +25,6 @@ function Note(props) {
     const newTag = tags.find((tag) => join.tag_id === tag.id);
     noteTags.push(newTag);
   });
-  // console.log("notejoins", noteJoins);
-  console.log("noteTags", noteTags);
 
   const onDeleteNote = async (event) => {
     event.preventDefault();

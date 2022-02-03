@@ -10,6 +10,7 @@ function App() {
   // const [context, setContext] = useState({});
 
   const [notes, setNotes] = useState([]);
+  const [filteredNotes, setFilteredNotes] = useState([]);
   const [tags, setTags] = useState([]);
   const [joins, setJoins] = useState([]);
 
@@ -24,6 +25,10 @@ function App() {
       .then((notes) => setNotes(notes))
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    setFilteredNotes(notes);
+  }, [notes]);
 
   useEffect(() => {
     fetch("api/tags", {
@@ -72,6 +77,8 @@ function App() {
         setNotes,
         joins,
         setJoins,
+        filteredNotes,
+        setFilteredNotes,
         resetNotes,
       }}
     >
