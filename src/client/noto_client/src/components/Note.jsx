@@ -7,12 +7,11 @@ import EditButton from "./EditButton";
 
 function Note(props) {
   const { setNotes, resetNotes } = useContext(Context);
-  const { title, description, code, isPublic, noteId, deleteNote } = props;
+  const { note, title, description, code, isPublic, noteId, deleteNote } = props;
   const [visibility, setVisibility] = useState(isPublic);
 
-  const onDeleteNote = async (event) => {
-    event.preventDefault();
-    deleteNote(noteId);
+  const onDeleteNote = async () => {
+    // deleteNote(noteId);
     const options = {
       method: "DELETE",
       headers: {
@@ -26,14 +25,12 @@ function Note(props) {
     setNotes(newNotes);
   };
 
-  const onEditNote = async (event) => {
-    event.preventDefault()
-  }
-  
-  const [visibility, setVisibility] = useState(isPublic)
+  // const onEditNote = async (event) => {
+  //   event.preventDefault()  
+  // }
 
-  const toggleVisibility = async (event) => {
-    setVisibility(!visibility);
+  const toggleVisibility = async () => {
+    setVisibility(!isPublic);
     const options = {
       method: "PATCH",
       headers: {
@@ -45,7 +42,7 @@ function Note(props) {
         title: title,
         description: description,
         code: code,
-        public: visibility,
+        public: !isPublic,
       }),
     };
 
@@ -62,7 +59,7 @@ function Note(props) {
         <li>
           Example: <code>{code}</code>
         </li>
-        <EditButton noteId={noteId} onEditNote={onEditNote} />
+        <EditButton noteId={noteId} note={note}/>
         <DeleteButton onDeleteNote={onDeleteNote} />
         <VisibilityButton
           isPublic={visibility}
