@@ -40,19 +40,21 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  const noteId = 14;
+  // const noteId = 5;
 
-  useEffect(() => {
-    fetch(`api/notes/${noteId}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((note) => setNote(note))
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`api/notes/${noteId}`, {
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((note) => setNote(note))
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  // console.log(note)
 
   const resetNotes = async () => {
     const options = {

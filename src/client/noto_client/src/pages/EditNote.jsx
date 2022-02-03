@@ -22,15 +22,17 @@ const EditNote = () => {
   const { noteId } = useParams();
   
   const initialNote = [];
-  // const { context, setContext } = useContext(Context);
-
+  const { context, setContext } = useContext(Context);
+  // const { setNotes, resetNotes } = useContext(Context);
   const [note, setNote] = useState(initialNote);
+
   // const [tags, setTags] = useState([]);
 
   console.log(noteId)
 
   useEffect(() => {
     fetch(`${noteId}`, {
+    // fetch(`${noteId}`, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -92,7 +94,7 @@ const EditNote = () => {
   // };
 
   return (
-    <h1>{note.title}</h1>
+    <h1>Test</h1>
   )
 
   // return (
