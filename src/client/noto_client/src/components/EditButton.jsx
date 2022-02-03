@@ -1,16 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { IconButton, Tooltip } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 
-const EditButton = ( { onEditNote } ) => {
+const EditButton = ({ noteId }) => {
   return (
-		<>
-			<Tooltip title="Edit note">
-				<IconButton onClick={onEditNote}>
-        <EditIcon />
-				</IconButton>
-			</Tooltip>
-		</>
-	);
+    <>
+      <Link to={`/edit/${noteId}`}>
+        <Tooltip title="Edit note">
+          <IconButton>
+            <EditIcon sx={{ "&:hover": { color: "dodgerblue" } }} />
+          </IconButton>
+        </Tooltip>
+      </Link>
+    </>
+  );
 };
-export default EditButton
+export default EditButton;

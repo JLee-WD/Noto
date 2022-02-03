@@ -1,10 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+
+
 import Context from "./context/context";
 import { useState, useEffect } from "react";
 
 import NotesIndex from "./pages/NotesIndex";
 import NewNoteForm from "./pages/NewNoteForm";
+import EditNote from "./pages/EditNote";
 
 function App() {
   // const [context, setContext] = useState({});
@@ -86,6 +89,7 @@ function App() {
         <Routes>
           <Route path="/" element={<NotesIndex />} />
           <Route path="/new" element={<NewNoteForm />} />
+          <Route path="/edit/:noteId" element={<EditNote />} />
         </Routes>
       </BrowserRouter>
     </Context.Provider>

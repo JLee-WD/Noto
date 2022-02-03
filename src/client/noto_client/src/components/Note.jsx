@@ -4,9 +4,16 @@ import Context from "../context/context";
 import VisibilityButton from "./VisibilityButton";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
-
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import {
+  Button,
+  ButtonGroup,
+  CardActionArea,
+  CardActions,
+} from "@mui/material";
 
 function Note(props) {
   const { setNotes, resetNotes, joins, tags } = useContext(Context);
@@ -27,8 +34,8 @@ function Note(props) {
   });
 
   const onDeleteNote = async (event) => {
-    event.preventDefault();
     deleteNote(noteId);
+
     const options = {
       method: "DELETE",
       headers: {
@@ -43,11 +50,11 @@ function Note(props) {
   };
 
   const onEditNote = async (event) => {
-    event.prevent.preventDefault();
+    event.preventDefault();
   };
 
-  const toggleVisibility = async (event) => {
-    setVisibility(!visibility);
+  const toggleVisibility = async () => {
+    setVisibility(!isPublic);
     const options = {
       method: "PATCH",
       headers: {
@@ -59,7 +66,7 @@ function Note(props) {
         title: title,
         description: description,
         code: code,
-        public: visibility,
+        public: !isPublic,
       }),
     };
 
@@ -69,31 +76,33 @@ function Note(props) {
   };
 
   return (
-    <div>
-      <ul>
-        <li>Title: {title}</li>
-        <li>Description: {description}</li>
-        <li>
-          Example: <code>{code}</code>
-        </li>
-        <ButtonGroup
-          variant="contained"
-          aria-label="outlined primary button group"
-        >
-          {noteTags.map((tag, index) => (
-            <Button key={index}>{tag.title}</Button>
-          ))}
-        </ButtonGroup>
-        <EditButton onEditNote={onEditNote} />
-        <DeleteButton onDeleteNote={onDeleteNote} />
-        {/* toggleVisibility={}
-					sx={{}} */}
-        <VisibilityButton
-          isPublic={visibility}
-          toggleVisibility={toggleVisibility}
-        />
-      </ul>
-    </div>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        {/* <CardMedia></CardMedia> */}
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {title}: {description}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {code}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <ButtonGroup
+        variant="contained"
+        aria-label="outlined primary button group"
+      >
+        {noteTags.map((tag, index) => (
+          <Button key={index}>{tag.title}</Button>
+        ))}
+      </ButtonGroup>
+      <EditButton onEditNote={onEditNote} />
+      <DeleteButton onDeleteNote={onDeleteNote} />
+      <VisibilityButton
+        isPublic={visibility}
+        toggleVisibility={toggleVisibility}
+      />
+    </Card>
   );
 }
 

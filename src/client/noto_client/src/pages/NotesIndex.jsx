@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import Context from "../context/context";
 import Note from "../components/Note";
 import ResponsiveNav from "../components/ResponsiveNav";
+import NotesList from "../components/NotesList";
+import Box from "@mui/material/Box";
 
 const NotesIndex = () => {
   const { notes, setNotes, filteredNotes } = useContext(Context);
@@ -17,20 +18,7 @@ const NotesIndex = () => {
 
   return (
     <ResponsiveNav>
-      <ul>
-        {filteredNotes.map((note, index) => (
-          <li key={index}>
-            <Note
-              title={note.title}
-              description={note.description}
-              code={note.code}
-              isPublic={note.public}
-              noteId={note.id}
-              deleteNote={deleteNote}
-            />
-          </li>
-        ))}
-      </ul>
+      <NotesList deleteNote={deleteNote} />
     </ResponsiveNav>
   );
 };
