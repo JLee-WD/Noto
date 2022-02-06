@@ -4,7 +4,7 @@ class NotesController < ApplicationController
   before_action :read_notes, only: [:index, :destroy]
 
   def index
-    render json: @notes
+    render json: @notes.order("id ASC")
   end
   
   def show

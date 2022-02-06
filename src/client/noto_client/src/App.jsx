@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
-
 import Context from "./context/context";
 import { useState, useEffect } from "react";
 
@@ -18,7 +16,7 @@ function App() {
   const [joins, setJoins] = useState([]);
 
   useEffect(() => {
-    fetch("api/notes", {
+    fetch("/api/notes", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -34,7 +32,7 @@ function App() {
   }, [notes]);
 
   useEffect(() => {
-    fetch("api/tags", {
+    fetch("/api/tags", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -46,7 +44,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("api/note_tags", {
+    fetch("/api/note_tags", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -71,6 +69,14 @@ function App() {
     return newNotes;
   };
 
+  const deleteNote = (noteId) => {
+    let index = notes.findIndex((note) => {
+      return note.id === noteId;
+    });
+    notes.splice(index, 1);
+    setNotes(notes);
+  };
+
   return (
     <Context.Provider
       value={{
@@ -83,6 +89,7 @@ function App() {
         filteredNotes,
         setFilteredNotes,
         resetNotes,
+        deleteNote,
       }}
     >
       <BrowserRouter>
@@ -97,3 +104,4 @@ function App() {
 }
 
 export default App;
+  

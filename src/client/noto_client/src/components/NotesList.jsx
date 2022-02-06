@@ -3,9 +3,10 @@ import Note from "./Note";
 import Context from "../context/context";
 import Box from "@mui/material/Box";
 
-function NotesList(props) {
-  const { deleteNote } = props;
+function NotesList() {
   const { filteredNotes } = useContext(Context);
+  // setFilteredNotes(notes)
+  console.log( "Filtered notes:", filteredNotes )
   return (
     <div style={{ width: "100%" }}>
       <Box
@@ -23,7 +24,6 @@ function NotesList(props) {
             code={note.code}
             isPublic={note.public}
             noteId={note.id}
-            deleteNote={deleteNote}
           />
         ))}
       </Box>

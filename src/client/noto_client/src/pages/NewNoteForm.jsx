@@ -29,7 +29,6 @@ const NewNoteForm = () => {
   const [formData, setFormData] = useState(initialFormState);
   const { tags, setNotes, resetNotes } = useContext(Context);
   const navigate = useNavigate();
-
   const handleChange = (event) => {
     setFormData({
       ...formData,

@@ -7,7 +7,7 @@ const DeleteButton = ({ onDeleteNote }) => {
     <>
       <Tooltip title="Delete note">
         <IconButton onClick={onDeleteNote}>
-          <DeleteIcon sx={{'&:hover': {color: 'lightcoral'}}} />
+          <DeleteIcon sx={{ "&:hover": { color: "crimson" } }} />
         </IconButton>
       </Tooltip>
     </>
