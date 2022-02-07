@@ -9,8 +9,10 @@ import {
   cb,
   coldarkCold,
   coldarkDark,
+  coy,
   coyWithoutShadows,
   darcula,
+  dark,
   dracula,
   duotoneDark,
   duotoneEarth,
@@ -18,26 +20,24 @@ import {
   duotoneLight,
   duotoneSea,
   duotoneSpace,
+  funky,
   ghcolors,
   hopscotch,
   materialDark,
   materialLight,
   materialOceanic,
   nord,
-  pojoaque,
-  shadesOfPurple,
-  synthwave84,
-  vs,
-  vscDarkPlus,
-  xonokai,
-  coy,
-  dark,
-  funky,
   okaidia,
+  pojoaque,
+  prism,
+  shadesOfPurple,
   solarizedlight,
+  synthwave84,
   tomorrow,
   twilight,
-  prism,
+  vs,
+  vscDarkPlus,
+  xonokai
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 import SelectLanguage from "../components/SelectLanguage";
 import SelectTheme from "../components/SelectTheme";
@@ -51,8 +51,10 @@ const availableThemes = [
   cb,
   coldarkCold,
   coldarkDark,
+  coy,
   coyWithoutShadows,
   darcula,
+  dark,
   dracula,
   duotoneDark,
   duotoneEarth,
@@ -60,26 +62,24 @@ const availableThemes = [
   duotoneLight,
   duotoneSea,
   duotoneSpace,
+  funky,
   ghcolors,
   hopscotch,
   materialDark,
   materialLight,
   materialOceanic,
   nord,
-  pojoaque,
-  shadesOfPurple,
-  synthwave84,
-  vs,
-  vscDarkPlus,
-  xonokai,
-  coy,
-  dark,
-  funky,
   okaidia,
+  pojoaque,
+  prism,
+  shadesOfPurple,
   solarizedlight,
+  synthwave84,
   tomorrow,
   twilight,
-  prism,
+  vs,
+  vscDarkPlus,
+  xonokai
 ];
 
 const ViewNote = () => {
@@ -92,7 +92,7 @@ const ViewNote = () => {
   const { noteId } = useParams();
   const [note, setNote] = useState(initialNoteState);
   const [language, setLanguage] = useState("plaintext");
-  const [theme, setTheme] = useState(dracula);
+  const [theme, setTheme] = useState("dracula");
   const [lineNumbers, setLineNumbers] = useState(true);
   const [wrapLongLines, setWrapLongLines] = useState(false);
   useEffect(() => {
@@ -120,10 +120,7 @@ const ViewNote = () => {
   return (
     <Box>
       <SelectLanguage language={language} setLanguage={setLanguage} />
-      <SelectTheme
-        availableThemes={availableThemes}
-        setTheme={setTheme}
-      />
+      <SelectTheme availableThemes={availableThemes} setTheme={setTheme} />
       <NumbersButton toggleLineNumbers={toggleLineNumbers} />
       <WrapButton toggleWrapLongLines={toggleWrapLongLines} />
       <SyntaxHighlighter

@@ -5,18 +5,15 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import React from "react";
 
-const SelectTheme = ({ availableThemes, setTheme }) => {
-  let value = "dracula";
+const SelectTheme = ({ availableThemes, theme, setTheme }) => {
   const handleChange = (event) => {
-    setTheme(availableThemes[event.target.key]);
-    console.log(event.target.value);
-    console.log(event);
+    setTheme(availableThemes[event.target.value]);
   };
   return (
     <Box sx={{ display: "inline-flex" }}>
-      <FormControl sx={{ width: 130, marginRight: "1rem" }}>
+      <FormControl sx={{ width: 180, marginRight: "1rem" }}>
         <InputLabel>Theme</InputLabel>
-        <Select label="theme" value={value} onChange={handleChange}>
+        <Select label="theme" value={theme} onChange={handleChange}>
           <MenuItem name="a11y-dark" value="0">
             a11y-dark
           </MenuItem>
