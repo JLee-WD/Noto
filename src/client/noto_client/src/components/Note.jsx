@@ -1,25 +1,23 @@
-import React, { useState } from "react";
-import { useContext } from "react";
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import Context from "../context/context";
 import VisibilityButton from "./VisibilityButton";
 import DeleteButton from "./DeleteButton";
 import EditButton from "./EditButton";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 import {
   Button,
   ButtonGroup,
+  Card,
   CardActionArea,
-  CardActions,
+  CardMedia,
+  CardContent,
+  Typography,
 } from "@mui/material";
 
 function Note(props) {
-  const { setNotes, resetNotes, joins, tags } = useContext(Context);
-  const { title, description, code, isPublic, noteId, deleteNote } = props;
+  const { setNotes, resetNotes, joins, tags, deleteNote } = useContext(Context);
+  const { title, description, code, isPublic, noteId } = props;
   const [visibility, setVisibility] = useState(isPublic);
-
   const noteJoins = [];
   joins.forEach((join) => {
     if (join.note_id === noteId) {
@@ -33,9 +31,8 @@ function Note(props) {
     noteTags.push(newTag);
   });
 
-  const onDeleteNote = async (event) => {
+  const onDeleteNote = async () => {
     deleteNote(noteId);
-
     const options = {
       method: "DELETE",
       headers: {
@@ -47,10 +44,6 @@ function Note(props) {
     await fetch(`/api/notes/${noteId}`, options);
     const newNotes = await resetNotes();
     setNotes(newNotes);
-  };
-
-  const onEditNote = async (event) => {
-    event.preventDefault();
   };
 
   const toggleVisibility = async () => {
@@ -71,23 +64,25 @@ function Note(props) {
     };
 
     await fetch(`/api/notes/${noteId}`, options);
-    // const newNotes = await resetNotes();
-    // setNotes(newNotes);
+    const newNotes = await resetNotes();
+    setNotes(newNotes);
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        {/* <CardMedia></CardMedia> */}
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}: {description}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {code}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+    <Card sx={{ maxWidth: 345, textDecoration: "none" }}>
+      <Link to={`/view/${noteId}`}>
+        <CardActionArea>
+          {/* <CardMedia></CardMedia> */}
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {title}: {description}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {code}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Link>
       <ButtonGroup
         variant="contained"
         aria-label="outlined primary button group"
@@ -96,7 +91,7 @@ function Note(props) {
           <Button key={index}>{tag.title}</Button>
         ))}
       </ButtonGroup>
-      <EditButton onEditNote={onEditNote} />
+      <EditButton noteId={noteId} />
       <DeleteButton onDeleteNote={onDeleteNote} />
       <VisibilityButton
         isPublic={visibility}

@@ -1,8 +1,4 @@
 import React, { useState, useContext } from "react";
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
 import {
   TextField,
   Button,
@@ -29,7 +25,6 @@ const NewNoteForm = () => {
   const [formData, setFormData] = useState(initialFormState);
   const { tags, setNotes, resetNotes } = useContext(Context);
   const navigate = useNavigate();
-
   const handleChange = (event) => {
     setFormData({
       ...formData,

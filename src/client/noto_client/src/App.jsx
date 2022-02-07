@@ -1,12 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-
-
 import Context from "./context/context";
 import { useState, useEffect } from "react";
-
 import NotesIndex from "./pages/NotesIndex";
 import NewNoteForm from "./pages/NewNoteForm";
+import ViewNote from "./pages/ViewNote";
 import EditNote from "./pages/EditNote";
 
 function App() {
@@ -16,9 +13,10 @@ function App() {
   const [filteredNotes, setFilteredNotes] = useState([]);
   const [tags, setTags] = useState([]);
   const [joins, setJoins] = useState([]);
+  const [lineNumbers, setLineNumbers] = useState(true);
 
   useEffect(() => {
-    fetch("api/notes", {
+    fetch("/api/notes", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -34,7 +32,7 @@ function App() {
   }, [notes]);
 
   useEffect(() => {
-    fetch("api/tags", {
+    fetch("/api/tags", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -46,7 +44,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("api/note_tags", {
+    fetch("/api/note_tags", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -71,6 +69,14 @@ function App() {
     return newNotes;
   };
 
+  const deleteNote = (noteId) => {
+    let index = notes.findIndex((note) => {
+      return note.id === noteId;
+    });
+    notes.splice(index, 1);
+    setNotes(notes);
+  };
+
   return (
     <Context.Provider
       value={{
@@ -83,12 +89,16 @@ function App() {
         filteredNotes,
         setFilteredNotes,
         resetNotes,
+        deleteNote,
+        lineNumbers,
+        setLineNumbers,
       }}
     >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NotesIndex />} />
           <Route path="/new" element={<NewNoteForm />} />
+          <Route path="/view/:noteId" element={<ViewNote />} />
           <Route path="/edit/:noteId" element={<EditNote />} />
         </Routes>
       </BrowserRouter>
