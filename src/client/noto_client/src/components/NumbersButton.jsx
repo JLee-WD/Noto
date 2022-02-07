@@ -7,7 +7,7 @@ const NumbersButton = ({ toggleLineNumbers }) => {
     <>
       <Tooltip title="Toggle Line Numbers">
         <IconButton
-          onClick={setLineNumbers(!lineNumbers)}
+          onClick={toggleLineNumbers}
           sx={{ "&:hover": { color: "dodgerblue" } }}
         >
           <FormatListNumberedIcon />

@@ -1,11 +1,86 @@
-import React, { useState, useEffect, useContext } from "react";
+import Box from "@mui/material/Box";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  a11yDark,
+  atomDark,
+  base16AteliersulphurpoolLight,
+  cb,
+  coldarkCold,
+  coldarkDark,
+  coyWithoutShadows,
+  darcula,
+  dracula,
+  duotoneDark,
+  duotoneEarth,
+  duotoneForest,
+  duotoneLight,
+  duotoneSea,
+  duotoneSpace,
+  ghcolors,
+  hopscotch,
+  materialDark,
+  materialLight,
+  materialOceanic,
+  nord,
+  pojoaque,
+  shadesOfPurple,
+  synthwave84,
+  vs,
+  vscDarkPlus,
+  xonokai,
+  coy,
+  dark,
+  funky,
+  okaidia,
+  solarizedlight,
+  tomorrow,
+  twilight,
+  prism,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 import SelectLanguage from "../components/SelectLanguage";
-import NumbersButton from "../components/NumbersButton"
+import SelectTheme from "../components/SelectTheme";
+import NumbersButton from "../components/NumbersButton";
+import WrapButton from "../components/WrapButton";
 
-import Box from "@mui/material/Box";
+const availableThemes = [
+  a11yDark,
+  atomDark,
+  base16AteliersulphurpoolLight,
+  cb,
+  coldarkCold,
+  coldarkDark,
+  coyWithoutShadows,
+  darcula,
+  dracula,
+  duotoneDark,
+  duotoneEarth,
+  duotoneForest,
+  duotoneLight,
+  duotoneSea,
+  duotoneSpace,
+  ghcolors,
+  hopscotch,
+  materialDark,
+  materialLight,
+  materialOceanic,
+  nord,
+  pojoaque,
+  shadesOfPurple,
+  synthwave84,
+  vs,
+  vscDarkPlus,
+  xonokai,
+  coy,
+  dark,
+  funky,
+  okaidia,
+  solarizedlight,
+  tomorrow,
+  twilight,
+  prism,
+];
 
 const ViewNote = () => {
   const initialNoteState = {
@@ -16,12 +91,10 @@ const ViewNote = () => {
   };
   const { noteId } = useParams();
   const [note, setNote] = useState(initialNoteState);
-  const [theme, setTheme] = useState([]);
   const [language, setLanguage] = useState("plaintext");
+  const [theme, setTheme] = useState(dracula);
   const [lineNumbers, setLineNumbers] = useState(true);
-  const [wrapLines, toggleWrapLines] = useState(true);
-  const [wrapLongLines, toggleWrapLongLines] = useState(false);
-
+  const [wrapLongLines, setWrapLongLines] = useState(false);
   useEffect(() => {
     fetch(`/api/notes/${noteId}`, {
       headers: {
@@ -35,24 +108,28 @@ const ViewNote = () => {
   }, []);
 
   const toggleLineNumbers = () => {
-    setLineNumbers(!lineNumbers)
-    console.log(lineNumbers)
-  }
+    setLineNumbers(!lineNumbers);
+    console.log(lineNumbers);
+  };
+
+  const toggleWrapLongLines = () => {
+    setWrapLongLines(!wrapLongLines);
+    console.log(wrapLongLines);
+  };
 
   return (
     <Box>
-      <SelectLanguage
-        language={language}
-        setLanguage={setLanguage}
-        theme={theme}
+      <SelectLanguage language={language} setLanguage={setLanguage} />
+      <SelectTheme
+        availableThemes={availableThemes}
         setTheme={setTheme}
       />
-      <NumbersButton toggleLineNumbers={toggleLineNumbers}/>
+      <NumbersButton toggleLineNumbers={toggleLineNumbers} />
+      <WrapButton toggleWrapLongLines={toggleWrapLongLines} />
       <SyntaxHighlighter
         language={language}
-        style={dracula}
+        style={theme}
         showLineNumbers={lineNumbers}
-        wrapLines={wrapLines}
         wrapLongLines={wrapLongLines}
       >
         {note.code}
