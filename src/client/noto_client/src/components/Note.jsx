@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import Context from "../context/context";
 import VisibilityButton from "./VisibilityButton";
 import DeleteButton from "./DeleteButton";
@@ -68,18 +69,20 @@ function Note(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        {/* <CardMedia></CardMedia> */}
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}: {description}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {code}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+    <Card sx={{ maxWidth: 345, textDecoration: "none" }}>
+      <Link to={`/view/${noteId}`}>
+        <CardActionArea>
+          {/* <CardMedia></CardMedia> */}
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {title}: {description}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {code}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Link>
       <ButtonGroup
         variant="contained"
         aria-label="outlined primary button group"

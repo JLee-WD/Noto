@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Context from "./context/context";
 import { useState, useEffect } from "react";
-
 import NotesIndex from "./pages/NotesIndex";
 import NewNoteForm from "./pages/NewNoteForm";
+import ViewNote from "./pages/ViewNote";
 import EditNote from "./pages/EditNote";
 
 function App() {
@@ -14,6 +13,7 @@ function App() {
   const [filteredNotes, setFilteredNotes] = useState([]);
   const [tags, setTags] = useState([]);
   const [joins, setJoins] = useState([]);
+  const [lineNumbers, setLineNumbers] = useState(true);
 
   useEffect(() => {
     fetch("/api/notes", {
@@ -90,12 +90,15 @@ function App() {
         setFilteredNotes,
         resetNotes,
         deleteNote,
+        lineNumbers,
+        setLineNumbers,
       }}
     >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NotesIndex />} />
           <Route path="/new" element={<NewNoteForm />} />
+          <Route path="/view/:noteId" element={<ViewNote />} />
           <Route path="/edit/:noteId" element={<EditNote />} />
         </Routes>
       </BrowserRouter>
@@ -104,4 +107,3 @@ function App() {
 }
 
 export default App;
-  
