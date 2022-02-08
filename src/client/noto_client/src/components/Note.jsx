@@ -9,7 +9,6 @@ import {
   ButtonGroup,
   Card,
   CardActionArea,
-  CardMedia,
   CardContent,
   Typography,
 } from "@mui/material";
@@ -30,6 +29,8 @@ function Note(props) {
     const newTag = tags.find((tag) => join.tag_id === tag.id);
     noteTags.push(newTag);
   });
+
+  console.log(noteTags);
 
   const onDeleteNote = async () => {
     deleteNote(noteId);
@@ -69,16 +70,18 @@ function Note(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345, textDecoration: "none" }}>
-      <Link to={`/view/${noteId}`}>
+    <Card sx={{ maxWidth: 300, height: 150 }}>
+      <Link
+        to={`/view/${noteId}`}
+        style={{ textDecoration: "none", color: "black" }}
+      >
         <CardActionArea>
-          {/* <CardMedia></CardMedia> */}
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {title}: {description}
+            <Typography gutterBottom variant="h5" component="div" noWrap>
+              {title}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {code}
+            <Typography variant="body2" color="text.secondary" noWrap>
+              {description}
             </Typography>
           </CardContent>
         </CardActionArea>

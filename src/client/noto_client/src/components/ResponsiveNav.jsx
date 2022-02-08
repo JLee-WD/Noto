@@ -48,7 +48,7 @@ function ResponsiveNav(props) {
   const filterNotes = () => {
     const filteredNoteIds = [];
     const foundNotes = [];
-    if (selectedTag === null) {
+    if (!selectedTag.id) {
       return notes;
     } else {
       joins.forEach((join) => {
@@ -84,7 +84,7 @@ function ResponsiveNav(props) {
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
       <Divider />
       <List>
-        <Link to="/new">
+        <Link to="/new" style={{ textDecoration: 'none', color: "black" }}>
           <ListItem button>
             <ListItemIcon>
               <AddIcon />
@@ -105,7 +105,7 @@ function ResponsiveNav(props) {
         </ListItem>
         <ListItemButton
           selected={selectedTagIndex === 0}
-          onClick={(event) => handleTagItemClick(event, -1, null)}
+          onClick={(event) => handleTagItemClick(event, -1, {})}
         >
           <ListItemText primary="All" />
         </ListItemButton>
