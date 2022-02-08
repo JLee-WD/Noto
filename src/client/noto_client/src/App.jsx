@@ -31,8 +31,6 @@ function App() {
     setFilteredNotes(notes);
   }, [notes]);
 
-  console.log(notes);
-
   useEffect(() => {
     fetch("/api/tags", {
       headers: {
@@ -71,6 +69,20 @@ function App() {
     return newNotes;
   };
 
+  const resetTags = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+
+    const tagsFetch = await fetch("/api/tags", options);
+    const newTags = tagsFetch.json();
+    return newTags;
+  };
+
   const deleteNote = (noteId) => {
     let index = notes.findIndex((note) => {
       return note.id === noteId;
@@ -91,6 +103,7 @@ function App() {
         filteredNotes,
         setFilteredNotes,
         resetNotes,
+        resetTags,
         deleteNote,
         lineNumbers,
         setLineNumbers,

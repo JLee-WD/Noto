@@ -14,7 +14,8 @@ import {
 } from "@mui/material";
 
 function Note(props) {
-  const { setNotes, resetNotes, joins, tags, deleteNote } = useContext(Context);
+  const { setNotes, setTags, resetNotes, resetTags, joins, tags, deleteNote } =
+    useContext(Context);
   const { title, description, code, isPublic, noteId } = props;
   const [visibility, setVisibility] = useState(isPublic);
   const noteJoins = [];
@@ -30,8 +31,6 @@ function Note(props) {
     noteTags.push(newTag);
   });
 
-  console.log(noteTags);
-
   const onDeleteNote = async () => {
     deleteNote(noteId);
     const options = {
@@ -44,7 +43,9 @@ function Note(props) {
 
     await fetch(`/api/notes/${noteId}`, options);
     const newNotes = await resetNotes();
+    const newTags = await resetTags();
     setNotes(newNotes);
+    setTags(newTags);
   };
 
   const toggleVisibility = async () => {
@@ -70,7 +71,7 @@ function Note(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 300, height: 150 }}>
+    <Card sx={{ minWidth: 300, maxWidth: 300, height: 150 }}>
       <Link
         to={`/view/${noteId}`}
         style={{ textDecoration: "none", color: "black" }}

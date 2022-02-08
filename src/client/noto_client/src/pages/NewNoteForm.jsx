@@ -1,8 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import {
-  TextField,
-  Button,
-} from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import VisibilityButton from "../components/VisibilityButton";
 import Context from "../context/context";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +18,8 @@ const NewNoteForm = () => {
     tags: null,
   };
 
-  const { tags, setNotes, resetNotes } = useContext(Context);
+  const { tags, setNotes, setTags, resetNotes, resetTags } =
+    useContext(Context);
   const [formData, setFormData] = useState(initialFormState);
   const [toggleTags, setToggleTags] = useState([]);
   const [tagNames, setTagNames] = useState([]);
@@ -65,6 +63,7 @@ const NewNoteForm = () => {
         description: event.target.description.value,
         code: event.target.code.value,
         public: formData.public,
+        tags: formData.tags,
       }),
     };
     if (
@@ -75,10 +74,12 @@ const NewNoteForm = () => {
       alert("Can't be empty");
     } else {
       const newNoteResponse = await fetch("/api/notes", options);
-      const newNotesJson = await newNoteResponse.json();
+      // const newNotesJson = await newNoteResponse.json();
       setFormData(initialFormState);
       const newNotes = await resetNotes();
+      const newTags = await resetTags();
       setNotes(newNotes);
+      setTags(newTags);
       navigate("/");
     }
   };
@@ -113,6 +114,8 @@ const NewNoteForm = () => {
       ))}
     </ToggleButtonGroup>
   );
+
+  console.log(formData);
 
   return (
     <form onSubmit={onCreateNote}>

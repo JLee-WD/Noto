@@ -46,8 +46,6 @@ function ResponsiveNav(props) {
   }, [selectedTag]);
 
   const filterNotes = () => {
-    console.log("line 48, nav", notes);
-    console.log("selected tag", selectedTag);
     const filteredNoteIds = [];
     const foundNotes = [];
     if (!selectedTag.id) {
@@ -86,7 +84,7 @@ function ResponsiveNav(props) {
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
       <Divider />
       <List>
-        <Link to="/new" style={{ textDecoration: 'none', color: "black" }}>
+        <Link to="/new" style={{ textDecoration: "none", color: "black" }}>
           <ListItem button>
             <ListItemIcon>
               <AddIcon />
