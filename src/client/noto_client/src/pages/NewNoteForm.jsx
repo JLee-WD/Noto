@@ -1,8 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import {
-  TextField,
-  Button,
-} from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import VisibilityButton from "../components/VisibilityButton";
 import Context from "../context/context";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +15,7 @@ const NewNoteForm = () => {
     description: "",
     code: "",
     public: false,
-    tags: null,
+    tags: [],
   };
 
   const { tags, setNotes, resetNotes } = useContext(Context);
@@ -50,6 +47,8 @@ const NewNoteForm = () => {
       tags: newTags,
     });
     setToggleTags(newTags);
+    console.log(newTags)
+
   };
 
   const onCreateNote = async (event) => {
@@ -65,6 +64,7 @@ const NewNoteForm = () => {
         description: event.target.description.value,
         code: event.target.code.value,
         public: formData.public,
+        tag: formData.tags,
       }),
     };
     if (

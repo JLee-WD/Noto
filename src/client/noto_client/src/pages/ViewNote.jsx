@@ -111,12 +111,12 @@ const ViewNote = () => {
 
   const toggleLineNumbers = () => {
     setLineNumbers(!lineNumbers);
-    console.log(lineNumbers);
+    console.log("line numbers:", lineNumbers);
   };
 
   const toggleWrapLongLines = () => {
     setWrapLongLines(!wrapLongLines);
-    console.log(wrapLongLines);
+    console.log("wrap lines:", wrapLongLines);
   };
 
   return (
