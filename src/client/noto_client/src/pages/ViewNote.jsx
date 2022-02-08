@@ -44,6 +44,7 @@ import SelectTheme from "../components/SelectTheme";
 import NumbersButton from "../components/NumbersButton";
 import WrapButton from "../components/WrapButton";
 import BackButton from "../components/BackButton";
+import EditButton from "../components/EditButton";
 
 const availableThemes = [
   a11yDark,
@@ -95,7 +96,7 @@ const ViewNote = () => {
   const [language, setLanguage] = useState("plaintext");
   const [theme, setTheme] = useState(coy);
   const [lineNumbers, setLineNumbers] = useState(true);
-  const [wrapLongLines, setWrapLongLines] = useState(false);
+  const [wrapLongLines, setWrapLongLines] = useState(true);
   useEffect(() => {
     fetch(`/api/notes/${noteId}`, {
       headers: {
@@ -122,8 +123,10 @@ const ViewNote = () => {
     <Box>
       <SelectLanguage language={language} setLanguage={setLanguage} />
       <SelectTheme availableThemes={availableThemes} setTheme={setTheme} />
-      <NumbersButton toggleLineNumbers={toggleLineNumbers} />
-      <WrapButton toggleWrapLongLines={toggleWrapLongLines} />
+      <NumbersButton lineNumbers={lineNumbers} toggleLineNumbers={toggleLineNumbers} />
+      <WrapButton wrapLongLines={wrapLongLines} toggleWrapLongLines={toggleWrapLongLines} />
+      <EditButton noteId={noteId} />
+      <BackButton />
       <SyntaxHighlighter
         language={language}
         style={theme}
@@ -132,7 +135,6 @@ const ViewNote = () => {
       >
         {note.code}
       </SyntaxHighlighter>
-      <BackButton />
     </Box>
   );
 };

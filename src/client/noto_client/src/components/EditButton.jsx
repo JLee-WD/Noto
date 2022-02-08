@@ -1,18 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { IconButton, Tooltip } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
+import { useNavigate } from "react-router-dom";
 
 const EditButton = ({ noteId }) => {
+  const navigate = useNavigate();
   return (
     <>
-      <Link to={`/edit/${noteId}`}>
-        <Tooltip title="Edit note">
-          <IconButton>
-            <EditIcon sx={{ "&:hover": { color: "dodgerblue" } }} />
-          </IconButton>
-        </Tooltip>
-      </Link>
+      <Tooltip title="Edit note">
+        <IconButton
+          onClick={() => {
+            navigate(`/edit/${noteId}`);
+          }}
+        >
+          <EditIcon sx={{ "&:hover": { color: "dodgerblue" } }} />
+        </IconButton>
+      </Tooltip>
     </>
   );
 };
