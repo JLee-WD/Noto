@@ -14,7 +14,17 @@ import {
 } from "@mui/material";
 
 function Note(props) {
-  const { setNotes, resetNotes, joins, tags, deleteNote } = useContext(Context);
+  const {
+    setNotes,
+    setTags,
+    setJoins,
+    resetNotes,
+    resetTags,
+    resetJoins,
+    joins,
+    tags,
+    deleteNote,
+  } = useContext(Context);
   const { title, description, code, isPublic, noteId } = props;
   const [visibility, setVisibility] = useState(isPublic);
   const noteJoins = [];
@@ -30,8 +40,6 @@ function Note(props) {
     noteTags.push(newTag);
   });
 
-  console.log(noteTags);
-
   const onDeleteNote = async () => {
     deleteNote(noteId);
     const options = {
@@ -44,7 +52,11 @@ function Note(props) {
 
     await fetch(`/api/notes/${noteId}`, options);
     const newNotes = await resetNotes();
+    const newTags = await resetTags();
+    const newJoins = await resetJoins();
     setNotes(newNotes);
+    setTags(newTags);
+    setJoins(newJoins);
   };
 
   const toggleVisibility = async () => {
@@ -69,8 +81,23 @@ function Note(props) {
     setNotes(newNotes);
   };
 
+  let truncatedTags = [];
+  if (noteTags.length > 3) {
+    truncatedTags = noteTags.slice(0, 2);
+  } else {
+    truncatedTags = [...noteTags];
+  }
+  console.log("truncatedtags after", truncatedTags);
+  const tagList = (
+    <ButtonGroup variant="contained" aria-label="outlined primary button group">
+      {truncatedTags.map((tag, index) => (
+        <Button key={index}>{tag.title}</Button>
+      ))}
+    </ButtonGroup>
+  );
+
   return (
-    <Card sx={{ maxWidth: 300, height: 150 }}>
+    <Card sx={{ minWidth: 300, maxWidth: 300, height: 150 }}>
       <Link
         to={`/view/${noteId}`}
         style={{ textDecoration: "none", color: "black" }}
@@ -86,14 +113,7 @@ function Note(props) {
           </CardContent>
         </CardActionArea>
       </Link>
-      <ButtonGroup
-        variant="contained"
-        aria-label="outlined primary button group"
-      >
-        {noteTags.map((tag, index) => (
-          <Button key={index}>{tag.title}</Button>
-        ))}
-      </ButtonGroup>
+      {tagList}
       <EditButton noteId={noteId} />
       <DeleteButton onDeleteNote={onDeleteNote} />
       <VisibilityButton
