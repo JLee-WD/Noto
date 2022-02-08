@@ -18,8 +18,15 @@ const NewNoteForm = () => {
     tags: null,
   };
 
-  const { tags, setNotes, setTags, resetNotes, resetTags } =
-    useContext(Context);
+  const {
+    tags,
+    setNotes,
+    setJoins,
+    setTags,
+    resetNotes,
+    resetJoins,
+    resetTags,
+  } = useContext(Context);
   const [formData, setFormData] = useState(initialFormState);
   const [toggleTags, setToggleTags] = useState([]);
   const [tagNames, setTagNames] = useState([]);
@@ -78,8 +85,10 @@ const NewNoteForm = () => {
       setFormData(initialFormState);
       const newNotes = await resetNotes();
       const newTags = await resetTags();
+      const newJoins = await resetJoins();
       setNotes(newNotes);
       setTags(newTags);
+      setJoins(newJoins);
       navigate("/");
     }
   };

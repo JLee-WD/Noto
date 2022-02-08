@@ -14,8 +14,17 @@ import {
 } from "@mui/material";
 
 function Note(props) {
-  const { setNotes, setTags, resetNotes, resetTags, joins, tags, deleteNote } =
-    useContext(Context);
+  const {
+    setNotes,
+    setTags,
+    setJoins,
+    resetNotes,
+    resetTags,
+    resetJoins,
+    joins,
+    tags,
+    deleteNote,
+  } = useContext(Context);
   const { title, description, code, isPublic, noteId } = props;
   const [visibility, setVisibility] = useState(isPublic);
   const noteJoins = [];
@@ -44,8 +53,10 @@ function Note(props) {
     await fetch(`/api/notes/${noteId}`, options);
     const newNotes = await resetNotes();
     const newTags = await resetTags();
+    const newJoins = await resetJoins();
     setNotes(newNotes);
     setTags(newTags);
+    setJoins(newJoins);
   };
 
   const toggleVisibility = async () => {
