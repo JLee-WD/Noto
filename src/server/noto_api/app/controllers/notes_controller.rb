@@ -19,7 +19,7 @@ class NotesController < ApplicationController
     @tags.each do |tag|
       existingTagNames << tag.title
     end
-    if (tagParams - existingTagNames) > 0
+    if (tagParams - existingTagNames).length > 0
       newTagNames = tagParams - existingTagNames
       newTagNames.each do |tag|
         newTag = Tag.create(title: tag)

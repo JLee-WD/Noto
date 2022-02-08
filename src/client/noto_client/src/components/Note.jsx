@@ -81,6 +81,21 @@ function Note(props) {
     setNotes(newNotes);
   };
 
+  let truncatedTags = [];
+  if (noteTags.length > 3) {
+    truncatedTags = noteTags.slice(0, 2);
+  } else {
+    truncatedTags = [...noteTags];
+  }
+  console.log("truncatedtags after", truncatedTags);
+  const tagList = (
+    <ButtonGroup variant="contained" aria-label="outlined primary button group">
+      {truncatedTags.map((tag, index) => (
+        <Button key={index}>{tag.title}</Button>
+      ))}
+    </ButtonGroup>
+  );
+
   return (
     <Card sx={{ minWidth: 300, maxWidth: 300, height: 150 }}>
       <Link
@@ -98,14 +113,7 @@ function Note(props) {
           </CardContent>
         </CardActionArea>
       </Link>
-      <ButtonGroup
-        variant="contained"
-        aria-label="outlined primary button group"
-      >
-        {noteTags.map((tag, index) => (
-          <Button key={index}>{tag.title}</Button>
-        ))}
-      </ButtonGroup>
+      {tagList}
       <EditButton noteId={noteId} />
       <DeleteButton onDeleteNote={onDeleteNote} />
       <VisibilityButton
