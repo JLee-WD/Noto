@@ -18,7 +18,15 @@ const NewNoteForm = () => {
     tags: [],
   };
 
-  const { tags, setNotes, resetNotes } = useContext(Context);
+  const {
+    tags,
+    setNotes,
+    setJoins,
+    setTags,
+    resetNotes,
+    resetJoins,
+    resetTags,
+  } = useContext(Context);
   const [formData, setFormData] = useState(initialFormState);
   const [toggleTags, setToggleTags] = useState([]);
   const [tagNames, setTagNames] = useState([]);
@@ -64,7 +72,7 @@ const NewNoteForm = () => {
         description: event.target.description.value,
         code: event.target.code.value,
         public: formData.public,
-        tag: formData.tags,
+        tags: formData.tags,
       }),
     };
     if (
@@ -75,10 +83,14 @@ const NewNoteForm = () => {
       alert("Can't be empty");
     } else {
       const newNoteResponse = await fetch("/api/notes", options);
-      const newNotesJson = await newNoteResponse.json();
+      // const newNotesJson = await newNoteResponse.json();
       setFormData(initialFormState);
       const newNotes = await resetNotes();
+      const newTags = await resetTags();
+      const newJoins = await resetJoins();
       setNotes(newNotes);
+      setTags(newTags);
+      setJoins(newJoins);
       navigate("/");
     }
   };
@@ -88,15 +100,15 @@ const NewNoteForm = () => {
   };
 
   const handleAddTagOnBlur = (event) => {
-    const tagsArray = tagNames;
-    if (tagsArray.includes(event.target.value)) {
+    if (tagNames.includes(event.target.value)) {
       return;
     } else if (event.target.value === "") {
       return;
     } else {
+      const tagsArray = [...tagNames];
       tagsArray.push(event.target.value);
+      setTagNames(tagsArray);
     }
-    setTagNames(tagsArray);
     console.log("tag names: ", tagNames);
   };
 
@@ -113,6 +125,8 @@ const NewNoteForm = () => {
       ))}
     </ToggleButtonGroup>
   );
+
+  console.log(formData);
 
   return (
     <form onSubmit={onCreateNote}>

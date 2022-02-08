@@ -10,7 +10,7 @@ function App() {
   // const [context, setContext] = useState({});
 
   const [notes, setNotes] = useState([]);
-  const [filteredNotes, setFilteredNotes] = useState([]);
+  const [filteredNotes, setFilteredNotes] = useState([notes]);
   const [tags, setTags] = useState([]);
   const [joins, setJoins] = useState([]);
   const [lineNumbers, setLineNumbers] = useState(true);
@@ -69,6 +69,34 @@ function App() {
     return newNotes;
   };
 
+  const resetTags = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+
+    const tagsFetch = await fetch("/api/tags", options);
+    const newTags = tagsFetch.json();
+    return newTags;
+  };
+
+  const resetJoins = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+
+    const noteTagsFetch = await fetch("/api/note_tags", options);
+    const newNoteTags = noteTagsFetch.json();
+    return newNoteTags;
+  };
+
   const deleteNote = (noteId) => {
     let index = notes.findIndex((note) => {
       return note.id === noteId;
@@ -89,6 +117,8 @@ function App() {
         filteredNotes,
         setFilteredNotes,
         resetNotes,
+        resetTags,
+        resetJoins,
         deleteNote,
         lineNumbers,
         setLineNumbers,
