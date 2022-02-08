@@ -10,7 +10,7 @@ function App() {
   // const [context, setContext] = useState({});
 
   const [notes, setNotes] = useState([]);
-  const [filteredNotes, setFilteredNotes] = useState([]);
+  const [filteredNotes, setFilteredNotes] = useState([notes]);
   const [tags, setTags] = useState([]);
   const [joins, setJoins] = useState([]);
   const [lineNumbers, setLineNumbers] = useState(true);
@@ -30,6 +30,8 @@ function App() {
   useEffect(() => {
     setFilteredNotes(notes);
   }, [notes]);
+
+  console.log(notes);
 
   useEffect(() => {
     fetch("/api/tags", {

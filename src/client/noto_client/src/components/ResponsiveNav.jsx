@@ -46,9 +46,11 @@ function ResponsiveNav(props) {
   }, [selectedTag]);
 
   const filterNotes = () => {
+    console.log("line 48, nav", notes);
+    console.log("selected tag", selectedTag);
     const filteredNoteIds = [];
     const foundNotes = [];
-    if (selectedTag === null) {
+    if (!selectedTag.id) {
       return notes;
     } else {
       joins.forEach((join) => {
@@ -105,7 +107,7 @@ function ResponsiveNav(props) {
         </ListItem>
         <ListItemButton
           selected={selectedTagIndex === 0}
-          onClick={(event) => handleTagItemClick(event, -1, null)}
+          onClick={(event) => handleTagItemClick(event, -1, {})}
         >
           <ListItemText primary="All" />
         </ListItemButton>

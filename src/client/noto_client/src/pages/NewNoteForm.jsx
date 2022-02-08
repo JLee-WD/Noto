@@ -92,15 +92,15 @@ const NewNoteForm = () => {
   };
 
   const handleAddTagOnBlur = (event) => {
-    const tagsArray = tagNames;
-    if (tagsArray.includes(event.target.value)) {
+    if (tagNames.includes(event.target.value)) {
       return;
     } else if (event.target.value === "") {
       return;
     } else {
+      const tagsArray = [...tagNames];
       tagsArray.push(event.target.value);
+      setTagNames(tagsArray);
     }
-    setTagNames(tagsArray);
     console.log("tag names: ", tagNames);
   };
 

@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 function NotesList() {
   const { filteredNotes } = useContext(Context);
   // setFilteredNotes(notes)
-  console.log( "Filtered notes:", filteredNotes )
+  console.log("Filtered notes:", filteredNotes);
   return (
     <div style={{ width: "100%" }}>
       <Box
