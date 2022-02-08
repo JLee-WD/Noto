@@ -2,9 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import {
   TextField,
   Button,
-  FormGroup,
-  Checkbox,
-  FormControlLabel,
 } from "@mui/material";
 import VisibilityButton from "../components/VisibilityButton";
 import Context from "../context/context";
@@ -12,9 +9,8 @@ import { useNavigate } from "react-router-dom";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import AddIcon from "@mui/icons-material/Add";
-
 import Box from "@mui/material/Box";
-// import CustomizedSnackbars from "../components/NewNoteSuccess";
+import BackButton from "../components/BackButton";
 
 const NewNoteForm = () => {
   const initialFormState = {
@@ -118,8 +114,6 @@ const NewNoteForm = () => {
     </ToggleButtonGroup>
   );
 
-  console.log(formData);
-
   return (
     <form onSubmit={onCreateNote}>
       <div>
@@ -178,9 +172,7 @@ const NewNoteForm = () => {
           sx={{ mx: "1rem", my: "1rem", width: "95%" }}
         />
       </div>
-      <Button type="button" variant="outlined" href="/" sx={{ my: "1rem" }}>
-        Back
-      </Button>
+      <BackButton />
       <Button type="submit" variant="contained" sx={{ mx: "1rem", my: "1rem" }}>
         Add Note
       </Button>

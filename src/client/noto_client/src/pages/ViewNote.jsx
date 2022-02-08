@@ -43,6 +43,7 @@ import SelectLanguage from "../components/SelectLanguage";
 import SelectTheme from "../components/SelectTheme";
 import NumbersButton from "../components/NumbersButton";
 import WrapButton from "../components/WrapButton";
+import BackButton from "../components/BackButton";
 
 const availableThemes = [
   a11yDark,
@@ -92,7 +93,7 @@ const ViewNote = () => {
   const { noteId } = useParams();
   const [note, setNote] = useState(initialNoteState);
   const [language, setLanguage] = useState("plaintext");
-  const [theme, setTheme] = useState("dracula");
+  const [theme, setTheme] = useState(coy);
   const [lineNumbers, setLineNumbers] = useState(true);
   const [wrapLongLines, setWrapLongLines] = useState(false);
   useEffect(() => {
@@ -131,6 +132,7 @@ const ViewNote = () => {
       >
         {note.code}
       </SyntaxHighlighter>
+      <BackButton />
     </Box>
   );
 };

@@ -86,7 +86,7 @@ function ResponsiveNav(props) {
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
       <Divider />
       <List>
-        <Link to="/new">
+        <Link to="/new" style={{ textDecoration: 'none', color: "black" }}>
           <ListItem button>
             <ListItemIcon>
               <AddIcon />
