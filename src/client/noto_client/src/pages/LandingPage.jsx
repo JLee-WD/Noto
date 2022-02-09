@@ -6,7 +6,7 @@ import "../styles/landing.css";
 const LandingPage = () => {
   return (
     <>
-      <div id="background"></div>
+      <div id="landingBackground"></div>
       <Stack direction="column" alignItems="center" spacing={4} sx={{ mt: 20 }}>
         <img src="../docs/img/logo_t.png" width="350" />
         <Typography sx={{ color: "#858585", fontSize: 28 }}>
