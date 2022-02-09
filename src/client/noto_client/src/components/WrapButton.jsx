@@ -1,8 +1,8 @@
 import React from "react";
-import WrapTextOutlinedIcon from '@mui/icons-material/WrapTextOutlined';
+import WrapTextOutlinedIcon from "@mui/icons-material/WrapTextOutlined";
 import { IconButton, Tooltip } from "@mui/material";
 
-const WrapButton = ({ toggleWrapLongLines }) => {
+const WrapButton = ({ wrapLongLines, toggleWrapLongLines }) => {
   return (
     <>
       <Tooltip title="Wrap Lines">
@@ -10,7 +10,11 @@ const WrapButton = ({ toggleWrapLongLines }) => {
           onClick={toggleWrapLongLines}
           sx={{ "&:hover": { color: "dodgerblue" } }}
         >
-          <WrapTextOutlinedIcon />
+          {wrapLongLines ? (
+            <WrapTextOutlinedIcon sx={{ color: "dodgerblue" }} />
+          ) : (
+            <WrapTextOutlinedIcon />
+          )}
         </IconButton>
       </Tooltip>
     </>

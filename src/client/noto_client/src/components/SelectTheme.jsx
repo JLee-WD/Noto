@@ -9,6 +9,7 @@ const SelectTheme = ({ availableThemes, theme, setTheme }) => {
   const handleChange = (event) => {
     setTheme(availableThemes[event.target.value]);
   };
+
   return (
     <Box sx={{ display: "inline-flex" }}>
       <FormControl sx={{ width: 180, marginRight: "1rem" }}>

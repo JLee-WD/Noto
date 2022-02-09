@@ -35,7 +35,9 @@ const EditNote = () => {
       .then((note) => setNote(note))
       .catch((err) => console.log(err));
   }, []);
-  
+
+  console.log(note)
+
   useEffect(() => {
     const tagArray = [];
     tags.forEach((tag) => {
@@ -44,39 +46,6 @@ const EditNote = () => {
     setTagNames(tagArray);
   }, [tags]);
 
-  const handleChange = (event) => {
-    setNote({ ...note, [event.target.name]: event.target.value });
-    console.log(note);
-  };
-
-  const toggleVisibility = () => {
-    setNote({ ...note, public: !note.public });
-    console.log(note);
-  };
-
-  const onEditNote = async () => {
-    const options = {
-      method: "PATCH",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: note.id,
-        title: note.title,
-        description: note.description,
-        code: note.code,
-        public: note.public,
-      }),
-    };
-
-    await fetch(`/api/notes/${noteId}`, options);
-    const newNotes = await resetNotes();
-    console.log(newNotes);
-    setNotes(newNotes);
-    navigate("/");
-  };
-
   const handleTags = (event, newTags) => {
     event.preventDefault();
     setFormData({
@@ -84,6 +53,7 @@ const EditNote = () => {
       tags: newTags,
     });
     setToggleTags(newTags);
+    console.log(newTags)
   };
 
   const handleAddTagOnBlur = (event) => {
@@ -112,6 +82,40 @@ const EditNote = () => {
       ))}
     </ToggleButtonGroup>
   );
+  
+  const handleChange = (event) => {
+    setNote({ ...note, [event.target.name]: event.target.value });
+    console.log(note);
+  };
+
+  const toggleVisibility = () => {
+    setNote({ ...note, public: !note.public });
+    console.log(note);
+  };
+
+  const onEditNote = async () => {
+    const options = {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: note.id,
+        title: note.title,
+        description: note.description,
+        code: note.code,
+        public: note.public,
+        tags: note.tags,
+      }),
+    };
+
+    await fetch(`/api/notes/${noteId}`, options);
+    const newNotes = await resetNotes();
+    console.log(newNotes);
+    setNotes(newNotes);
+    navigate("/");
+  };
 
   return (
     <form onSubmit={onEditNote}>
@@ -128,28 +132,26 @@ const EditNote = () => {
           toggleVisibility={toggleVisibility}
           sx={{ my: "1.5rem" }}
         />
-        </div>
+      </div>
+      <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+        {tagElements}
         <Box
-          sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+          sx={{
+            display: "flex",
+            alignItems: "flex-end",
+            ml: 3,
+            width: "150px",
+          }}
         >
-          {tagElements}
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              ml: 3,
-              width: "150px",
-            }}
-          >
-            <AddIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-            <TextField
-              label="Add tag"
-              onBlur={handleAddTagOnBlur}
-              variant="standard"
-            />
-          </Box>
+          <AddIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+          <TextField
+            label="Add tag"
+            onBlur={handleAddTagOnBlur}
+            variant="standard"
+          />
         </Box>
-        <div>
+      </Box>
+      <div>
         <TextField
           name="description"
           label="Description"
