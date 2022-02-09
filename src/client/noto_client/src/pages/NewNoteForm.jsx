@@ -15,7 +15,7 @@ const NewNoteForm = () => {
     description: "",
     code: "",
     public: false,
-    tags: null,
+    tags: [],
   };
 
   const {
@@ -55,6 +55,8 @@ const NewNoteForm = () => {
       tags: newTags,
     });
     setToggleTags(newTags);
+    console.log(newTags)
+
   };
 
   const onCreateNote = async (event) => {

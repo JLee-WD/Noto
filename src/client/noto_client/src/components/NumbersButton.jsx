@@ -2,7 +2,7 @@ import React from "react";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import { IconButton, Tooltip } from "@mui/material";
 
-const NumbersButton = ({ toggleLineNumbers }) => {
+const NumbersButton = ({ lineNumbers, toggleLineNumbers }) => {
   return (
     <>
       <Tooltip title="Toggle Line Numbers">
@@ -10,7 +10,11 @@ const NumbersButton = ({ toggleLineNumbers }) => {
           onClick={toggleLineNumbers}
           sx={{ "&:hover": { color: "dodgerblue" } }}
         >
-          <FormatListNumberedIcon />
+          {lineNumbers ? (
+            <FormatListNumberedIcon sx={{ color: "dodgerblue" }} />
+          ) : (
+            <FormatListNumberedIcon />
+          )}
         </IconButton>
       </Tooltip>
     </>
