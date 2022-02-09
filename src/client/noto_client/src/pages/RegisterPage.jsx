@@ -38,7 +38,7 @@ const RegisterPage = () => {
         />
         <Stack direction="row">
           <CustomButton
-            path="/register"
+            // path="/register"
             text="Register"
             variant="contained"
             size="large"
