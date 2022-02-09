@@ -1,9 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Context from "./context/context";
 import { useState, useEffect } from "react";
+import Global from "./styles/global";
 import NotesIndex from "./pages/NotesIndex";
 import NewNoteForm from "./pages/NewNoteForm";
 import ViewNote from "./pages/ViewNote";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 import EditNote from "./pages/EditNote";
 
 function App() {
@@ -106,33 +110,39 @@ function App() {
   };
 
   return (
-    <Context.Provider
-      value={{
-        tags,
-        setTags,
-        notes,
-        setNotes,
-        joins,
-        setJoins,
-        filteredNotes,
-        setFilteredNotes,
-        resetNotes,
-        resetTags,
-        resetJoins,
-        deleteNote,
-        lineNumbers,
-        setLineNumbers,
-      }}
-    >
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<NotesIndex />} />
-          <Route path="/new" element={<NewNoteForm />} />
-          <Route path="/view/:noteId" element={<ViewNote />} />
-          <Route path="/edit/:noteId" element={<EditNote />} />
-        </Routes>
-      </BrowserRouter>
-    </Context.Provider>
+    <>
+      <Global />
+      <Context.Provider
+        value={{
+          tags,
+          setTags,
+          notes,
+          setNotes,
+          joins,
+          setJoins,
+          filteredNotes,
+          setFilteredNotes,
+          resetNotes,
+          resetTags,
+          resetJoins,
+          deleteNote,
+          lineNumbers,
+          setLineNumbers,
+        }}
+      >
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<NotesIndex />} />
+            <Route path="/new" element={<NewNoteForm />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/landing" element={<LandingPage />} />
+            <Route path="/view/:noteId" element={<ViewNote />} />
+            <Route path="/edit/:noteId" element={<EditNote />} />
+          </Routes>
+        </BrowserRouter>
+      </Context.Provider>
+    </>
   );
 }
 
