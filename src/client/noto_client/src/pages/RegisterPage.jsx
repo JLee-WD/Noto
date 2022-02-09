@@ -93,7 +93,7 @@ const RegisterPage = () => {
             label={label}
             variant="filled"
             onBlur={handleOnBlur}
-            helperText="Incorrect entry."
+            helperText="Oops! Invalid input"
             name={name}
           />
         </>
@@ -125,7 +125,7 @@ const RegisterPage = () => {
           label="Password"
           variant="filled"
           onBlur={handleOnBlur}
-          helperText="Password too short, enter more than 8 characters"
+          helperText="Please enter more than 8 characters"
           type="password"
           name="password"
         />
