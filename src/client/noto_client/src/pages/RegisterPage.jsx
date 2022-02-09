@@ -34,6 +34,7 @@ const RegisterPage = () => {
           sx={{ width: 300 }}
           id="outlined-basic"
           label="Password"
+          type="password"
           variant="filled"
         />
         <Stack direction="row">
