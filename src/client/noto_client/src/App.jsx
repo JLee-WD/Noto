@@ -9,6 +9,7 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import EditNote from "./pages/EditNote";
+import "./styles/app.css";
 
 function App() {
   // const [context, setContext] = useState({});
