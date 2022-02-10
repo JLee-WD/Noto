@@ -14,6 +14,8 @@ import "./styles/app.css";
 function App() {
   // const [context, setContext] = useState({});
 
+  const [user, setUser] = useState(null);
+  const [jwt, setJwt] = useState("");
   const [notes, setNotes] = useState([]);
   const [filteredNotes, setFilteredNotes] = useState([notes]);
   const [tags, setTags] = useState([]);
@@ -115,6 +117,8 @@ function App() {
       <Global />
       <Context.Provider
         value={{
+          user,
+          setUser,
           tags,
           setTags,
           notes,
@@ -129,6 +133,8 @@ function App() {
           deleteNote,
           lineNumbers,
           setLineNumbers,
+          jwt,
+          setJwt,
         }}
       >
         <BrowserRouter>
