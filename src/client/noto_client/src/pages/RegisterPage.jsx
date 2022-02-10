@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import CustomButton from "../components/CustomButton";
+import NavButton from "../components/NavButton";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
@@ -158,7 +158,7 @@ const RegisterPage = () => {
         {inputField("Email", "email", emailValid)}
         {passwordInputField(passwordValid)}
         <Stack direction="row">
-          <CustomButton
+          <NavButton
             // path="/register"
             text="Register"
             variant="contained"
