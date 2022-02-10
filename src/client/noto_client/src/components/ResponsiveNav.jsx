@@ -140,17 +140,15 @@ function ResponsiveNav(props) {
         >
           <ListItemText primary="All" />
         </ListItemButton>
-        {["Group1", "Group2", "Group3", "Group4", "Group5", "Group6"].map(
-          (text, index) => (
-            <ListItemButton
-              key={index}
-              selected={selectedGroupIndex === index + 1}
-              onClick={(event) => handleGroupItemClick(event, index)}
-            >
-              <ListItemText primary={text} />
-            </ListItemButton>
-          )
-        )}
+        {["Group1", "Group2"].map((text, index) => (
+          <ListItemButton
+            key={index}
+            selected={selectedGroupIndex === index + 1}
+            onClick={(event) => handleGroupItemClick(event, index)}
+          >
+            <ListItemText primary={text} />
+          </ListItemButton>
+        ))}
       </List>
     </div>
   );
