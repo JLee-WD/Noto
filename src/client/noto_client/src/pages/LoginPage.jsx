@@ -25,7 +25,7 @@ const LoginPage = () => {
         />
         <Stack direction="row">
           <CustomButton
-            path="/register"
+            // path="/register"
             text="Login"
             variant="contained"
             size="large"
