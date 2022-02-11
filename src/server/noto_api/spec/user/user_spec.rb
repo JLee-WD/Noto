@@ -12,7 +12,7 @@ RSpec.describe User, type: :model do
         expect(user).to respond_to(:encrypted_password)
     end
 
-    it "should respond to titreset_password_tokenle" do
+    it "should respond to reset_password_token" do
         user = User.new
         expect(user).to respond_to(:reset_password_token)
     end
