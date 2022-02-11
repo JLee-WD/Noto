@@ -1,5 +1,4 @@
 class NotesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_note_by_id, only: [:show, :update]
   before_action :set_note_tags_and_join, only: [:destroy]
   before_action :read_notes, only: [:index, :destroy]
@@ -13,7 +12,7 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.create(title: params[:title],description: params[:description], code: params[:code], public: params[:public])
+    @note = Note.create(title: params[:title],description: params[:description], code: params[:code], public: params[:public], user_id: params[:user_id])
     tagParams = params[:tags]
     @tags = Tag.all
     existingTagNames = []
@@ -69,6 +68,6 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
   def note_params
-    params.require(:note).permit(:id, :title, :description, :code, :public,:tags)
+    params.require(:note).permit(:id, :title, :description, :code, :public,:tags, :user_id)
   end
 end

@@ -36,15 +36,32 @@ const LoginPage = () => {
     };
     const loginResponse = await fetch("/api/users/sign_in", options);
     const loginJson = await loginResponse.json();
-    console.log(loginResponse);
     const newJwt = loginResponse.headers.get("authorization");
-    setJwt(newJwt);
     if (loginJson.message === "You are logged in.") {
-      setUser(true);
+      await getUser(event.target.email.value, newJwt);
+      await setJwt(newJwt);
       navigate("/");
     }
   };
-  console.log("notes login", notes);
+
+  const getUser = async (email, newJwt) => {
+    const options = {
+      method: "POST",
+      withCredentials: true,
+      credentials: "include",
+      headers: {
+        Authorization: newJwt,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+      }),
+    };
+    const userResponse = await fetch("/api/current_users", options);
+    const userJson = await userResponse.json();
+    setUser(userJson);
+  };
 
   const handleChange = (event) => {
     setFormData({
@@ -52,8 +69,6 @@ const LoginPage = () => {
       [event.target.name]: event.target.value,
     });
   };
-
-  console.log(formData);
 
   return (
     <>

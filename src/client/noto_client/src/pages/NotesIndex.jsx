@@ -6,30 +6,22 @@ import Context from "../context/context";
 
 const NotesIndex = () => {
   const navigate = useNavigate();
-  const { jwt, setNotes } = useContext(Context);
+  const { jwt, setNotes, user, notes, resetNotes } = useContext(Context);
+
   useEffect(async () => {
-    if (!jwt) {
+    console.log(user);
+    if (!user) {
       navigate("/landing");
     } else {
-      await loadNotes(jwt);
+      await loadNotes(jwt, user.id);
     }
   }, []);
 
-  const loadNotes = async (newJwt) => {
-    const options = {
-      method: "GET",
-      withCredentials: true,
-      credentials: "include",
-      headers: {
-        Authorization: newJwt,
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    };
-    const response = await fetch("/api/notes", options);
-    const responseJson = await response.json();
-    console.log("resonsejson", responseJson);
-    setNotes(responseJson);
+  console.log("notes", notes);
+
+  const loadNotes = async () => {
+    const newNotes = await resetNotes();
+    setNotes(newNotes);
   };
 
   return (

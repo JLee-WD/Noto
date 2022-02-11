@@ -12,8 +12,6 @@ import EditNote from "./pages/EditNote";
 import "./styles/app.css";
 
 function App() {
-  // const [context, setContext] = useState({});
-
   const [user, setUser] = useState(null);
   const [jwt, setJwt] = useState(null);
   const [notes, setNotes] = useState([]);
@@ -21,23 +19,6 @@ function App() {
   const [tags, setTags] = useState([]);
   const [joins, setJoins] = useState([]);
   const [lineNumbers, setLineNumbers] = useState(true);
-
-  // useEffect(() => {
-  //   console.log("fetch", jwt);
-  //   fetch("/api/notes", {
-  //     method: "GET",
-  //     withCredentials: true,
-  //     credentials: "include",
-  //     headers: {
-  //       Authorization: jwt,
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((notes) => setNotes(notes))
-  //     .catch((err) => console.log(err));
-  // }, [jwt]);
 
   useEffect(() => {
     setFilteredNotes(notes);
@@ -86,9 +67,8 @@ function App() {
         Accept: "application/json",
       },
     };
-
-    const notesFetch = await fetch("/api/notes", options);
-    const newNotes = notesFetch.json();
+    const response = await fetch(`/api/user_notes/${user.id}`, options);
+    const newNotes = response.json();
     return newNotes;
   };
 

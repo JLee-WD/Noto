@@ -1,22 +1,14 @@
 import React, { useContext } from "react";
 import Note from "./Note";
 import Context from "../context/context";
-import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 
 function NotesList() {
   const { filteredNotes } = useContext(Context);
-  // setFilteredNotes(notes)
   return (
-    <div style={{ width: "80%", position: "absolute", right: 100 }}>
-      <Box
-        sx={{
-          display: "grid",
-          gap: 1,
-          gridTemplateColumns: "repeat(5, 1fr)",
-          justifyContent: "center",
-        }}
-      >
-        {filteredNotes.map((note, index) => (
+    <Grid container spacing={2}>
+      {filteredNotes.map((note, index) => (
+        <Grid item>
           <Note
             key={index}
             title={note.title}
@@ -25,9 +17,9 @@ function NotesList() {
             isPublic={note.public}
             noteId={note.id}
           />
-        ))}
-      </Box>
-    </div>
+        </Grid>
+      ))}
+    </Grid>
   );
 }
 export default NotesList;
