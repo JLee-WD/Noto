@@ -16,8 +16,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def register_failed
     render json: { message: "Something went wrong." }
   end
-
-  def user_params
-    params.require(:user).permit(:firstName, :lastName, :email, :password)
-  end
 end
