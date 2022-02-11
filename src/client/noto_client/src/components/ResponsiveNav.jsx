@@ -28,7 +28,8 @@ const drawerWidth = 240;
 
 function ResponsiveNav(props) {
   const navigate = useNavigate();
-  const { tags, joins, notes, setFilteredNotes, user } = useContext(Context);
+  const { tags, joins, notes, setFilteredNotes, filteredNotes, user } =
+    useContext(Context);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -36,12 +37,29 @@ function ResponsiveNav(props) {
   const [selectedTagIndex, setSelectedTagIndex] = useState(0);
   const [selectedGroupIndex, setSelectedGroupIndex] = useState(0);
   const [selectedTag, setSelectedTag] = useState({});
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     if (!user) {
       navigate("/landing");
     }
   }, []);
+
+  useEffect(() => {
+    if (search.length === 0) {
+      setFilteredNotes(filterNotes());
+    } else {
+      const searchedNotes = filteredNotes.filter((note) =>
+        note.title.includes(search)
+      );
+      setFilteredNotes(searchedNotes);
+    }
+  }, [search]);
+
+  const handleSearchOnChange = (event) => {
+    console.log(event.target.value);
+    setSearch(event.target.value);
+  };
 
   const handleTagItemClick = (event, index, tag) => {
     event.preventDefault();
@@ -106,6 +124,7 @@ function ResponsiveNav(props) {
         id="outlined-basic"
         label="Search"
         variant="outlined"
+        onChange={handleSearchOnChange}
       />
       <List>
         <Link to="/new" style={{ textDecoration: "none", color: "black" }}>
