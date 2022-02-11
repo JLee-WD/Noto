@@ -18,9 +18,10 @@ import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import TagIcon from "@mui/icons-material/Tag";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
 import Context from "../context/context";
+import LogoutButton from "../components/LogoutButton";
 
 const drawerWidth = 240;
 
@@ -86,7 +87,7 @@ function ResponsiveNav(props) {
         <img src="../docs/img/logo_t.png" width="160" />
       </Box>
       <TextField
-        sx={{ mt: 6 }}
+        sx={{ mt: 6, ml: 1 }}
         id="outlined-basic"
         label="Search"
         variant="outlined"
@@ -140,18 +141,17 @@ function ResponsiveNav(props) {
         >
           <ListItemText primary="All" />
         </ListItemButton>
-        {["Group1", "Group2", "Group3", "Group4", "Group5", "Group6"].map(
-          (text, index) => (
-            <ListItemButton
-              key={index}
-              selected={selectedGroupIndex === index + 1}
-              onClick={(event) => handleGroupItemClick(event, index)}
-            >
-              <ListItemText primary={text} />
-            </ListItemButton>
-          )
-        )}
+        {["Group1", "Group2"].map((text, index) => (
+          <ListItemButton
+            key={index}
+            selected={selectedGroupIndex === index + 1}
+            onClick={(event) => handleGroupItemClick(event, index)}
+          >
+            <ListItemText primary={text} />
+          </ListItemButton>
+        ))}
       </List>
+      <LogoutButton />
     </div>
   );
 
@@ -185,14 +185,13 @@ function ResponsiveNav(props) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", sm: "none" },
