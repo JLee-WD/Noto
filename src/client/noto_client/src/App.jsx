@@ -100,7 +100,6 @@ function App() {
         Accept: "application/json",
       },
     };
-
     const noteTagsFetch = await fetch("/api/note_tags", options);
     const newNoteTags = noteTagsFetch.json();
     return newNoteTags;

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :note_tags
   resources :current_users
   resources :user_notes
+  resources :get_tags
 
   devise_for :users, controllers: {
       sessions: 'users/sessions',

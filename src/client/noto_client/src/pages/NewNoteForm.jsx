@@ -10,6 +10,13 @@ import Box from "@mui/material/Box";
 import BackButton from "../components/BackButton";
 
 const NewNoteForm = () => {
+  useEffect(() => {
+    console.log(user);
+    if (!user) {
+      navigate("/landing");
+    }
+  }, []);
+
   const initialFormState = {
     title: "",
     description: "",

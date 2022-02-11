@@ -19,7 +19,7 @@ const EditNote = () => {
   };
 
   const [formData, setFormData] = useState(initialFormState);
-  const { tags, setNotes, resetNotes, jwt } = useContext(Context);
+  const { tags, setNotes, resetNotes, jwt, user } = useContext(Context);
   const [toggleTags, setToggleTags] = useState([]);
   const [tagNames, setTagNames] = useState([]);
 

@@ -174,7 +174,7 @@ const RegisterPage = () => {
     setJwt(newJwt);
     if (loginJson.message === "Signed up sucessfully.") {
       setUser(true);
-      navigate("/");
+      navigate("/login");
     }
   };
 

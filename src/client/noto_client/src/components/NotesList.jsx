@@ -8,7 +8,7 @@ function NotesList() {
   return (
     <Grid container spacing={2}>
       {filteredNotes.map((note, index) => (
-        <Grid item>
+        <Grid key={index} item>
           <Note
             key={index}
             title={note.title}
