@@ -38,6 +38,17 @@ class NotesController < ApplicationController
 
   def update
     @note.update(title: params[:title],description: params[:description], code: params[:code], public: params[:public])
+    tagParams = params[:tags]
+    @tags = Tag.all
+    tagParams.each do |tag|
+      if (@tags.find_by(title: tag) === nil)
+        @note.tags.create(title: tag)
+      elsif (!@note.tags.find_by(title: tag))
+        existingTag = Tag.find_by(title: tag)
+        NoteTag.create(note_id: @note.id, tag_id: existingTag.id)
+      end 
+    end
+
     render json: @note
   end
 
@@ -68,6 +79,6 @@ class NotesController < ApplicationController
     @notes = Note.all
   end
   def note_params
-    params.require(:note).permit(:id, :title, :description, :code, :public,:tags, :user_id)
+    params.require(:note).permit(:id, :title, :description, :code, :public, :tags, :user_id)
   end
 end

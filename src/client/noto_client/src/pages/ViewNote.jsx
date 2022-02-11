@@ -99,9 +99,10 @@ const ViewNote = () => {
     public: "",
   };
 
-  const { jwt, joins, tags } = useContext(Context);
+  const { jwt, joins } = useContext(Context);
   const { noteId } = useParams();
   const [note, setNote] = useState(initialNoteState);
+  const [noteTags, setNoteTags] = useState([]);
   const [language, setLanguage] = useState("plaintext");
   const [theme, setTheme] = useState(coy);
   const [lineNumbers, setLineNumbers] = useState(true);
@@ -123,6 +124,22 @@ const ViewNote = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    fetch(`/api/get_tags/${noteId}`, {
+      method: "GET",
+      withCredentials: true,
+      credentials: "include",
+      headers: {
+        Authorization: jwt,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((tags) => setNoteTags(tags))
+      .catch((err) => console.log(err));
+  }, []);
+
   const toggleLineNumbers = () => {
     setLineNumbers(!lineNumbers);
     console.log("line numbers:", lineNumbers);
@@ -132,19 +149,6 @@ const ViewNote = () => {
     setWrapLongLines(!wrapLongLines);
     console.log("wrap lines:", wrapLongLines);
   };
-
-  const noteJoins = [];
-  joins.forEach((join) => {
-    if (join.note_id === note.id) {
-      noteJoins.push(join);
-    }
-  });
-
-  const noteTags = [];
-  noteJoins.forEach((join) => {
-    const newTag = tags.find((tag) => join.tag_id === tag.id);
-    noteTags.push(newTag);
-  });
 
   const tagList = (
     <ButtonGroup variant="text" aria-label="outlined primary button group">

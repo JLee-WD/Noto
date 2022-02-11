@@ -18,6 +18,7 @@ import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import TagIcon from "@mui/icons-material/Tag";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import Context from "../context/context";
@@ -26,6 +27,7 @@ import LogoutButton from "../components/LogoutButton";
 const drawerWidth = 240;
 
 function ResponsiveNav(props) {
+  const navigate = useNavigate();
   const { tags, joins, notes, setFilteredNotes, user } = useContext(Context);
 
   const { window } = props;
@@ -34,6 +36,12 @@ function ResponsiveNav(props) {
   const [selectedTagIndex, setSelectedTagIndex] = useState(0);
   const [selectedGroupIndex, setSelectedGroupIndex] = useState(0);
   const [selectedTag, setSelectedTag] = useState({});
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/landing");
+    }
+  }, []);
 
   const handleTagItemClick = (event, index, tag) => {
     event.preventDefault();
@@ -85,9 +93,14 @@ function ResponsiveNav(props) {
       <Box alignItems="center" sx={{ ml: 3 }}>
         <img src="../docs/img/logo_t.png" width="160" />
       </Box>
-      <Typography align="center" variant="h6" sx={{ mt: 2 }}>
-        G'Day {user.first_name}!
-      </Typography>
+      {user ? (
+        <Typography align="center" variant="h6" sx={{ mt: 2 }}>
+          G'Day {user.first_name}!
+        </Typography>
+      ) : (
+        <></>
+      )}
+
       <TextField
         sx={{ mt: 4, ml: 1 }}
         id="outlined-basic"
