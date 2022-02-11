@@ -19,8 +19,9 @@ const EditNote = () => {
   };
 
   const [formData, setFormData] = useState(initialFormState);
-  const { tags, setNotes, resetNotes, jwt, user } = useContext(Context);
-  const [toggleTags, setToggleTags] = useState([]);
+  const { tags, setNotes, resetNotes, jwt, user, setNoteTags } =
+    useContext(Context);
+  const [toggleTags, setToggleTags] = useState(formData.tags);
   const [tagNames, setTagNames] = useState([]);
 
   const navigate = useNavigate();
@@ -39,6 +40,26 @@ const EditNote = () => {
       .then((response) => response.json())
       .then((note) => setFormData(note))
       .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(async () => {
+    const options = {
+      method: "GET",
+      withCredentials: true,
+      credentials: "include",
+      headers: {
+        Authorization: jwt,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+    const tagsResponse = await fetch(`/api/get_tags/${noteId}`, options);
+    const tagsJson = await tagsResponse.json();
+    const note_tags = [];
+    tagsJson.forEach((tag) => {
+      note_tags.push(tag.title);
+    });
+    setToggleTags(note_tags);
   }, []);
 
   useEffect(() => {
@@ -68,7 +89,6 @@ const EditNote = () => {
       tagsArray.push(event.target.value);
       setTagNames(tagsArray);
     }
-    console.log("tag names: ", tagNames);
   };
 
   const tagElements = (
@@ -121,8 +141,6 @@ const EditNote = () => {
     setNotes(updatedNotes);
     navigate("/");
   };
-
-  console.log(formData);
 
   return (
     <form>
