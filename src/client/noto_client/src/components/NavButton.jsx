@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-const CustomButton = (props) => {
+const NavButton = (props) => {
   const { path, text, variant, size } = props;
   const navigate = useNavigate();
   console.log(path, text, variant);
@@ -20,4 +20,4 @@ const CustomButton = (props) => {
   );
 };
 
-export default CustomButton;
+export default NavButton;
