@@ -27,6 +27,7 @@ const NewNoteForm = () => {
     resetJoins,
     resetTags,
     jwt,
+    user,
   } = useContext(Context);
   const [formData, setFormData] = useState(initialFormState);
   const [toggleTags, setToggleTags] = useState([]);
@@ -74,8 +75,9 @@ const NewNoteForm = () => {
         title: event.target.title.value,
         description: event.target.description.value,
         code: event.target.code.value,
-        public: formData.public,
+        public: true,
         tags: formData.tags,
+        user_id: user.id,
       }),
     };
     if (

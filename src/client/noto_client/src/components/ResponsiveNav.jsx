@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -15,6 +14,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import TagIcon from "@mui/icons-material/Tag";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
@@ -26,8 +26,7 @@ import LogoutButton from "../components/LogoutButton";
 const drawerWidth = 240;
 
 function ResponsiveNav(props) {
-  const { tags, joins, notes, setNotes, filteredNotes, setFilteredNotes } =
-    useContext(Context);
+  const { tags, joins, notes, setFilteredNotes, user } = useContext(Context);
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -86,8 +85,11 @@ function ResponsiveNav(props) {
       <Box alignItems="center" sx={{ ml: 3 }}>
         <img src="../docs/img/logo_t.png" width="160" />
       </Box>
+      <Typography align="center" variant="h6" sx={{ mt: 2 }}>
+        G'Day {user.first_name}!
+      </Typography>
       <TextField
-        sx={{ mt: 6, ml: 1 }}
+        sx={{ mt: 4, ml: 1 }}
         id="outlined-basic"
         label="Search"
         variant="outlined"

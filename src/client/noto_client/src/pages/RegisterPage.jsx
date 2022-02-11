@@ -6,7 +6,6 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Context from "../context/context";
 import "../styles/login_register.css";
-
 import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {

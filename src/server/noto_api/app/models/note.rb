@@ -1,4 +1,5 @@
 class Note < ApplicationRecord
+  has_one :user
   has_many :note_tags
   has_many :tags, through: :note_tags
   validates :title, presence: true
