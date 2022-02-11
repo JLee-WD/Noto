@@ -84,8 +84,6 @@ GEM
     dry-core (0.7.1)
       concurrent-ruby (~> 1.0)
     erubi (1.10.0)
-    factory_bot (6.2.0)
-      activesupport (>= 5.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     ffi (1.15.5)
@@ -210,7 +208,6 @@ DEPENDENCIES
   byebug
   devise
   devise-jwt
-  factory_bot
   faker
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
