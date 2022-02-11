@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'faker'
 
 RSpec.describe Note, type: :model do
   
@@ -27,7 +28,7 @@ RSpec.describe Note, type: :model do
     expect(note).to respond_to(:code)
   end
 
-  it "should respond to c" do
+  it "should respond to public" do
     note = Note.new
     expect(note).to respond_to(:public)
   end
@@ -68,8 +69,48 @@ RSpec.describe Note, type: :model do
     expect(note.public).to eq(false)
   end
 
-  it "should not allow assigning string to public" do
-    expect((Note.create(public: "true").valid?)).to eq(false)
+  it "can't create an empty note" do
+    expect((Note.create().valid?)).to eq(false)
   end
-  
+
+  it "should be able to create a new note" do
+    title = Faker::Book.title
+    description = Faker::Book.genre
+    code = Faker::Lorem.paragraph
+    public = true
+    expect((Note.create(title: title, description: description, code: code, public: public).valid?)).to eq(true)
+  end
+
+  it "should be able to create a new note and be recorded in the database" do
+    title = Faker::Book.title
+    description = Faker::Book.genre
+    code = Faker::Lorem.paragraph
+    public = true
+    expect { Note.create(title: title, description: description, code: code, public: public) }.to change { Note.count }.by(1)
+  end
+
+  context "when invalid parameters" do
+    subject { Note.new }
+    let(:note) { Note.new }
+
+    it "should be not valid" do
+      expect(note).to_not be_valid # valid?
+      expect(note.errors.full_messages).to include "Title can't be blank"
+    end
+
+    it "should be not valid" do
+      expect(note).to_not be_valid # valid?
+      expect(note.errors.full_messages).to include "Description can't be blank"
+    end
+
+    it "should be not valid" do
+      expect(note).to_not be_valid # valid?
+      expect(note.errors.full_messages).to include "Code can't be blank"
+    end
+
+    it "should be not valid" do
+      expect(note).to_not be_valid # valid?
+      expect(note.errors.full_messages).to include "Public can't be blank"
+    end
+  end
 end
