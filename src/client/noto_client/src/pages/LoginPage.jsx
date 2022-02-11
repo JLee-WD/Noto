@@ -22,7 +22,7 @@ const LoginPage = () => {
   const onLoginSubmit = async (event) => {
     event.preventDefault();
     const options = {
-      method: "POST",
+      method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -44,7 +44,6 @@ const LoginPage = () => {
       navigate("/");
     }
   };
-  console.log("notes login", notes);
 
   const handleChange = (event) => {
     setFormData({

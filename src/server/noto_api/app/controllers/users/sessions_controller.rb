@@ -22,8 +22,6 @@ class Users::SessionsController < Devise::SessionsController
     render json: { message: "Hmm nothing happened."}, status: :unauthorized
   end
 
-  private
-
   def user_params
     params.require(:user).permit(:email, :password)
   end

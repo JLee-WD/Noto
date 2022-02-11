@@ -1,11 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import NavButton from "../components/NavButton";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Context from "../context/context";
 import "../styles/login_register.css";
 
+import { useNavigate } from "react-router-dom";
+
 const RegisterPage = () => {
+  const navigate = useNavigate();
+  const { setUser, setJwt, notes } = useContext(Context);
   const initialFormState = {
     firstName: "",
     lastName: "",
@@ -23,7 +29,6 @@ const RegisterPage = () => {
   useEffect(() => {}, [lastNameValid]);
 
   const handleOnBlur = (e) => {
-    // console.log("name", e.target.name);
     if (e.target.name === "firstName") {
       if (!e.target.value.match(/^[a-zA-Z]+$/)) {
         setFirstNameValid(false);
@@ -156,17 +161,19 @@ const RegisterPage = () => {
       },
       body: JSON.stringify({
         user: {
+          firstName: event.target.firstName.value,
+          lastName: event.target.lastName.value,
           email: event.target.email.value,
           password: event.target.password.value,
         },
       }),
     };
-    const loginResponse = await fetch("/api/users/sign_in", options);
+    const loginResponse = await fetch("/api/users", options);
     const loginJson = await loginResponse.json();
-    console.log(loginResponse);
+    console.log(loginJson);
     const newJwt = loginResponse.headers.get("authorization");
     setJwt(newJwt);
-    if (loginJson.message === "You are logged in.") {
+    if (loginJson.message === "Signed up sucessfully.") {
       setUser(true);
       navigate("/");
     }
@@ -176,7 +183,7 @@ const RegisterPage = () => {
   return (
     <>
       <div id="loginRegisterBackground"></div>
-      <form>
+      <form onSubmit={onRegisterSubmit}>
         <Stack
           direction="column"
           alignItems="center"
@@ -191,12 +198,14 @@ const RegisterPage = () => {
           {inputField("Email", "email", emailValid)}
           {passwordInputField(passwordValid)}
           <Stack direction="row">
-            <NavButton
-              // path="/register"
-              text="Register"
+            <Button
               variant="contained"
+              type="submit"
+              sx={{ mx: "1rem", my: "1rem" }}
               size="large"
-            />
+            >
+              Register
+            </Button>
           </Stack>
         </Stack>
       </form>
