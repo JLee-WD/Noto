@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_note_by_id, only: [:show, :update]
   before_action :set_note_tags_and_join, only: [:destroy]
   before_action :read_notes, only: [:index, :destroy]

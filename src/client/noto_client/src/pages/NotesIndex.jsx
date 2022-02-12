@@ -9,7 +9,6 @@ const NotesIndex = () => {
   const { jwt, setNotes, user, notes, resetNotes } = useContext(Context);
 
   useEffect(async () => {
-    console.log(user);
     if (!user) {
       navigate("/landing");
     } else {
