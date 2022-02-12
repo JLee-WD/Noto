@@ -17,6 +17,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import AddIcon from "@mui/icons-material/Add";
 import TagIcon from "@mui/icons-material/Tag";
+import Container from "@mui/material/Container";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
 import { useNavigate } from "react-router-dom";
 
@@ -109,7 +110,7 @@ function ResponsiveNav(props) {
     <div>
       <Toolbar />
       <Box alignItems="center" sx={{ ml: 3 }}>
-        <img src="../docs/img/logo_t.png" width="160" />
+        <img src="/logo_t.png" width="160" />
       </Box>
       {user ? (
         <Typography align="center" variant="h6" sx={{ mt: 2 }}>
@@ -118,14 +119,15 @@ function ResponsiveNav(props) {
       ) : (
         <></>
       )}
-
-      <TextField
-        sx={{ mt: 4, ml: 1 }}
-        id="outlined-basic"
-        label="Search"
-        variant="outlined"
-        onChange={handleSearchOnChange}
-      />
+      <Container alignItems="center">
+        <TextField
+          sx={{ mt: 4 }}
+          id="outlined-basic"
+          label="Search"
+          variant="outlined"
+          onChange={handleSearchOnChange}
+        />
+      </Container>
       <List>
         <Link to="/new" style={{ textDecoration: "none", color: "black" }}>
           <ListItem button>
