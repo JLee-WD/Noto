@@ -14,7 +14,7 @@ const EditNote = () => {
     title: "",
     description: "",
     code: "",
-    public: false,
+    public: "",
     tags: [],
   };
 
@@ -114,6 +114,7 @@ const EditNote = () => {
 
   const toggleVisibility = () => {
     setFormData({ ...formData, public: !formData.public });
+    console.log(formData.public)
   };
 
   const onEditNote = async () => {
