@@ -1,5 +1,4 @@
 class NotesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_note_by_id, only: [:show, :update]
   before_action :set_note_tags_and_join, only: [:destroy]
   before_action :read_notes, only: [:index, :destroy]
@@ -41,6 +40,22 @@ class NotesController < ApplicationController
     @note.update(title: params[:title],description: params[:description], code: params[:code], public: params[:public])
     tagParams = params[:tags]
     @tags = Tag.all
+
+    existingTags = []
+    @note.tags.each do |tag|
+      existingTags << tag.title
+    end
+
+    # If user removes all tags
+    if (tagParams.empty? && @note.tags.count > 0)
+      @note.tags.delete_all
+      #If user removes one or more tags)
+    elsif (existingTags - tagParams).count > 0
+      (existingTags - tagParams).each do |tag|
+        @tags.find_by(title: tag).notes.delete(@note.id)
+    end 
+  end
+
     tagParams.each do |tag|
       if (@tags.find_by(title: tag) === nil)
         @note.tags.create(title: tag)

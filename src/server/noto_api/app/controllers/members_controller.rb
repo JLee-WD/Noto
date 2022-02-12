@@ -1,5 +1,3 @@
-require_relative 'spec/support/auth_helper.rb'
-
 class MembersController < ApplicationController
   before_action :authenticate_user!
 
