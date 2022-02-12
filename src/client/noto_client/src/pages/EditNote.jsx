@@ -19,7 +19,7 @@ const EditNote = () => {
   };
 
   const [formData, setFormData] = useState(initialFormState);
-  const { tags, setNotes, resetNotes, jwt, user, setNoteTags } =
+  const { tags, setTags, resetTags, setJoins, resetJoins, setNotes, resetNotes, jwt, user, setNoteTags } =
     useContext(Context);
   const [toggleTags, setToggleTags] = useState(formData.tags);
   const [tagNames, setTagNames] = useState([]);
@@ -137,8 +137,12 @@ const EditNote = () => {
     };
 
     await fetch(`/api/notes/${noteId}`, options);
-    const updatedNotes = await resetNotes();
-    setNotes(updatedNotes);
+    const newNotes = await resetNotes();
+    const newTags = await resetTags();
+    const newJoins = await resetJoins();
+    setNotes(newNotes);
+    setTags(newTags);
+    setJoins(newJoins);
     navigate("/");
   };
 
