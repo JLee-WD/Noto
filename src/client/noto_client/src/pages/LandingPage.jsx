@@ -8,7 +8,7 @@ const LandingPage = () => {
     <>
       <div id="landingBackground"></div>
       <Stack direction="column" alignItems="center" spacing={4} sx={{ mt: 30 }}>
-        <img src="../docs/img/logo_t.png" width="350" />
+        <img src="/logo_t.png" width="350" />
         <Typography sx={{ color: "#858585", fontSize: 28 }}>
           Create, Collaborate, Share
         </Typography>
