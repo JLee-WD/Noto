@@ -109,13 +109,7 @@ function ResponsiveNav(props) {
     <div>
       <Toolbar />
       <Box alignItems="center" sx={{ ml: 3 }}>
-        <img src="../../docs/img/logo_t.png" width="160" />
-        <img src={"../../docs/img/logo_t.png"} width="160" />
         <img src="/logo_t.png" width="160" />
-        <img src={"/logo_t.png"} width="160" />
-        <img src="../docs/img/logo_t.png" width="160" />
-        {/* <img src="/logo_t.png" width="160" /> */}
-        <img src={"../docs/img/logo_t.png"} width="160" />
       </Box>
       {user ? (
         <Typography align="center" variant="h6" sx={{ mt: 2 }}>
