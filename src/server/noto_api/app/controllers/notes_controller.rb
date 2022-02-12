@@ -38,6 +38,7 @@ class NotesController < ApplicationController
 
   def update
     @note.update(title: params[:title],description: params[:description], code: params[:code], public: params[:public])
+    @note.update_attribute(:public, params[:public])
     tagParams = params[:tags]
     @tags = Tag.all
 

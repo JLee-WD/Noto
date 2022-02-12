@@ -66,7 +66,7 @@ function Note(props) {
   };
 
   const toggleVisibility = async () => {
-    setVisibility(!isPublic);
+    setVisibility(!visibility);
     const options = {
       method: "PATCH",
       withCredentials: true,
@@ -81,14 +81,14 @@ function Note(props) {
         title: title,
         description: description,
         code: code,
-        public: !isPublic,
+        public: !visibility,
+        tags: noteTags.map(({ title }) => title),
       }),
     };
 
     await fetch(`/api/notes/${noteId}`, options);
     const newNotes = await resetNotes();
     setNotes(newNotes);
-    console.log(visibility);
   };
 
   let truncatedTags = [];
