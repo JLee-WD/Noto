@@ -19,7 +19,6 @@ import AddIcon from "@mui/icons-material/Add";
 import TagIcon from "@mui/icons-material/Tag";
 import PeopleAltIconOutlined from "@mui/icons-material/PeopleAltOutlined";
 import { useNavigate } from "react-router-dom";
-// import logo_t from "../../docs/img/logo_t";
 
 import { Link } from "react-router-dom";
 import Context from "../context/context";
@@ -112,11 +111,11 @@ function ResponsiveNav(props) {
       <Box alignItems="center" sx={{ ml: 3 }}>
         <img src="../../docs/img/logo_t.png" width="160" />
         <img src={"../../docs/img/logo_t.png"} width="160" />
+        <img src="/logo_t.png" width="160" />
+        <img src={"/logo_t.png"} width="160" />
         <img src="../docs/img/logo_t.png" width="160" />
         {/* <img src="/logo_t.png" width="160" /> */}
         <img src={"../docs/img/logo_t.png"} width="160" />
-        {/* <img src={"/logo_t.png"} width="160" /> */}
-        {/* <img src={process.env.PUBLIC_URL + "/logo_t.png"} width="160" /> */}
       </Box>
       {user ? (
         <Typography align="center" variant="h6" sx={{ mt: 2 }}>
