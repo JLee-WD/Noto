@@ -11,7 +11,7 @@
 }
 
 #landingBackground {
-  background-image: url("../docs/img/scaletile_10.png");
+  background-image: url("~../docs/img/scaletile_10.png");
   z-index: -1;
   animation-timing-function: ease-in-out;
   position: fixed;
