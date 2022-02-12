@@ -154,7 +154,6 @@ const NewNoteForm = () => {
               variant="outlined"
               sx={{ my: "1rem", mx: "1rem", width: "45%" }}
             />
-
             <VisibilityButton
               isPublic={formData.public}
               toggleVisibility={toggleVisibility}
