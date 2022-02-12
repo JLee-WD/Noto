@@ -24,6 +24,8 @@ import { Link } from "react-router-dom";
 import Context from "../context/context";
 import LogoutButton from "../components/LogoutButton";
 
+import logo from ".../docs/img/logo_t.png";
+
 const drawerWidth = 240;
 
 function ResponsiveNav(props) {
@@ -111,6 +113,7 @@ function ResponsiveNav(props) {
       <Box alignItems="center" sx={{ ml: 3 }}>
         <img src="../docs/img/logo_t.png" width="160" />
         <img src={process.env.PUBLIC_URL + "/logo_t.png"} width="160" />
+        <img src={logo} width="160" />
       </Box>
       {user ? (
         <Typography align="center" variant="h6" sx={{ mt: 2 }}>
