@@ -1,9 +1,9 @@
-import NavButton from "../components/NavButton";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
+import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Context from "../context/context";
 import { useNavigate } from "react-router-dom";
 import "../styles/login_register.css";
@@ -18,6 +18,9 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState(initialFormState);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {}, [error]);
 
   const onLoginSubmit = async (event) => {
     event.preventDefault();
@@ -37,10 +40,13 @@ const LoginPage = () => {
     const loginResponse = await fetch("/api/users/sign_in", options);
     const loginJson = await loginResponse.json();
     const newJwt = loginResponse.headers.get("authorization");
+    console.log(loginJson.error);
     if (loginJson.message === "You are logged in.") {
       await getUser(event.target.email.value, newJwt);
       await setJwt(newJwt);
       navigate("/");
+    } else {
+      setError(true);
     }
   };
 
@@ -68,6 +74,18 @@ const LoginPage = () => {
       ...formData,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const alert = () => {
+    if (error === true) {
+      return (
+        <Alert variant="outlined" severity="error">
+          Uh oh! Login failed! Check your details or register a new account.
+        </Alert>
+      );
+    } else {
+      return;
+    }
   };
 
   return (
@@ -99,15 +117,16 @@ const LoginPage = () => {
             onChange={handleChange}
             name="password"
           />
-          <Stack direction="row">
+          <Stack direction="column" alignItems="center">
             <Button
               variant="contained"
               type="submit"
-              sx={{ mx: "1rem", my: "1rem" }}
+              sx={{ mx: "1rem", my: "1rem", width: 120 }}
               size="large"
             >
               Login
             </Button>
+            {alert()}
           </Stack>
         </Stack>
       </form>

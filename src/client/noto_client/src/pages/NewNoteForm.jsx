@@ -8,6 +8,8 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import BackButton from "../components/BackButton";
+import Stack from "@mui/material/Stack";
+import Paper from "@mui/material/Paper";
 
 const NewNoteForm = () => {
   useEffect(() => {
@@ -140,68 +142,78 @@ const NewNoteForm = () => {
   console.log(formData);
 
   return (
-    <form onSubmit={onCreateNote}>
-      <div>
-        <TextField
-          name="title"
-          label="Title"
-          value={formData.title}
-          onChange={handleChange}
-          variant="outlined"
-          sx={{ my: "1rem", mx: "1rem", width: "45%" }}
-        />
+    <Paper elevation={3} sx={{ p: 6, m: 6, minHeight: 800 }}>
+      <Stack spacing={2} sx={{ mt: 2 }}>
+        <form onSubmit={onCreateNote}>
+          <div>
+            <TextField
+              name="title"
+              label="Title"
+              value={formData.title}
+              onChange={handleChange}
+              variant="outlined"
+              sx={{ my: "1rem", mx: "1rem", width: "45%" }}
+            />
 
-        <VisibilityButton
-          isPublic={formData.public}
-          toggleVisibility={toggleVisibility}
-          sx={{ my: "1.5rem" }}
-        />
-      </div>
-      <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-        {tagElements}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "flex-end",
-            ml: 3,
-            width: "150px",
-          }}
-        >
-          <AddIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-          <TextField
-            label="Add tag"
-            onBlur={handleAddTagOnBlur}
-            variant="standard"
-          />
-        </Box>
-      </Box>
-      <div>
-        <TextField
-          name="description"
-          label="Description"
-          value={formData.description}
-          onChange={handleChange}
-          variant="outlined"
-          multiline
-          rows={15}
-          sx={{ my: "1rem", mx: "1rem", width: "95%" }}
-        />
-        <TextField
-          name="code"
-          label="Code"
-          value={formData.code}
-          onChange={handleChange}
-          variant="outlined"
-          multiline
-          rows={15}
-          sx={{ mx: "1rem", my: "1rem", width: "95%" }}
-        />
-      </div>
-      <BackButton />
-      <Button type="submit" variant="contained" sx={{ mx: "1rem", my: "1rem" }}>
-        Add Note
-      </Button>
-    </form>
+            <VisibilityButton
+              isPublic={formData.public}
+              toggleVisibility={toggleVisibility}
+              sx={{ my: "1.5rem" }}
+            />
+          </div>
+          <Box
+            sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+          >
+            {tagElements}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "flex-end",
+                ml: 3,
+                width: "150px",
+              }}
+            >
+              <AddIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+              <TextField
+                label="Add tag"
+                onBlur={handleAddTagOnBlur}
+                variant="standard"
+              />
+            </Box>
+          </Box>
+          <div>
+            <TextField
+              name="description"
+              label="Description"
+              value={formData.description}
+              onChange={handleChange}
+              variant="outlined"
+              multiline
+              rows={15}
+              sx={{ my: "1rem", mx: "1rem", width: "95%" }}
+            />
+            <TextField
+              name="code"
+              label="Code"
+              value={formData.code}
+              onChange={handleChange}
+              variant="outlined"
+              multiline
+              rows={15}
+              sx={{ mx: "1rem", my: "1rem", width: "95%" }}
+            />
+          </div>
+          <BackButton />
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{ mx: "1rem", my: "1rem" }}
+          >
+            Add Note
+          </Button>
+        </form>
+      </Stack>
+    </Paper>
   );
 };
 
