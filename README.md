@@ -2,8 +2,60 @@
 
 #### Noto is a note-taking app built using JavaScript, React and Ruby on Rails developed by [Justin Lee](https://github.com/JLee-WD) and [Richard Cho](https://github.com/Ryuukishi/).
 
+Site Link:
+[http://www.noto.live](http://www.noto.live)
+
 Github Link:
 [https://github.com/Noto-App/Noto](https://github.com/Noto-App/Noto)
+
+## Instructions
+
+#### Clone the repo
+
+```terminal
+git clone https://github.com/Noto-App/Noto.git
+```
+
+#### Set up the backend
+
+```terminal
+# navigate to the server root directory
+cd src/server/noto_api/
+
+# install required gems
+bundle install
+
+# set up postgresql database and Rails API
+rails db:create
+rails db:migrate
+rails db:seed
+
+# start the Rails backend and set the port to 5000
+rails s -p 5000
+
+# navgiate to the client root directory
+cd ../../client/noto_client/
+
+# install node modules through npm
+npm i
+
+# start the client
+npm run dev
+
+# the app can then be accessed on localhost:3000
+```
+
+#### Running tests
+
+````terminal
+# navigate to the server root directory and run rspec
+cd src/server/noto_api/
+rspec
+
+# navgiate to the client root directory, run Cypress and select the test you wish to execute
+cd ../../client/noto_client/
+npx cypress open
+````
 
 ## Purpose
 
@@ -55,13 +107,17 @@ The target audience for Noto is:
 - React - Client front-end framework for JavaScript
 - Ruby - Programming language for Server
 - Ruby on Rails - Server side web application framework
-- Heroku - Deployment
-- Amazon S3 - Image storage
+- Heroku - Back End Deployment
+- Netlify - Front End Deployment
+- Amazon S3 - Image storage (future update)
 - PostgreSQL - SQL Database
 - Trello - Project managment software
 - Git/GitHub - Source control
-- Emotion React - CSS library for styling
+- MUI - Front end styling framework
 - Devise - Authentication Gem for Ruby on Rails
+- Cypress - End to end testing
+- Rspec - Development testing
+- React Syntax Highlighter - Code syntax highlighting and styling
 
 ### Auxiliary Tools
 
@@ -160,6 +216,8 @@ LInk: https://www.figma.com/file/dXzI59LuJz7YL4fzqnZwnJ/Noto?node-id=0%3A1
 
 ## Trello Screenshots
 
+### Part A
+
 Trello screenshot 20/1/22
 ![New Note](docs/pm_screenshots/Trello_Screenshot_2022-01-20_103056.png)
 
@@ -178,4 +236,38 @@ Trello screenshot 27/1/22
 Trello screenshot 30/1/22
 ![New Note](docs/pm_screenshots/Trello_Screenshot_2022-01-30_192506.png)
 
+### Part B
+
+Trello screenshot 31/1/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-01-31_095714-1.png)
+
+Trello screenshot 03/2/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-02-03_095602.png)
+
+Trello screenshot 09/2/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-02-09_000418_1.png)
+
+Trello screenshot 12/2/22
+![New Note](docs/pm_screenshots/Trello_Screenshot_2022-02-12_224409_1.png)
+
 Link: https://trello.com/b/dS7iufSD/noto
+
+## Part B differences
+
+### Tech Stack Changes
+
+Initially we chose emotion for styling, but to reduce time for styling we decided to use the Material UI framework (MUI). Mui offers pre-built customizable components designed specially for React.
+
+For testing, we used Cypress for end to end testing and Rspec for development testing of the backend.
+
+We did not have enough time to implement image uploading, so we left out implementing Amazon S3 for future updates.
+
+We also introduced the React Syntax Highlighter dependency for customizing example code in the saved notes.
+
+### Feature Changes
+
+All of the features of the MVP were implemented with the exception of grouping notes and image uploading due to lack of time.
+
+### UI changes
+
+As we used MUI for styling during production, the resulting user interface differs from the prototypes presented for part A. As we were inexperienced with MUI at the planning stage of the project, we could not vizualize the user interface with MUI components. Instead, we used the prototypes as a goal while putting the app together with MUI components.

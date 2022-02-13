@@ -93,7 +93,6 @@ const RegisterPage = () => {
           <TextField
             error
             sx={{ width: 300 }}
-            id="outlined-basic"
             label={label}
             variant="filled"
             onBlur={handleOnBlur}
@@ -107,7 +106,6 @@ const RegisterPage = () => {
         <>
           <TextField
             sx={{ width: 300 }}
-            id="outlined-basic"
             label={label}
             variant="filled"
             onBlur={handleOnBlur}
@@ -125,7 +123,6 @@ const RegisterPage = () => {
         <TextField
           error
           sx={{ width: 300 }}
-          id="outlined-basic"
           label="Password"
           variant="filled"
           onBlur={handleOnBlur}
@@ -138,7 +135,6 @@ const RegisterPage = () => {
       return (
         <TextField
           sx={{ width: 300 }}
-          id="outlined-basic"
           label="Password"
           variant="filled"
           onBlur={handleOnBlur}
