@@ -60,11 +60,9 @@ npm run dev
 # the app can then be accessed on localhost:3000
 ```
 
-
-
 #### Running tests
 
-````terminal
+```terminal
 # navigate to the server root directory and run some migrations that are necessary for the test. Afterwards, run rspec.
 cd src/server/noto_api/
 rails db:migrate RAILS_ENV=test
@@ -73,7 +71,7 @@ rspec
 # navgiate to the client root directory, run Cypress and select the test you wish to execute
 cd ../../client/noto_client/
 npx cypress open
-````
+```
 
 ## Purpose
 
