@@ -106,6 +106,23 @@ function ResponsiveNav(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const navTags = () => {
+    if (tags.length === 0) {
+      return;
+    } else {
+      const nTags = tags.map((tag, index) => (
+        <ListItemButton
+          key={index}
+          selected={selectedTagIndex === index + 1}
+          onClick={(event) => handleTagItemClick(event, index, tag)}
+        >
+          <ListItemText primary={tag.title} />
+        </ListItemButton>
+      ));
+      return nTags;
+    }
+  };
+
   const drawer = (
     <div>
       <Toolbar />
@@ -154,15 +171,7 @@ function ResponsiveNav(props) {
         >
           <ListItemText primary="All" />
         </ListItemButton>
-        {tags.map((tag, index) => (
-          <ListItemButton
-            key={index}
-            selected={selectedTagIndex === index + 1}
-            onClick={(event) => handleTagItemClick(event, index, tag)}
-          >
-            <ListItemText primary={tag.title} />
-          </ListItemButton>
-        ))}
+        {navTags()}
 
         {/* GROUP */}
         <ListItem>

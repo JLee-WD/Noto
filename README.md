@@ -24,7 +24,7 @@ Designed for software engineering students, teachers and professionals. It aims 
 
 Noto aims to make it easier for you to write notes and organise all your ideas in one place meaning there's no longer a need for cheatsheets or long, unsorted Google docs. Specially catered for programmers, Noto lets you save code snippets or design patterns that you have used before. Rather than googling code and finding examples that you don't understand, save and utilize code that you have written yourself.
 
-Noto aims to provide a platform that allow users to easily share and collaborate with their peers or colleagues. Take notes with your peers during class, and ensure everyone is on the same level of understanding by grouping notes together.
+Noto provides a platform that allow users to easily share and collaborate with their peers or colleagues. Take notes with your peers during class, and ensure everyone is on the same level of understanding by grouping notes together.
 
 ## Functionality
 
