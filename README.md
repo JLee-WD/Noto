@@ -33,6 +33,17 @@ rails db:seed
 # start the Rails backend and set the port to 5000
 rails s -p 5000
 
+# if the above command raises an error regarding credentials, then you might have to reset them for the Rails server to work.
+
+rm config/credentials.yml.enc
+bundle exec rake secret
+EDITOR=vi bundle exec rails credentials:edit
+
+#Add this into the editor
+devise:
+  jwt_secret_key: <secret generate from previous command>
+
+
 # navgiate to the client root directory
 cd ../../client/noto_client/
 
@@ -48,8 +59,9 @@ npm run dev
 #### Running tests
 
 ````terminal
-# navigate to the server root directory and run rspec
+# navigate to the server root directory and run some migrations that are necessary for the test. Afterwards, run rspec.
 cd src/server/noto_api/
+rails db:migrate RAILS_ENV=test
 rspec
 
 # navgiate to the client root directory, run Cypress and select the test you wish to execute

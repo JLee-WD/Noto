@@ -1,5 +1,9 @@
 describe("CRUD", () => {
   it("Add new note", () => {
+    cy.visit("http://localhost:3000/login");
+    cy.get('input[name="email"]').type("jackiechan@gmail.com");
+    cy.get('input[name="password"]').type("testtest");
+    cy.get("form").submit();
     cy.visit("http://localhost:3000/new");
     cy.get('input[name="title"]').type("Example Title");
     cy.get('input[name="tag"]').type("JavaScript");
@@ -10,7 +14,10 @@ describe("CRUD", () => {
   });
 
   it("Edit note", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("http://localhost:3000/login");
+    cy.get('input[name="email"]').type("jackiechan@gmail.com");
+    cy.get('input[name="password"]').type("testtest");
+    cy.get("form").submit();
     cy.get('button[aria-label="Edit note"]').click();
     cy.get('input[name="title"]').type(" EDITED");
     cy.get('textarea[name="description"]').type("EDITED");
@@ -20,7 +27,10 @@ describe("CRUD", () => {
   });
 
   it("Delete note", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("http://localhost:3000/login");
+    cy.get('input[name="email"]').type("jackiechan@gmail.com");
+    cy.get('input[name="password"]').type("testtest");
+    cy.get("form").submit();
     cy.get('button[aria-label="Delete note"]').click();
   });
 });

@@ -2,13 +2,22 @@ require 'rails_helper'
 
 RSpec.describe 'API', type: :request do
 
-    describe 'should not allow fetching notes when user is unauthenticated' do
+    describe 'should allow fetching notes' do
       subject { get '/notes' }
 
       it 'returns error' do
         subject
 
-        expect(response).to have_http_status(302)
+        expect(response).to have_http_status(200)
+      end
+    end
+    describe 'should allow fetching tags' do
+      subject { get '/tags' }
+
+      it 'returns error' do
+        subject
+
+        expect(response).to have_http_status(200)
       end
     end
 end
