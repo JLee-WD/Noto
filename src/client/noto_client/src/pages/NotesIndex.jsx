@@ -16,8 +16,6 @@ const NotesIndex = () => {
     }
   }, []);
 
-  console.log("notes", notes);
-
   const loadNotes = async () => {
     const newNotes = await resetNotes();
     setNotes(newNotes);

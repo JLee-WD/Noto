@@ -13,7 +13,6 @@ import Paper from "@mui/material/Paper";
 
 const NewNoteForm = () => {
   useEffect(() => {
-    console.log(user);
     if (!user) {
       navigate("/landing");
     }
@@ -66,7 +65,6 @@ const NewNoteForm = () => {
       tags: newTags,
     });
     setToggleTags(newTags);
-    console.log(newTags);
   };
 
   const onCreateNote = async (event) => {
@@ -122,7 +120,6 @@ const NewNoteForm = () => {
       tagsArray.push(event.target.value);
       setTagNames(tagsArray);
     }
-    console.log("tag names: ", tagNames);
   };
 
   const tagElements = (
@@ -138,8 +135,6 @@ const NewNoteForm = () => {
       ))}
     </ToggleButtonGroup>
   );
-
-  console.log(formData);
 
   return (
     <Paper elevation={3} sx={{ p: 6, m: 6, minHeight: 800 }}>

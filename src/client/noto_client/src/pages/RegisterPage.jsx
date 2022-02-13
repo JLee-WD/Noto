@@ -165,7 +165,6 @@ const RegisterPage = () => {
     };
     const loginResponse = await fetch("/api/users", options);
     const loginJson = await loginResponse.json();
-    console.log(loginJson);
     const newJwt = loginResponse.headers.get("authorization");
     setJwt(newJwt);
     if (loginJson.message === "Signed up sucessfully.") {
@@ -174,7 +173,6 @@ const RegisterPage = () => {
     }
   };
 
-  console.log("formdata", formData);
   return (
     <>
       <div id="loginRegisterBackground"></div>

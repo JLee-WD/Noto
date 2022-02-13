@@ -19,8 +19,18 @@ const EditNote = () => {
   };
 
   const [formData, setFormData] = useState(initialFormState);
-  const { tags, setTags, resetTags, setJoins, resetJoins, setNotes, resetNotes, jwt, user, setNoteTags } =
-    useContext(Context);
+  const {
+    tags,
+    setTags,
+    resetTags,
+    setJoins,
+    resetJoins,
+    setNotes,
+    resetNotes,
+    jwt,
+    user,
+    setNoteTags,
+  } = useContext(Context);
   const [toggleTags, setToggleTags] = useState(formData.tags);
   const [tagNames, setTagNames] = useState([]);
 
@@ -114,7 +124,6 @@ const EditNote = () => {
 
   const toggleVisibility = () => {
     setFormData({ ...formData, public: !formData.public });
-    console.log(formData.public)
   };
 
   const onEditNote = async () => {
