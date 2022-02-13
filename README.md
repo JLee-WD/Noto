@@ -43,6 +43,7 @@ EDITOR=vi bundle exec rails credentials:edit
 devise:
   jwt_secret_key: <secret generate from previous command>
 
+#### Set up the frontend
 
 # navgiate to the client root directory
 cd ../../client/noto_client/
