@@ -58,7 +58,6 @@ function ResponsiveNav(props) {
   }, [search]);
 
   const handleSearchOnChange = (event) => {
-    console.log(event.target.value);
     setSearch(event.target.value);
   };
 
@@ -95,6 +94,23 @@ function ResponsiveNav(props) {
       });
     }
     return foundNotes;
+  };
+
+  const navTags = () => {
+    if (tags.length === 0) {
+      return;
+    } else {
+      const nTags = tags.map((tag, index) => (
+        <ListItemButton
+          key={index}
+          selected={selectedTagIndex === index + 1}
+          onClick={(event) => handleTagItemClick(event, index, tag)}
+        >
+          <ListItemText primary={tag.title} />
+        </ListItemButton>
+      ));
+      return nTags;
+    }
   };
 
   const handleGroupItemClick = (event, index) => {
@@ -154,15 +170,7 @@ function ResponsiveNav(props) {
         >
           <ListItemText primary="All" />
         </ListItemButton>
-        {tags.map((tag, index) => (
-          <ListItemButton
-            key={index}
-            selected={selectedTagIndex === index + 1}
-            onClick={(event) => handleTagItemClick(event, index, tag)}
-          >
-            <ListItemText primary={tag.title} />
-          </ListItemButton>
-        ))}
+        {navTags()}
 
         {/* GROUP */}
         <ListItem>
