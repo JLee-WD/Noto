@@ -60,11 +60,9 @@ npm run dev
 # the app can then be accessed on localhost:3000
 ```
 
-
-
 #### Running tests
 
-````terminal
+```terminal
 # navigate to the server root directory and run some migrations that are necessary for the test. Afterwards, run rspec.
 cd src/server/noto_api/
 rails db:migrate RAILS_ENV=test
@@ -73,7 +71,7 @@ rspec
 # navgiate to the client root directory, run Cypress and select the test you wish to execute
 cd ../../client/noto_client/
 npx cypress open
-````
+```
 
 ## Purpose
 
@@ -91,7 +89,7 @@ Designed for software engineering students, teachers and professionals. It aims 
 
 Noto aims to make it easier for you to write notes and organise all your ideas in one place meaning there's no longer a need for cheatsheets or long, unsorted Google docs. Specially catered for programmers, Noto lets you save code snippets or design patterns that you have used before. Rather than googling code and finding examples that you don't understand, save and utilize code that you have written yourself.
 
-Noto aims to provide a platform that allow users to easily share and collaborate with their peers or colleagues. Take notes with your peers during class, and ensure everyone is on the same level of understanding by grouping notes together.
+Noto provides a platform that allow users to easily share and collaborate with their peers or colleagues. Take notes with your peers during class, and ensure everyone is on the same level of understanding by grouping notes together.
 
 ## Functionality
 
