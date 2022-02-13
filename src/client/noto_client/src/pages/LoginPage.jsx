@@ -40,7 +40,6 @@ const LoginPage = () => {
     const loginResponse = await fetch("/api/users/sign_in", options);
     const loginJson = await loginResponse.json();
     const newJwt = loginResponse.headers.get("authorization");
-    console.log(loginJson.error);
     if (loginJson.message === "You are logged in.") {
       await getUser(event.target.email.value, newJwt);
       await setJwt(newJwt);

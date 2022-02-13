@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const NavButton = (props) => {
   const { path, text, variant, size } = props;
   const navigate = useNavigate();
-  console.log(path, text, variant);
   return (
     <Button
       variant={variant}

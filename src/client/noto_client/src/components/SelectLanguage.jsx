@@ -8,7 +8,6 @@ import Select from "@mui/material/Select";
 const SelectLanguage = ({ language, setLanguage }) => {
   const handleChange = (event) => {
     setLanguage(event.target.value);
-    console.log(event.target.value);
   };
 
   return (

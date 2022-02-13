@@ -11,7 +11,10 @@ const VisibilityButton = ({ isPublic, toggleVisibility, sx }) => {
   return (
     <>
       <Tooltip title="Toggle visibility">
-        <IconButton onClick={toggleVisibility} sx={{...sx,"&:hover": { color: "dodgerblue" }}}>
+        <IconButton
+          onClick={toggleVisibility}
+          sx={{ ...sx, "&:hover": { color: "dodgerblue" } }}
+        >
           {isPublic ? <VisibilityIcon /> : <VisibilityOffIcon />}
         </IconButton>
       </Tooltip>
